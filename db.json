@@ -1,0 +1,51 @@
+{
+  "color": [
+    {
+      "id": 1,
+      "colorCode": "#E94F37"
+    },
+    {
+      "id": 2,
+      "colorCode": "#393E41"
+    }
+  ],
+  "brand": [
+    {
+      "id": 1,
+      "name": "Apple"
+    },
+    {
+      "id": 2,
+      "name": "Samsung"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Iphone1",
+      "description": "Old Simple",
+      "price": "10000.00",
+      "manufactureDate": "2020-14-02",
+      "brand.id": 1
+    },
+    {
+      "id": 2,
+      "name": "Iphone2",
+      "description": "Old Simple",
+      "price": "12000.00",
+      "manufactureDate": "16-08-2020",
+      "brand.id": 2
+    },
+    {
+      "name": "iphone3",
+      "description": "test",
+      "colorList": [
+        2
+      ],
+      "price": "5500.00",
+      "brand": 1,
+      "manufactureDate": "2021-04-13",
+      "id": 3
+    }
+  ]
+}

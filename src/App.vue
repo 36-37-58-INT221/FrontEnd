@@ -1,16 +1,59 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  
+  <nav-bar>
+    <router-link to="/"><li class= "liNav float-left">Home</li></router-link>
+    <router-link to="/Addproduct"><li class= "liNav float-left">AddProduct</li></router-link>
+    <router-link to="/ProductList"><li class= "liNav float-left">Products</li></router-link>
+   <router-link to="/Team"> <li class= "liNav float-left">Teams</li></router-link>
+  </nav-bar>
+
+<router-view class="max-w-3xl" :products="products" :productsUrl="productsUrl"></router-view>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import NavBar from './components/NavBar.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    NavBar
+},
+data() {
+  return {
+    products : [],
+    productsUrl: 'http://localhost:5000/products',
   }
+},
+
+
+methods: {
+
+
+  refreshProducts(Product){
+
+    this.products.push(Product);
+
+  },
+
+
+
+
+
+
+
+
+
+    async fetchProducts() {
+      const res = await fetch(this.productsUrl);
+      const data = await res.json();
+      return data;
+    },
+},
+async created() {
+        this.products =  await this.fetchProducts();
+    }
+
 }
 </script>
 
