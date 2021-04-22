@@ -1,5 +1,5 @@
 {
-  "color": [
+  "colors": [
     {
       "id": 1,
       "colorCode": "#E94F37"
@@ -9,7 +9,7 @@
       "colorCode": "#393E41"
     }
   ],
-  "brand": [
+  "brands": [
     {
       "id": 1,
       "name": "Apple"
@@ -26,7 +26,7 @@
       "description": "Old Simple",
       "price": "10000.00",
       "manufactureDate": "2020-14-02",
-      "brand.id": 1
+      "brand": 1
     },
     {
       "id": 2,
@@ -34,7 +34,7 @@
       "description": "Old Simple",
       "price": "12000.00",
       "manufactureDate": "16-08-2020",
-      "brand.id": 2
+      "brand": 2
     },
     {
       "name": "iphone3",
