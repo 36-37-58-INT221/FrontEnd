@@ -7,7 +7,7 @@
    <router-link to="/Team"> <li class= "liNav float-left">Teams</li></router-link>
   </nav-bar>
 
-<router-view class="max-w-3xl" :products="products" :productsUrl="productsUrl"></router-view>
+<router-view class="max-w-3xl" :products="products" :productsUrl="productsUrl" @submit-form="refreshProducts"></router-view>
 
 </template>
 
@@ -28,22 +28,10 @@ data() {
 
 
 methods: {
-
-
   refreshProducts(Product){
-
     this.products.push(Product);
-
   },
-
-
-
-
-
-
-
-
-
+  
     async fetchProducts() {
       const res = await fetch(this.productsUrl);
       const data = await res.json();

@@ -51,7 +51,7 @@
                 <input type="date" v-model="formdata.manufactureDate" class="border border-black" />
                 <h1 v-if="errors.indexOf('noDate') !== -1" class="text-red-600">Please Enter Date</h1>
             </div>
-            <button type="submit" value="Submit" class="border border-black mt-2">Submit</button>
+            <button type="submit" value="Submit" class="border border-black mt-2" ref="ProductList">Submit</button>
         </form>
     </div>
 </template>
@@ -83,6 +83,14 @@ export default {
         }
     },
     methods: {
+        refreshForm(){
+            this.formdata.name= null,
+            this.formdata.description= null,
+            this.formdata.colorList= [],
+            this.formdata.price= null,
+            this.formdata.brand= null,
+            this.formdata.manufactureDate= null
+        },
         async submitForm() {
             this.validate(); 
             if (this.errors.length > 0) {
@@ -103,8 +111,9 @@ export default {
                     manufactureDate: this.formdata.manufactureDate,
                 })
             })
-            const data = await res.json();
-            this.$parent.refreshProducts(data);
+            this.refreshForm();
+            const data = await res.json(); 
+            this.$emit('submit-form',data);
         },
 
 
@@ -127,7 +136,7 @@ export default {
                 this.errors.push("noColor");
             } if (this.formdata.price == null) {
                 this.errors.push("noPrice");
-            } if (this.formdata.date == null) {
+            } if (this.formdata.manufactureDate == null) {
                 this.errors.push("noDate");
             }
         },

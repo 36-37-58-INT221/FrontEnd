@@ -4,7 +4,7 @@ import Team from '../components/Team.vue'
 
 import ProductList from '../components/ProductList.vue'
 import AddNewProduct from '../components/AddNewProduct.vue'
-
+import Product from '../components/Product.vue'
 
 
 const routes = [
@@ -23,6 +23,13 @@ const routes = [
         name: 'AddProduct',
         component: AddNewProduct
     },
+    {
+        path: '/Product/:productId',
+        name: 'Product',
+        component: Product
+    },
+
+
 
 
 
