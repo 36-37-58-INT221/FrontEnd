@@ -5,7 +5,7 @@ import Team from '../components/Team.vue'
 import ProductList from '../components/ProductList.vue'
 import AddNewProduct from '../components/AddNewProduct.vue'
 import Product from '../components/Product.vue'
-
+import PageNotFound from '../components/PageNotFound.vue'
 
 const routes = [
     {
@@ -28,6 +28,11 @@ const routes = [
         name: 'Product',
         component: Product
     },
+    {
+        path: '/:catchNotMatchPath(.*)',
+        name: 'PageNotFound',
+        component: PageNotFound
+      }
 
 
 

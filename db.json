@@ -37,43 +37,13 @@
       "brand": 2
     },
     {
-      "name": "iphone3",
-      "description": "test",
-      "colorList": [
-        2
-      ],
-      "price": "5500.00",
-      "brand": 1,
-      "manufactureDate": "2021-04-13",
-      "id": 3
-    },
-    {
-      "name": "testPOST2",
-      "description": "eargfdh",
-      "colorList": [
-        1
-      ],
-      "price": "dfsg",
-      "brand": {
-        "id": 2,
-        "name": "Samsung"
-      },
-      "manufactureDate": "2021-04-14",
-      "id": 4
-    },
-    {
-      "name": "testPOST1",
-      "description": "dfghfgdhdfghfgdh",
-      "colorList": [
-        1
-      ],
-      "price": "dfghfgdhfgdh",
-      "brand": {
-        "id": 1,
-        "name": "Apple"
-      },
-      "manufactureDate": "2021-04-08",
-      "id": 5
+      "name": null,
+      "description": null,
+      "colorList": [],
+      "price": null,
+      "brand": null,
+      "manufactureDate": null,
+      "id": 9
     }
   ]
 }

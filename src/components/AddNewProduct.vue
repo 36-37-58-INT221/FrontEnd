@@ -92,7 +92,7 @@ export default {
             this.formdata.manufactureDate= null
         },
         async submitForm() {
-            this.validate(); 
+           this.validate(); 
             if (this.errors.length > 0) {
                 alert(this.errors);
                 return ;
