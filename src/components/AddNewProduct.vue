@@ -4,7 +4,7 @@
             <div class="pt-2">
                 <label for="name">Name :</label>
                 <input type="text" v-model="formdata.name" class="border border-black" />
-                <h1 v-if="errors.indexOf('noName') !== -1" class="text-red-600">Please Enter Name</h1>
+                <h1 v-if="errors.indexOf('noName') !== -1" class="text-red-600">Please Enter Name 2-30 Character</h1>
                 <h1 v-if="errors.indexOf('have') !== -1" class="text-red-600">Already Have this Product</h1>
             </div>
             <div class="pt-2">
@@ -51,7 +51,7 @@
                 <input type="date" v-model="formdata.manufactureDate" class="border border-black" />
                 <h1 v-if="errors.indexOf('noDate') !== -1" class="text-red-600">Please Enter Date</h1>
             </div>
-            <button type="submit" value="Submit" class="border border-black mt-2" ref="ProductList">Submit</button>
+            <button type="submit" value="Submit" class="border border-black mt-2">Submit</button>
         </form>
     </div>
 </template>
@@ -119,13 +119,13 @@ export default {
 
         validate() {
             this.errors = [];
-            var index = this.products.findIndex(f => f.name.replace(" ","").toLowerCase() == this.formdata.name.replace(" ","").toLowerCase())
+            
 
-            if (this.formdata.name == null || this.formdata.name.length > 30) {
+            if (this.formdata.name == null ) {
                 this.errors.push("noName");
             }
-            if (index !== -1) {
-                this.errors.push("have");
+            if(this.formdata.name.length < 2 || this.formdata.name.length > 30  ){
+                this.errors.push("noName");
             }
             if (this.formdata.description == null) {
                 this.errors.push("noDes");
@@ -134,11 +134,16 @@ export default {
             }
             if (this.formdata.colorList.length == 0) {
                 this.errors.push("noColor");
-            } if (this.formdata.price == null) {
+            } if (this.formdata.price == null   ) {
                 this.errors.push("noPrice");
-            } if (this.formdata.manufactureDate == null) {
-                this.errors.push("noDate");
+            } if(/^\s*-?[1-9]\d*(\.\d{1,2})?\s*$/.test(this.formdata.price) ==false){ this.errors.push("noPrice");}
+            if (this.formdata.manufactureDate == null) {  this.errors.push("noDate");}
+            var index = this.products.findIndex(f => f.name.replace(" ","").toLowerCase() == this.formdata.name.replace(" ","").toLowerCase())
+            if (index !== -1) {
+                this.errors.push("have");
             }
+
+
         },
 
 
