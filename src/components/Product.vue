@@ -12,7 +12,7 @@
         <h1 class="text-6xl">Date : {{ viewProduct.manufactureDate}}</h1>
     </div>
     <div v-if="isEdit">
-        <addNewProduct :viewProduct="viewProduct" :colors="colors" :isEdit="isEdit" :viewBrand="viewBrand" :brands="brands" />
+        <addNewProduct :viewProduct="viewProduct" :colors="colors" :isEdit="isEdit" :viewBrand="viewBrand" :brands="brands" :productsUrl="productsUrl" @edited="this.isEdit = false"/>
 
         
         

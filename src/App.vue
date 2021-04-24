@@ -20,7 +20,8 @@
     :productsUrl="productsUrl"
     :colors="colors"
     :brands="brands"
-    @submit-form="refreshProducts"
+    @submit-form="addProducts"
+   
   ></router-view>
 </template>
 
@@ -46,17 +47,9 @@ export default {
 
 
   methods: {
-    refreshProducts(Product) {
+    addProducts(Product) {
       this.products.push(Product);
     },
-    
-
-
-
-
-
-
-
     async fetchProducts() {
       const res = await fetch(this.productsUrl);
       const data = await res.json();

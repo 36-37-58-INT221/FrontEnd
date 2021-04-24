@@ -52,9 +52,10 @@
                 <input type="date" v-model="formdata.manufactureDate" class="border border-black" />
                 <h1 v-if="errors.indexOf('noDate') !== -1" class="text-red-600">Please Enter Date</h1>
             </div>
-            <button v-if="!isEdit" type="submit" value="Submit" class="border border-black mt-2">Submit</button>
-            <button v-if="isEdit" type="submit" value="Submit" class="border border-black mt-2">Submit Edit</button>
-        </form>
+            <button v-if="!isEdit" value="Submit" class="border border-black mt-2">Submit</button>
+            <button v-if="isEdit"  class="border border-black mt-2" @click="editForm">Submit Edit</button>
+        </form> 
+       
     </div>
 </template>
 
@@ -85,6 +86,7 @@ export default {
             this.formdata.manufactureDate= null
         },
         async submitForm() {
+            if(!this.isEdit){
            this.validate(); 
             if (this.errors.length > 0) {
                 alert(this.errors);
@@ -106,14 +108,35 @@ export default {
             })
             this.refreshForm();
             const data = await res.json(); 
-            this.$emit('submit-form',data);
+            this.$emit('submit-form',data);}
         },
+        async editForm(){
+            this.validate();
+            if (this.errors.length > 0) {
+                alert(this.errors);
+                return ;
+            }
+          await fetch(this.productsUrl + "/"+this.viewProduct.id, {
+          method: 'PUT',
+          headers: {
+            'Content-type': 'application/json'
+          },
+          body: JSON.stringify({
+            name: this.formdata.name,
+            description: this.formdata.description,
+            colorList: this.formdata.colorList,
+            price: this.formdata.price,
+            brandId: this.formdata.brandId,
+            manufactureDate: this.formdata.manufactureDate,
+          })
+        })
+            this.$emit("edited")
+        },
+
 
 
         validate() {
             this.errors = [];
-            
-
             if (this.formdata.name == null ) {
                 this.errors.push("noName");
             }
@@ -140,12 +163,13 @@ export default {
                 this.errors.push("noPrice");
             }
             if (this.formdata.manufactureDate == null) {  this.errors.push("noDate");}
+
+            if(!this.isEdit){
             var index = this.products.findIndex(f => f.name.replace(" ","").toLowerCase() == this.formdata.name.replace(" ","").toLowerCase())
             if (index !== -1) {
                 this.errors.push("have");
             }
-
-
+            }
         },
 
 
@@ -155,10 +179,6 @@ export default {
 
         if(this.isEdit){
             this.formdata = this.viewProduct ;
-            alert(this.viewProduct.brandId)
-        
-           
-           
         }
 
 
