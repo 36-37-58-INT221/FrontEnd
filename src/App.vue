@@ -18,6 +18,8 @@
     class="max-w-3xl"
     :products="products"
     :productsUrl="productsUrl"
+    :colors="colors"
+    :brands="brands"
     @submit-form="refreshProducts"
     @view-product="setView"
     @delete-pro="deleteProduct"
@@ -35,8 +37,12 @@ export default {
   data() {
     return {
       products: [],
-      arr : [],
+      brands: [],
+      colors: [],
       productsUrl: 'http://localhost:5000/products',
+      colorUrl: 'http://localhost:5000/colors',
+      brandUrl: 'http://localhost:5000/brands',
+
     }
   },
 
@@ -45,10 +51,10 @@ export default {
     refreshProducts(Product) {
       this.products.push(Product);
     },
-    // deleteProduct(id){
-     
-    //  this.products = this.products.filter(f => f.id !== id);
-    // },
+    
+
+
+
 
 
 
@@ -57,10 +63,24 @@ export default {
       const res = await fetch(this.productsUrl);
       const data = await res.json();
       return data;
-    },
+    }, async fetchBrand() {
+            const res = await fetch(this.brandUrl);
+            const data = await res.json();
+            return data;
+        },
+        async fetchColors() {
+            const res = await fetch(this.colorUrl);
+            const data = await res.json();
+            return data;
+        }
+
+
+
   },
   async created() {
     this.products = await this.fetchProducts();
+    this.brands = await this.fetchBrand();
+    this.colors = await this.fetchColors();
   }
 
 }

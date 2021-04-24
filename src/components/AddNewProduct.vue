@@ -34,8 +34,8 @@
 
             <div class="pt-2">
                 <label for="brand">Brand :</label>
-                <select name="brand" v-model="formdata.brand" class="border border-black">
-                    <option v-for="brand in brands" :value="brand" :key="brand.id">{{ brand.name }}</option>
+                <select name="brand" v-model="formdata.brandId" class="border border-black">
+                    <option v-for="brand in brands" :value="brand.id" :key="brand.id">{{ brand.name }}</option>
                 </select>
                 <h1 v-if="errors.indexOf('noBrand') !== -1" class="text-red-600">Please Select Brand</h1>
             </div>
@@ -59,27 +59,18 @@
 
 <script>
 export default {
-    props: ["products", "productsUrl"],
+    props: ["products", "productsUrl","brands","colors"],
     data() {
         return {
-            colorUrl: 'http://localhost:5000/colors',
-            brandUrl: 'http://localhost:5000/brands',
-
-            colors: [],
-            brands: [],
             errors: [],
-
             formdata: {
                 name: null,
                 description: null,
                 colorList: [],
                 price: null,
-                brand: null,
+                brandId: null,
                 manufactureDate: null,
             }
-
-
-
         }
     },
     methods: {
@@ -88,7 +79,7 @@ export default {
             this.formdata.description= null,
             this.formdata.colorList= [],
             this.formdata.price= null,
-            this.formdata.brand= null,
+            this.formdata.brandId= null,
             this.formdata.manufactureDate= null
         },
         async submitForm() {
@@ -107,7 +98,7 @@ export default {
                     description: this.formdata.description,
                     colorList: this.formdata.colorList,
                     price: this.formdata.price,
-                    brand: this.formdata.brand,
+                    brandId: this.formdata.brandId,
                     manufactureDate: this.formdata.manufactureDate,
                 })
             })
@@ -133,7 +124,7 @@ export default {
             if (this.formdata.description.length > 70 || this.formdata.description.length < 10) {
                 this.errors.push("noDes");
             } 
-            if (this.formdata.brand == null) {
+            if (this.formdata.brandId == null) {
                 this.errors.push("noBrand");
             }
             if (this.formdata.colorList.length == 0) {
@@ -155,26 +146,6 @@ export default {
 
         },
 
-
-
-
-
-
-        async fetchColors() {
-            const res = await fetch(this.colorUrl);
-            const data = await res.json();
-            return data;
-        }, async fetchBrand() {
-            const res = await fetch(this.brandUrl);
-            const data = await res.json();
-            return data;
-        },
-
-
-    },
-    async created() {
-        this.colors = await this.fetchColors();
-        this.brands = await this.fetchBrand();
 
     }
 

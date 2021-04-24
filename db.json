@@ -19,6 +19,7 @@
       "name": "Samsung"
     }
   ],
+  "havecolors": [],
   "products": [
     {
       "name": "IPHONE1",
@@ -30,46 +31,9 @@
         }
       ],
       "price": "5000.00",
-      "brand": {
-        "id": 1,
-        "name": "Apple"
-      },
-      "manufactureDate": "2021-04-09",
-      "id": 1
-    },
-    {
-      "name": "IPHONE2",
-      "description": "5646546465465465464",
-      "colorList": [
-        {
-          "id": 1,
-          "colorCode": "#E94F37"
-        }
-      ],
-      "price": "654",
-      "brand": {
-        "id": 1,
-        "name": "Apple"
-      },
+      "brandId": 1,
       "manufactureDate": "2021-04-08",
-      "id": 2
-    },
-    {
-      "name": "IPHONE4",
-      "description": "asfdfdfgdshfgfsdgdfsg",
-      "colorList": [
-        {
-          "id": 1,
-          "colorCode": "#E94F37"
-        }
-      ],
-      "price": "11",
-      "brand": {
-        "id": 1,
-        "name": "Apple"
-      },
-      "manufactureDate": "2021-04-10",
-      "id": 3
+      "id": 1
     }
   ]
 }

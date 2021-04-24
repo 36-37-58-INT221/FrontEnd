@@ -4,7 +4,7 @@
         <h1 class="text-6xl">Name : {{ viewProduct.name }}</h1>
         <h1 class="text-6xl">Price : {{ viewProduct.price }}</h1>
         <h1 class="text-6xl">Des : {{ viewProduct.description }}</h1>
-        <h1 class="text-6xl">Brand : {{ viewProduct.brand }}</h1>
+        <h1 class="text-6xl">Brand : {{ viewBrand }}</h1>
         <h1 class="text-6xl">colorList : {{ viewProduct.colorList}}</h1>
         <h1 class="text-6xl">Date : {{ viewProduct.manufactureDate}}</h1>
     </div>
@@ -16,11 +16,12 @@
    import router from '../router';
 export default {
     
-    props:["products","productsUrl"],
+    props:["products","productsUrl","brands"],
     data() {
         return {
             viewProduct:[],
             notFoundHook : [] ,
+            viewBrand : "",
         }
     },
     methods: {
@@ -35,22 +36,27 @@ export default {
 
             document.location.href="/ProductList";
         }
+ 
     },
     mounted() {
         var index = this.products.findIndex(f => f.id == this.$route.params.productId)
-        this.viewProduct= this.products[index];   
+        this.viewProduct= this.products[index];  
+        
+   
     },
     beforeUpdate() {
-        var index=  this.products.findIndex(f => f.id == this.$route.params.productId)  
-        this.viewProduct= this.products[index];
-        if(index == -1){
+        var index = this.products.findIndex(f => f.id == this.$route.params.productId)
+        this.viewProduct= this.products[index];  
+        if( index == -1){
             this.notFoundHook.push(index);
+            
         }
         if(this.notFoundHook.length == 2){
             this.notFoundHook = [];
             router.push("/NotFoundPage")
-        }
-      
+        }       
+     var brandIndex =  this.brands.findIndex(f => f.id == this.viewProduct.brandId);
+        this.viewBrand = this.brands[brandIndex].name; 
     }
 
         
