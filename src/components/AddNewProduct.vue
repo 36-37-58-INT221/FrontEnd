@@ -27,6 +27,7 @@
                         class="w-12 h-12 ml-2 align-middle"
                         v-model="formdata.colorList"
                         :value="color"
+                        
                     />
                 </span>
                 <h1 v-if="errors.indexOf('noColor') !== -1" class="text-red-600">Please Select Color</h1>
@@ -51,7 +52,8 @@
                 <input type="date" v-model="formdata.manufactureDate" class="border border-black" />
                 <h1 v-if="errors.indexOf('noDate') !== -1" class="text-red-600">Please Enter Date</h1>
             </div>
-            <button type="submit" value="Submit" class="border border-black mt-2">Submit</button>
+            <button v-if="!isEdit" type="submit" value="Submit" class="border border-black mt-2">Submit</button>
+            <button v-if="isEdit" type="submit" value="Submit" class="border border-black mt-2">Submit Edit</button>
         </form>
     </div>
 </template>
@@ -59,7 +61,7 @@
 
 <script>
 export default {
-    props: ["products", "productsUrl","brands","colors"],
+    props: ["products", "productsUrl","brands","colors","viewProduct","isEdit","viewBrand"],
     data() {
         return {
             errors: [],
@@ -145,6 +147,19 @@ export default {
 
 
         },
+
+
+
+    },
+    mounted() {
+
+        if(this.isEdit){
+            this.formdata = this.viewProduct ;
+            alert(this.viewProduct.brandId)
+        
+           
+           
+        }
 
 
     }

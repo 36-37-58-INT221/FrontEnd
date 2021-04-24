@@ -12,7 +12,7 @@
         <h1 class="text-6xl">Date : {{ viewProduct.manufactureDate}}</h1>
     </div>
     <div v-if="isEdit">
-        <addNewProduct/>
+        <addNewProduct :viewProduct="viewProduct" :colors="colors" :isEdit="isEdit" :viewBrand="viewBrand" :brands="brands" />
 
         
         
@@ -29,7 +29,7 @@ export default {
     components:{
         AddNewProduct
 },
-    props:["products","productsUrl","brands"],
+    props:["products","productsUrl","brands","colors"],
     data() {
         return {
             viewProduct:[],
