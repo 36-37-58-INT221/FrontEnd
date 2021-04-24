@@ -1,8 +1,12 @@
 <template>
     <div class="mx-auto" >
         <button v-if="thisviewProduct !== []" class="border border-black" @click="deleteProduct">DELETE THIS</button>
-        <h1 class="text-6xl">{{ viewProduct.name }}</h1>
-        <h1 class="text-6xl">{{ viewProduct.price }}</h1>
+        <h1 class="text-6xl">Name : {{ viewProduct.name }}</h1>
+        <h1 class="text-6xl">Price : {{ viewProduct.price }}</h1>
+        <h1 class="text-6xl">Des : {{ viewProduct.description }}</h1>
+        <h1 class="text-6xl">Brand : {{ viewProduct.brand }}</h1>
+        <h1 class="text-6xl">colorList : {{ viewProduct.colorList}}</h1>
+        <h1 class="text-6xl">Date : {{ viewProduct.manufactureDate}}</h1>
     </div>
 </template>
 
@@ -15,7 +19,6 @@ export default {
     props:["products","productsUrl"],
     data() {
         return {
-
             viewProduct:[],
             notFoundHook : [] ,
         }

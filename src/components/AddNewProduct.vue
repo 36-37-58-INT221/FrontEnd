@@ -16,7 +16,7 @@
                     rows="3"
                     cols="20"
                 />
-                <h1 v-if="errors.indexOf('noDes') !== -1" class="text-red-600">Please Enter Description</h1>
+                <h1 v-if="errors.indexOf('noDes') !== -1" class="text-red-600">Please Enter Description 10 up to 70 character</h1>
             </div>
             <div class="pt-2">
                 <label>Colors :</label>
@@ -26,7 +26,7 @@
                         type="checkbox"
                         class="w-12 h-12 ml-2 align-middle"
                         v-model="formdata.colorList"
-                        :value="color.id"
+                        :value="color"
                     />
                 </span>
                 <h1 v-if="errors.indexOf('noColor') !== -1" class="text-red-600">Please Select Color</h1>
@@ -43,7 +43,7 @@
             <div class="pt-2">
                 <label for="price">Price :</label>
                 <input type="text" v-model="formdata.price" class="border border-black" />
-                <h1 v-if="errors.indexOf('noPrice') !== -1" class="text-red-600">Please Enter Price</h1>
+                <h1 v-if="errors.indexOf('noPrice') !== -1" class="text-red-600">Please Enter Price No more than 999999.99</h1>
             </div>
 
             <div class="pt-2">
@@ -129,14 +129,23 @@ export default {
             }
             if (this.formdata.description == null) {
                 this.errors.push("noDes");
-            } if (this.formdata.brand == null) {
+            } 
+            if (this.formdata.description.length > 70 || this.formdata.description.length < 10) {
+                this.errors.push("noDes");
+            } 
+            if (this.formdata.brand == null) {
                 this.errors.push("noBrand");
             }
             if (this.formdata.colorList.length == 0) {
                 this.errors.push("noColor");
             } if (this.formdata.price == null   ) {
                 this.errors.push("noPrice");
-            } if(/^\s*-?[1-9]\d*(\.\d{1,2})?\s*$/.test(this.formdata.price) ==false){ this.errors.push("noPrice");}
+            } if(/^\s*-?[1-9]\d*(\.\d{1,2})?\s*$/.test(this.formdata.price) ==false){
+                 this.errors.push("noPrice");
+                }
+            if(this.formdata.price.length > 9 ){
+                this.errors.push("noPrice");
+            }
             if (this.formdata.manufactureDate == null) {  this.errors.push("noDate");}
             var index = this.products.findIndex(f => f.name.replace(" ","").toLowerCase() == this.formdata.name.replace(" ","").toLowerCase())
             if (index !== -1) {

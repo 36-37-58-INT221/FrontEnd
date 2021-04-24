@@ -6,8 +6,14 @@ import ProductList from '../components/ProductList.vue'
 import AddNewProduct from '../components/AddNewProduct.vue'
 import Product from '../components/Product.vue'
 import PageNotFound from '../components/PageNotFound.vue'
+import Home from '../components/Home.vue'
 
 const routes = [
+    {
+        path: '/',
+        name: 'Home',
+        component: Home
+    },
     {
         path: '/Team',
         name: 'Team',
