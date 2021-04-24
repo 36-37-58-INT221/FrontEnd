@@ -21,8 +21,6 @@
     :colors="colors"
     :brands="brands"
     @submit-form="refreshProducts"
-    @view-product="setView"
-    @delete-pro="deleteProduct"
   ></router-view>
 </template>
 

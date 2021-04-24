@@ -1,6 +1,9 @@
 <template>
     <div class="mx-auto" >
-        <button v-if="thisviewProduct !== []" class="border border-black" @click="deleteProduct">DELETE THIS</button>
+        <button v-if="!isEdit" class="border border-black mr-2" @click="isEdit = true">EDIT THIS</button>
+        <button v-if="isEdit" @click="isEdit = false" class="border border-black mr-2" >CANCEL EDIT</button>
+        <button v-if="!isEdit" class="border border-black" @click="deleteProduct">DELETE THIS</button>
+        <div v-if="!isEdit">
         <h1 class="text-6xl">Name : {{ viewProduct.name }}</h1>
         <h1 class="text-6xl">Price : {{ viewProduct.price }}</h1>
         <h1 class="text-6xl">Des : {{ viewProduct.description }}</h1>
@@ -8,20 +11,31 @@
         <h1 class="text-6xl">colorList : {{ viewProduct.colorList}}</h1>
         <h1 class="text-6xl">Date : {{ viewProduct.manufactureDate}}</h1>
     </div>
+    <div v-if="isEdit">
+        <addNewProduct/>
+
+        
+        
+    </div>
+    </div>
 </template>
 
 
 
 <script>
    import router from '../router';
+   import AddNewProduct from './AddNewProduct.vue';
 export default {
-    
+    components:{
+        AddNewProduct
+},
     props:["products","productsUrl","brands"],
     data() {
         return {
             viewProduct:[],
             notFoundHook : [] ,
             viewBrand : "",
+            isEdit :false,
         }
     },
     methods: {
@@ -36,13 +50,10 @@ export default {
 
             document.location.href="/ProductList";
         }
- 
     },
     mounted() {
         var index = this.products.findIndex(f => f.id == this.$route.params.productId)
         this.viewProduct= this.products[index];  
-        
-   
     },
     beforeUpdate() {
         var index = this.products.findIndex(f => f.id == this.$route.params.productId)
