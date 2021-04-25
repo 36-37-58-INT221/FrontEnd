@@ -18,7 +18,8 @@
         :viewBrand="viewBrand" 
         :brands="brands"
         :productsUrl="productsUrl"
-        @edited="this.isEdit = false"
+        :products="products"
+        @edited="sentEdit"
         @cancel-edit="setView"/>
     </div>
     </div>
@@ -55,11 +56,19 @@ export default {
             document.location.href="/ProductList";
         },
 
+        sentEdit(Form){
+            this.isEdit = false;
+            this.$emit('edit-form',Form)
+
+        },
+
+
+
+
         setView(){
             this.isEdit = false;
             document.location.href=`/Product/${this.$route.params.productId}`;
         }
-
 
     },
     mounted() {
@@ -69,7 +78,6 @@ export default {
      
     },
     beforeUpdate() {
-    
         var index = this.products.findIndex(f => f.id == this.$route.params.productId)
         this.viewProduct= this.products[index];  
        if( index == -1){

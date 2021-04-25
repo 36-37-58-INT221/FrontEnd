@@ -19,5 +19,12 @@
 export default {
 props:["products"],
 
+
+mounted() {
+    this.$root.refreshProduct();
+},
+
+
+
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
     <div class="mx-auto grid grid-cols-1">
-        <form @submit.prevent="submitForm">
+        <form @submit.prevent="">
             <button v-if="isEdit" @click="setView" class="border border-black mr-2" >CANCEL EDIT</button>
             <div class="pt-2">
                 <label for="name">Name :</label>
@@ -53,7 +53,7 @@
                 <input type="date" v-model="formdata.manufactureDate" class="border border-black" />
                 <h1 v-if="errors.indexOf('noDate') !== -1" class="text-red-600">Please Enter Date</h1>
             </div>
-            <button v-if="!isEdit" value="Submit" class="border border-black mt-2">Submit</button>
+            <button v-if="!isEdit" value="Submit" class="border border-black mt-2" @click="submitForm">Submit</button>
             <button v-if="isEdit"  class="border border-black mt-2" @click="editForm">Submit Edit</button>
         </form> 
        
@@ -110,15 +110,17 @@ export default {
             })
             this.refreshForm();
             const data = await res.json(); 
-            this.$emit('submit-form',data);}
+            this.$emit('submit-form',data);
+        }
         },
         async editForm(){
             this.validate();
-            if (this.errors.length > 0) {
+            if (this.errors.length > 0) { 
                 alert(this.errors);
                 return ;
             }
-          await fetch(this.productsUrl + "/"+this.viewProduct.id, {
+            
+        const res = await fetch(this.productsUrl + "/"+this.viewProduct.id, {
           method: 'PUT',
           headers: {
             'Content-type': 'application/json'
@@ -132,7 +134,9 @@ export default {
             manufactureDate: this.formdata.manufactureDate,
           })
         })
-            this.$emit("edited")
+        this.refreshForm();
+        const data = await res.json();
+        this.$emit("edited",data)
         },
         validate() {
             this.errors = [];
@@ -165,7 +169,13 @@ export default {
 
             var index = this.products.findIndex(f => f.name.replace(" ","").toLowerCase() == this.formdata.name.replace(" ","").toLowerCase())
             if (index !== -1) {
+                if(this.isEdit && this.products[index].id !== this.viewProduct.id){
+                    this.errors.push("have");
+                }
+                else if(!this.isEdit){
                 this.errors.push("have");
+             } 
+
             }
             
         },

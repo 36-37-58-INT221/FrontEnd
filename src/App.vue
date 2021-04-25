@@ -21,6 +21,7 @@
     :colors="colors"
     :brands="brands"
     @submit-form="addProducts"
+    @edit-form="editProducts"
    
   ></router-view>
 </template>
@@ -50,6 +51,13 @@ export default {
     addProducts(Product) {
       this.products.push(Product);
     },
+    editProducts(Product){
+      var index = this.products.findIndex(f => f.id  === Product.id);
+      this.products[index] = Product;
+    },
+  async refreshProduct(){
+     this.products = await this.fetchProducts();
+    },
     async fetchProducts() {
       const res = await fetch(this.productsUrl);
       const data = await res.json();
@@ -72,8 +80,7 @@ export default {
     this.products = await this.fetchProducts();
     this.brands = await this.fetchBrand();
     this.colors = await this.fetchColors();
-  }
-
+  },
 }
 </script>
 
