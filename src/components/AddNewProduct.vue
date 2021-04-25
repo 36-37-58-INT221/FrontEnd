@@ -1,6 +1,7 @@
 <template>
     <div class="mx-auto grid grid-cols-1">
         <form @submit.prevent="submitForm">
+            <button v-if="isEdit" @click="setView" class="border border-black mr-2" >CANCEL EDIT</button>
             <div class="pt-2">
                 <label for="name">Name :</label>
                 <input type="text" v-model="formdata.name" class="border border-black" />
@@ -73,10 +74,12 @@ export default {
                 price: null,
                 brandId: null,
                 manufactureDate: null,
-            }
+            },
+            tempView : [],
         }
     },
     methods: {
+
         refreshForm(){
             this.formdata.name= null,
             this.formdata.description= null,
@@ -132,9 +135,6 @@ export default {
         })
             this.$emit("edited")
         },
-
-
-
         validate() {
             this.errors = [];
             if (this.formdata.name == null ) {
@@ -171,17 +171,18 @@ export default {
             }
             }
         },
-
-
-
+        setView(){
+        this.$emit('cancel-edit');
+        }
+        
     },
     mounted() {
 
         if(this.isEdit){
             this.formdata = this.viewProduct ;
+           
         }
-
-
+       
     }
 
 

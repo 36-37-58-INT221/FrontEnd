@@ -1,7 +1,7 @@
 <template>
     <div class="mx-auto" >
         <button v-if="!isEdit" class="border border-black mr-2" @click="isEdit = true">EDIT THIS</button>
-        <button v-if="isEdit" @click="isEdit = false" class="border border-black mr-2" >CANCEL EDIT</button>
+      
         <button v-if="!isEdit" class="border border-black" @click="deleteProduct">DELETE THIS</button>
         <div v-if="!isEdit">
         <h1 class="text-6xl">Name : {{ viewProduct.name }}</h1>
@@ -12,10 +12,8 @@
         <h1 class="text-6xl">Date : {{ viewProduct.manufactureDate}}</h1>
     </div>
     <div v-if="isEdit">
-        <addNewProduct :viewProduct="viewProduct" :colors="colors" :isEdit="isEdit" :viewBrand="viewBrand" :brands="brands" :productsUrl="productsUrl" @edited="this.isEdit = false"/>
-
-        
-        
+        <addNewProduct :viewProduct="viewProduct" :colors="colors" :isEdit="isEdit" :viewBrand="viewBrand" :brands="brands" :productsUrl="productsUrl" @edited="this.isEdit = false"
+        @cancel-edit="setView"/>
     </div>
     </div>
 </template>
@@ -49,16 +47,26 @@ export default {
             this.$emit('delete-pro',id);
 
             document.location.href="/ProductList";
+        },
+
+        setView(){
+            this.isEdit = false;
+            document.location.href=`/Product/${this.$route.params.productId}`;
         }
+
+
     },
     mounted() {
+       
         var index = this.products.findIndex(f => f.id == this.$route.params.productId)
-        this.viewProduct= this.products[index];  
+        this.viewProduct= this.products[index];
+     
     },
     beforeUpdate() {
+    
         var index = this.products.findIndex(f => f.id == this.$route.params.productId)
         this.viewProduct= this.products[index];  
-        if( index == -1){
+       if( index == -1){
             this.notFoundHook.push(index);
             
         }
