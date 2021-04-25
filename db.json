@@ -73,35 +73,17 @@
     },
     {
       "name": "IPHONE6",
-      "description": "IPHONE5IPHONE5IPHONE5",
+      "description": "IPHONE5IPHONE5IPHONE5IPHONE5",
       "colorList": [
         {
           "id": 1,
           "colorCode": "#E94F37"
-        },
-        {
-          "id": 2,
-          "colorCode": "#393E41"
         }
       ],
-      "price": "45600",
+      "price": "1200.00",
       "brandId": 1,
-      "manufactureDate": "2021-04-02",
+      "manufactureDate": "2021-04-17",
       "id": 6
-    },
-    {
-      "name": "IPHONE20",
-      "description": "IPHONE1IPHONE1IPHONE1",
-      "colorList": [
-        {
-          "id": 1,
-          "colorCode": "#E94F37"
-        }
-      ],
-      "price": "564546",
-      "brandId": 1,
-      "manufactureDate": "2021-04-02",
-      "id": 7
     }
   ]
 }
