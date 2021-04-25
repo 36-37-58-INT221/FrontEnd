@@ -75,7 +75,6 @@ export default {
                 brandId: null,
                 manufactureDate: null,
             },
-            tempView : [],
         }
     },
     methods: {
@@ -164,25 +163,21 @@ export default {
             }
             if (this.formdata.manufactureDate == null) {  this.errors.push("noDate");}
 
-            if(!this.isEdit){
             var index = this.products.findIndex(f => f.name.replace(" ","").toLowerCase() == this.formdata.name.replace(" ","").toLowerCase())
             if (index !== -1) {
                 this.errors.push("have");
             }
-            }
+            
         },
         setView(){
         this.$emit('cancel-edit');
         }
-        
+
     },
     mounted() {
-
         if(this.isEdit){
             this.formdata = this.viewProduct ;
-           
         }
-       
     }
 
 

@@ -1,9 +1,9 @@
 <template>
     <div class="mx-auto" >
-        <button v-if="!isEdit" class="border border-black mr-2" @click="isEdit = true">EDIT THIS</button>
-      
-        <button v-if="!isEdit" class="border border-black" @click="deleteProduct">DELETE THIS</button>
-        <div v-if="!isEdit">
+    
+        <div v-if="!isEdit">    
+        <button class="border border-black mr-2" @click="isEdit = true">EDIT THIS</button>
+        <button  class="border border-black" @click="deleteProduct">DELETE THIS</button>
         <h1 class="text-6xl">Name : {{ viewProduct.name }}</h1>
         <h1 class="text-6xl">Price : {{ viewProduct.price }}</h1>
         <h1 class="text-6xl">Des : {{ viewProduct.description }}</h1>
@@ -12,7 +12,13 @@
         <h1 class="text-6xl">Date : {{ viewProduct.manufactureDate}}</h1>
     </div>
     <div v-if="isEdit">
-        <addNewProduct :viewProduct="viewProduct" :colors="colors" :isEdit="isEdit" :viewBrand="viewBrand" :brands="brands" :productsUrl="productsUrl" @edited="this.isEdit = false"
+        <addNewProduct :viewProduct="viewProduct" 
+        :colors="colors" 
+        :isEdit="isEdit" 
+        :viewBrand="viewBrand" 
+        :brands="brands"
+        :productsUrl="productsUrl"
+        @edited="this.isEdit = false"
         @cancel-edit="setView"/>
     </div>
     </div>
