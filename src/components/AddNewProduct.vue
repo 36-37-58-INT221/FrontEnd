@@ -4,6 +4,15 @@
             <button v-if="isEdit" @click="setView" class="border border-black mr-2">CANCEL EDIT</button>
             <h1 v-if="!isEdit" class="text-6xl">Add new Product</h1>
             <h1 v-if="isEdit" class="text-6xl">Editing Product</h1>
+
+
+            <div class="pt-2">
+                <img :src="image" class="w-auto h-60 mx-auto"/>
+                <label for="imageFile" >Image File :</label>
+                <input type="file" @change="uploadImageFile($event)" multiple accept=".jpg, .jpeg, .png" />
+            </div>
+
+
             <div class="pt-2">
                 <label for="name">Name :</label>
                 <input type="text" v-model="formdata.name" class="border border-black" />
@@ -88,7 +97,9 @@ export default {
     data() {
         return {
             errors: [],
+            image:"",
             formdata: {
+                imageName : null,
                 name: null,
                 description: null,
                 colorList: [],
@@ -99,11 +110,26 @@ export default {
         }
     },
     methods: {
+        uploadImageFile(event){
+            var input = event.target
+            this.formdata.imageName  = input.files[0].name;
+            console.log(this.formdata.imageName)
+            if(input.files && input.files[0]){
+                var reader = new FileReader();
+                reader.onload = (e) => { this.image = e.target.result; } 
+                reader.readAsDataURL(input.files[0])
+
+            } 
+
+
+
+        },
+
+
 
         refreshForm() {
             this.formdata.name = null,
                 this.formdata.description = null,
-                // this.formdata.colorList = [],
                 this.formdata.price = null,
                 this.formdata.brandId = null,
                 this.formdata.manufactureDate = null
