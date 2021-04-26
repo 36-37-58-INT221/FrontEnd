@@ -7,7 +7,7 @@
             <h1 class="text-6xl">Price : {{ viewProduct.price }}</h1>
             <h1 class="text-6xl">Des : {{ viewProduct.description }}</h1>
             <h1 class="text-6xl">Brand : {{ viewBrand }}</h1>
-            <h1 class="text-6xl">colorList : {{ viewProduct.colorList }}</h1>
+            <!-- <h1 class="text-6xl">colorList : {{ viewProduct.colorList }}</h1> -->
             <h1 class="text-6xl">Date : {{ viewProduct.manufactureDate }}</h1>
         </div>
         <div v-if="isEdit">

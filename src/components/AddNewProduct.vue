@@ -2,6 +2,8 @@
     <div class="mx-auto grid grid-cols-1">
         <form @submit.prevent>
             <button v-if="isEdit" @click="setView" class="border border-black mr-2">CANCEL EDIT</button>
+            <h1 v-if="!isEdit" class="text-6xl">Add new Product</h1>
+            <h1 v-if="isEdit" class="text-6xl">Editing Product</h1>
             <div class="pt-2">
                 <label for="name">Name :</label>
                 <input type="text" v-model="formdata.name" class="border border-black" />
@@ -101,7 +103,7 @@ export default {
         refreshForm() {
             this.formdata.name = null,
                 this.formdata.description = null,
-                this.formdata.colorList = [],
+                // this.formdata.colorList = [],
                 this.formdata.price = null,
                 this.formdata.brandId = null,
                 this.formdata.manufactureDate = null
@@ -121,7 +123,7 @@ export default {
                     body: JSON.stringify({
                         name: this.formdata.name,
                         description: this.formdata.description,
-                        colorList: this.formdata.colorList,
+                        // colorList: this.formdata.colorList,
                         price: this.formdata.price,
                         brandId: this.formdata.brandId,
                         manufactureDate: this.formdata.manufactureDate,
@@ -147,7 +149,7 @@ export default {
                 body: JSON.stringify({
                     name: this.formdata.name,
                     description: this.formdata.description,
-                    colorList: this.formdata.colorList,
+                    // colorList: this.formdata.colorList,
                     price: this.formdata.price,
                     brandId: this.formdata.brandId,
                     manufactureDate: this.formdata.manufactureDate,
@@ -174,9 +176,10 @@ export default {
             if (this.formdata.brandId == null) {
                 this.errors.push("noBrand");
             }
-            if (this.formdata.colorList.length == 0) {
-                this.errors.push("noColor");
-            } if (this.formdata.price == null) {
+            // if (this.formdata.colorList.length == 0) {
+            //     this.errors.push("noColor");
+            //  } 
+            if (this.formdata.price == null) {
                 this.errors.push("noPrice");
             } if (/^\s*-?[1-9]\d*(\.\d{1,2})?\s*$/.test(this.formdata.price) == false) {
                 this.errors.push("noPrice");

@@ -39,6 +39,7 @@ export default {
       colors: [],
       productsUrl: 'http://localhost:5000/products',
       colorUrl: 'http://localhost:5000/colors',
+      // colorListUrl: 'http://localhost:5000/havecolors',
       brandUrl: 'http://localhost:5000/brands',
 
     }
@@ -56,7 +57,8 @@ export default {
       const res = await fetch(this.productsUrl);
       const data = await res.json();
       return data;
-    }, async fetchBrand() {
+    }, 
+    async fetchBrand() {
       const res = await fetch(this.brandUrl);
       const data = await res.json();
       return data;
@@ -65,7 +67,14 @@ export default {
       const res = await fetch(this.colorUrl);
       const data = await res.json();
       return data;
-    }
+    },
+
+    // async fetchColorList() {
+    //   const res = await fetch(this.colorListUrl);
+    //   const data = await res.json();
+    //   return data;
+    // }
+
 
 
 
@@ -74,6 +83,7 @@ export default {
     this.products = await this.fetchProducts();
     this.brands = await this.fetchBrand();
     this.colors = await this.fetchColors();
+    //this.colorList = await this.fetchColorList();
   },
 }
 </script>

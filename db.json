@@ -23,67 +23,35 @@
   "products": [
     {
       "name": "IPHONE1",
-      "description": "IPHONE1IPHONE1IPHONE1",
-      "colorList": [
-        {
-          "id": 1,
-          "colorCode": "#E94F37"
-        }
-      ],
-      "price": "5000.00",
+      "description": "IPHONE1IPHONE1IPHONE1IPHONE1",
+      "price": "6000.00",
       "brandId": 1,
-      "manufactureDate": "2021-04-08",
+      "manufactureDate": "2021-04-02",
       "id": 1
     },
     {
       "name": "IPHONE2",
-      "description": "IPHONE2IPHONE2IPHONE21",
-      "colorList": [
-        {
-          "id": 1,
-          "colorCode": "#E94F37"
-        },
-        {
-          "id": 2,
-          "colorCode": "#393E41"
-        }
-      ],
-      "price": "6450.12",
+      "description": "IPHONE2IPHONE2IPHONE2IPHONE2",
+      "price": "12000.00",
       "brandId": 1,
-      "manufactureDate": "2021-03-29",
+      "manufactureDate": "2021-04-09",
       "id": 2
     },
     {
-      "name": "IPHONE4",
-      "description": "IPHONE2IPHONE2IPHONE21",
-      "colorList": [
-        {
-          "id": 1,
-          "colorCode": "#E94F37"
-        },
-        {
-          "id": 2,
-          "colorCode": "#393E41"
-        }
-      ],
-      "price": "6450.12",
+      "name": "IPHONE3",
+      "description": "IPHONE3IPHONE3IPHONE3IPHONE3",
+      "price": "15000.00",
       "brandId": 1,
-      "manufactureDate": "2021-03-29",
-      "id": 5
+      "manufactureDate": "2021-04-02",
+      "id": 3
     },
     {
-      "name": "IPHONE6",
-      "description": "IPHONE5IPHONE5IPHONE5IPHONE5",
-      "colorList": [
-        {
-          "id": 1,
-          "colorCode": "#E94F37"
-        }
-      ],
-      "price": "1200.00",
+      "name": "IPHONE4",
+      "description": "IPHONE4IPHONE4IPHONE4IPHONE4",
+      "price": "15000.00",
       "brandId": 1,
-      "manufactureDate": "2021-04-17",
-      "id": 6
+      "manufactureDate": "2021-04-02",
+      "id": 4
     }
   ]
 }
