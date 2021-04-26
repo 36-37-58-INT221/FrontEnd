@@ -112,7 +112,6 @@ export default {
             if (!this.isEdit) {
                 this.validate();
                 if (this.errors.length > 0) {
-                    alert(this.errors);
                     return;
                 }
                 const res = await fetch(this.productsUrl, {
@@ -160,6 +159,7 @@ export default {
             this.$emit("edited")
         },
         validate() {
+           
             this.errors = [];
             if (this.formdata.name == null) {
                 this.errors.push("noName");
@@ -176,9 +176,6 @@ export default {
             if (this.formdata.brandId == null) {
                 this.errors.push("noBrand");
             }
-            // if (this.formdata.colorList.length == 0) {
-            //     this.errors.push("noColor");
-            //  } 
             if (this.formdata.price == null) {
                 this.errors.push("noPrice");
             } if (/^\s*-?[1-9]\d*(\.\d{1,2})?\s*$/.test(this.formdata.price) == false) {
@@ -188,17 +185,20 @@ export default {
                 this.errors.push("noPrice");
             }
             if (this.formdata.manufactureDate == null) { this.errors.push("noDate"); }
-
-            var index = this.products.findIndex(f => f.name.replace(" ", "").toLowerCase() == this.formdata.name.replace(" ", "").toLowerCase())
-            if (index !== -1) {
+            
+             var index = this.products.findIndex(f => f.name.replace(" ","").toLowerCase() === this.formdata.name.replace(" ","").toLowerCase())
+             if (index !== -1) {
                 if (this.isEdit && this.products[index].id !== this.viewProduct.id) {
                     this.errors.push("have");
                 }
-                else if (!this.isEdit) {
+                else if (!this.isEdit && this.formdata.name !== null) {
                     this.errors.push("have");
                 }
-
             }
+
+            
+           
+           
 
         },
         setView() {
@@ -207,9 +207,11 @@ export default {
 
     },
     mounted() {
+    
         if (this.isEdit) {
             this.formdata = this.viewProduct;
-        }
+        }else{this.refreshForm();}
+       
     }
 
 

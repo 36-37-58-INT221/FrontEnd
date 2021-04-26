@@ -47,11 +47,27 @@
     },
     {
       "name": "IPHONE4",
-      "description": "IPHONE4IPHONE4IPHONE4IPHONE4",
-      "price": "15000.00",
+      "description": "IPHONE4IPHONE4IPHONE4",
+      "price": "123213",
       "brandId": 1,
-      "manufactureDate": "2021-04-02",
+      "manufactureDate": "2021-04-16",
       "id": 4
+    },
+    {
+      "name": "IPHONE5",
+      "description": "IPHONE5IPHONE5IPHONE5",
+      "price": "132421",
+      "brandId": 1,
+      "manufactureDate": "2021-04-16",
+      "id": 5
+    },
+    {
+      "name": "IPHONE6",
+      "description": "IPHONE6IPHONE6IPHONE6",
+      "price": "123",
+      "brandId": 1,
+      "manufactureDate": "2021-04-03",
+      "id": 6
     }
   ]
 }
