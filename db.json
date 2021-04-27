@@ -60,6 +60,14 @@
       "brandId": 1,
       "manufactureDate": "2021-04-23",
       "id": 1005
+    },
+    {
+      "name": "IPHONE6",
+      "description": "IPHONE1IPHONE1IPHONE1",
+      "price": "2230",
+      "brandId": 1,
+      "manufactureDate": "2021-04-14",
+      "id": 1006
     }
   ]
 }

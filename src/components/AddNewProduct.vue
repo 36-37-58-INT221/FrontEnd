@@ -218,6 +218,7 @@ export default {
                 if(this.products[i].name.replace(" ","").toLowerCase() == this.formdata.name.replace(" ","").toLowerCase()){
                     index2.push( this.products[i].name)
                     index3.push(this.products[i].id);
+                    if(index3.length == 2){break ;}
                 }
             }
              if (index2.length >= 2 &&this.isEdit) {
