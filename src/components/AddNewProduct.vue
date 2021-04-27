@@ -210,11 +210,12 @@ export default {
             if (this.formdata.price.length > 8) {
                 this.errors.push("noPrice");
             }
-            if(this.formdata.price.indexOf(".") !== -1 && this.formdata.price.length <= 8 && this.formdata.price[this.formdata.price.length-1] != 0){
-                this.formdata.price = this.formdata.price + "0"
-            }
             if(this.formdata.price.indexOf(".") == -1 && this.formdata.price.length <=6){
                 this.formdata.price = this.formdata.price + ".00"
+            }
+            if(this.formdata.price.indexOf(".") !== -1 && this.formdata.price.length <= 8 && 
+            this.formdata.price[this.formdata.price.length-1]+this.formdata.price[this.formdata.price.length-2] !== "00" ){
+                this.formdata.price = this.formdata.price + "0"
             }
             if(this.formdata.price.indexOf(".") >=7 ){
                 this.errors.push("noPrice")
