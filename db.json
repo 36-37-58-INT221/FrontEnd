@@ -27,7 +27,7 @@
       "price": "6000.00",
       "brandId": 1,
       "manufactureDate": "2021-04-02",
-      "id": 1
+      "id": 1001
     },
     {
       "name": "IPHONE2",
@@ -35,7 +35,7 @@
       "price": "12000.00",
       "brandId": 1,
       "manufactureDate": "2021-04-09",
-      "id": 2
+      "id": 1002
     },
     {
       "name": "IPHONE3",
@@ -43,7 +43,7 @@
       "price": "15000.00",
       "brandId": 1,
       "manufactureDate": "2021-04-02",
-      "id": 3
+      "id": 1003
     },
     {
       "name": "IPHONE4",
@@ -51,23 +51,15 @@
       "price": "123213",
       "brandId": 1,
       "manufactureDate": "2021-04-16",
-      "id": 4
+      "id": 1004
     },
     {
       "name": "IPHONE5",
-      "description": "IPHONE5IPHONE5IPHONE5",
-      "price": "132421",
+      "description": "IPHONE4IPHONE4IPHONE4",
+      "price": "123123",
       "brandId": 1,
-      "manufactureDate": "2021-04-16",
-      "id": 5
-    },
-    {
-      "name": "IPHONE6",
-      "description": "IPHONE6IPHONE6IPHONE6",
-      "price": "123",
-      "brandId": 1,
-      "manufactureDate": "2021-04-03",
-      "id": 6
+      "manufactureDate": "2021-04-23",
+      "id": 1005
     }
   ]
 }

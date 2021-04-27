@@ -211,16 +211,23 @@ export default {
                 this.errors.push("noPrice");
             }
             if (this.formdata.manufactureDate == null) { this.errors.push("noDate"); }
-            
-             var index = this.products.findIndex(f => f.name.replace(" ","").toLowerCase() === this.formdata.name.replace(" ","").toLowerCase())
-             if (index !== -1) {
-                if (this.isEdit && this.products[index].id !== this.viewProduct.id) {
-                    this.errors.push("have");
-                }
-                else if (!this.isEdit && this.formdata.name !== null) {
-                    this.errors.push("have");
+
+            var index2 = []
+            var index3 = []
+            for (let  i= 0 ;i < this.products.length ; i++){
+                if(this.products[i].name.replace(" ","").toLowerCase() == this.formdata.name.replace(" ","").toLowerCase()){
+                    index2.push( this.products[i].name)
+                    index3.push(this.products[i].id);
                 }
             }
+             if (index2.length >= 2 &&this.isEdit) {
+                if (index3[0] !== index3[1]) {
+                    this.errors.push("have");
+                }
+            } 
+            if (!this.isEdit &&index2.length >= 1) {
+                    this.errors.push("have");
+                }
 
             
            
