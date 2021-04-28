@@ -6,8 +6,8 @@
             <h1 class="text-6xl">Name : {{ viewProduct.name }}</h1>
             <h1 class="text-6xl">Price : {{ viewProduct.price }}</h1>
             <h1 class="text-6xl">Des : {{ viewProduct.description }}</h1>
+            <h1 class="text-6xl">All Color : {{ viewProduct.colors }}</h1>
             <h1 class="text-6xl">Brand : {{ viewBrandName }}</h1>
-            <!-- <h1 class="text-6xl">colorList : {{ viewProduct.colorList }}</h1> -->
             <h1 class="text-6xl">Date : {{ viewProduct.manufactureDate }}</h1>
         </div>
         <div v-if="isEdit">
@@ -40,6 +40,7 @@ export default {
             viewProduct: [],
             notFoundHook: [],
             viewBrandName : "",
+            allColors: [],
             isEdit: false,
         }
     },
@@ -76,8 +77,6 @@ export default {
             this.notFoundHook = [];
             router.push("/NotFoundPage")
         }
-        this.viewBrandName = this.viewProduct.brand.name
-    
     }
 
 

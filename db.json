@@ -23,14 +23,37 @@
   "products": [
     {
       "name": "IPHONE1",
-      "description": "IPHONE1IPHONE1",
-      "price": "5000.00",
+      "description": "IPHONE1IPHONE1IPHONE1",
+      "colors": [
+        {
+          "id": 2,
+          "colorCode": "#393E41"
+        }
+      ],
+      "price": "500.00",
       "brand": {
-        "id": 2,
-        "name": "Samsung"
+        "id": 1,
+        "name": "Apple"
       },
-      "manufactureDate": "2021-04-09",
+      "manufactureDate": "2021-04-16",
       "id": 1
+    },
+    {
+      "name": "IPHONE2",
+      "description": "Good system",
+      "colors": [
+        {
+          "id": 2,
+          "colorCode": "#393E41"
+        }
+      ],
+      "price": "500000.00",
+      "brand": {
+        "id": 1,
+        "name": "Apple"
+      },
+      "manufactureDate": "2020-06-25",
+      "id": "2"
     }
   ]
 }

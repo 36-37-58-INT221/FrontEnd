@@ -46,7 +46,7 @@
                     <input
                         type="checkbox"
                         class="w-12 h-12 ml-2 align-middle"
-                        v-model="formdata.colorList"
+                        v-model="formdata.colors"
                         :value="color"
                     />
                 </span>
@@ -104,7 +104,7 @@ export default {
                 imageName : null,
                 name: null,
                 description: null,
-                colorList: [],
+                colors: [],
                 price: null,
                 brand: {},
                 manufactureDate: null,
@@ -134,7 +134,8 @@ export default {
                 this.formdata.description = null,
                 this.formdata.price = null,
                 this.formdata.brand = null,
-                this.formdata.manufactureDate = null
+                this.formdata.manufactureDate = null,
+                this.formdata.colors = []
         },
         async submitForm() {
             if (!this.isEdit) {
@@ -150,7 +151,7 @@ export default {
                     body: JSON.stringify({
                         name: this.formdata.name,
                         description: this.formdata.description,
-                        // colorList: this.formdata.colorList,
+                        colors: this.formdata.colors,
                         price: this.formdata.price,
                         brand: this.formdata.brand,
                         manufactureDate: this.formdata.manufactureDate,
@@ -176,7 +177,7 @@ export default {
                 body: JSON.stringify({
                     name: this.formdata.name,
                     description: this.formdata.description,
-                    // colorList: this.formdata.colorList,
+                    colors: this.formdata.colors,
                     price: this.formdata.price,
                     brand: this.formdata.brand,
                     manufactureDate: this.formdata.manufactureDate,
@@ -209,17 +210,21 @@ export default {
             } if (/^\s*-?[1-9]\d*(\.\d{1,2})?\s*$/.test(this.formdata.price) == false) {
                 this.errors.push("noPrice");
             }
-            if (this.formdata.price.length > 8) {
+            if (this.formdata.price.length > 9) {
                 this.errors.push("noPrice");
-            }
-            if(this.formdata.price.indexOf(".") == -1 && this.formdata.price.length <=6){
-                this.formdata.price = this.formdata.price + ".00"
-            }
-            if(this.formdata.price.indexOf(".") !== -1 && this.formdata.price.length <= 8 && 
+            }if(this.formdata.price.indexOf(".") !== -1 && this.formdata.price.length <= 8 && 
             this.formdata.price[this.formdata.price.length-1]+this.formdata.price[this.formdata.price.length-2] !== "00" ){
+               
                 this.formdata.price = this.formdata.price + "0"
+                
             }
-            if(this.formdata.price.indexOf(".") >=7 ){
+
+            if(this.formdata.price.indexOf(".") == -1 && this.formdata.price.length <=6){
+               
+                this.formdata.price = this.formdata.price + ".00"
+              
+            }
+            if(this.formdata.price.indexOf(".") >7 ){
                 this.errors.push("noPrice")
             }
             if (this.formdata.manufactureDate == null) { this.errors.push("noDate"); }
