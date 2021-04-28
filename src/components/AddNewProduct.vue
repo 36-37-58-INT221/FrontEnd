@@ -46,8 +46,8 @@
                     <input
                         type="checkbox"
                         class="w-12 h-12 ml-2 align-middle"
-                        v-model="formdata.colors"
-                        :value="color"
+                        v-model="formdata.haveColor"
+                        :value="{color : color}"
                     />
                 </span>
                 <h1 v-if="errors.indexOf('noColor') !== -1" class="text-red-600">Please Select Color</h1>
@@ -100,11 +100,12 @@ export default {
         return {
             errors: [],
             image:"",
+            selectedColor : [],
             formdata: {
-                imageName : null,
+              //  imageName : null,
                 name: null,
                 description: null,
-                colors: [],
+                haveColor: [],
                 price: null,
                 brand: {},
                 manufactureDate: null,
@@ -135,7 +136,7 @@ export default {
                 this.formdata.price = null,
                 this.formdata.brand = null,
                 this.formdata.manufactureDate = null,
-                this.formdata.colors = []
+               this.formdata.haveColor = []
         },
         async submitForm() {
             if (!this.isEdit) {
@@ -143,19 +144,30 @@ export default {
                 if (this.errors.length > 0) {
                     return;
                 }
+
+
+                // const blob = new Blob([JSON.stringify(this.formdata)], {
+                //     type: 'application/json'
+                // })
+
+                // const formData = new FormData();
+                // formData.append('Product',blob);
+
                 const res = await fetch(this.productsUrl, {
                     method: 'POST',
                     headers: {
                         'Content-type': 'application/json'
                     },
-                    body: JSON.stringify({
+                    body: JSON.stringify(
+                        {
                         name: this.formdata.name,
                         description: this.formdata.description,
-                        colors: this.formdata.colors,
+                        haveColor: this.formdata.haveColor,
                         price: this.formdata.price,
                         brand: this.formdata.brand,
                         manufactureDate: this.formdata.manufactureDate,
-                    })
+                    }
+                    )
                 })
                 this.refreshForm();
                 const data = await res.json();
@@ -177,7 +189,7 @@ export default {
                 body: JSON.stringify({
                     name: this.formdata.name,
                     description: this.formdata.description,
-                    colors: this.formdata.colors,
+                    haveColor: this.formdata.haveColor,
                     price: this.formdata.price,
                     brand: this.formdata.brand,
                     manufactureDate: this.formdata.manufactureDate,
@@ -218,6 +230,10 @@ export default {
                 this.formdata.price = this.formdata.price + "0"
                 
             }
+            if(this.formdata.haveColor == null){
+                this.errors.push("noColor")
+
+            }
 
             if(this.formdata.price.indexOf(".") == -1 && this.formdata.price.length <=6){
                
@@ -227,6 +243,7 @@ export default {
             if(this.formdata.price.indexOf(".") >7 ){
                 this.errors.push("noPrice")
             }
+            this.formdata.price = parseFloat(this.formdata.price)
             if (this.formdata.manufactureDate == null) { this.errors.push("noDate"); }
 
             var index2 = []
@@ -248,9 +265,7 @@ export default {
                     this.errors.push("have");
                 }
 
-            
-           
-           
+             
 
         },
         setView() {
@@ -262,6 +277,7 @@ export default {
     
         if (this.isEdit) {
             this.formdata = this.viewProduct;
+           
         }else{this.refreshForm();}
        
     }
