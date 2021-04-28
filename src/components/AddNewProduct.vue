@@ -55,13 +55,15 @@
 
             <div class="pt-2">
                 <label for="brand">Brand :</label>
-                <select name="brand" v-model="formdata.brandId" class="border border-black">
+                <select name="brand" v-model="formdata.brand" class="border border-black">
                     <option
                         v-for="brand in brands"
-                        :value="brand.id"
+                        :value="brand"
                         :key="brand.id"
                     >{{ brand.name }}</option>
                 </select>
+
+                <h1>{{ this.formdata.brand }} </h1>
                 <h1 v-if="errors.indexOf('noBrand') !== -1" class="text-red-600">Please Select Brand</h1>
             </div>
 
@@ -71,7 +73,7 @@
                 <h1
                     v-if="errors.indexOf('noPrice') !== -1"
                     class="text-red-600"
-                >Please Enter Price No more than 999999.99</h1>
+                >Please Enter Price No more than 999999.99 and cant have more than 2 decimal</h1>
             </div>
 
             <div class="pt-2">
@@ -104,7 +106,7 @@ export default {
                 description: null,
                 colorList: [],
                 price: null,
-                brandId: null,
+                brand: {},
                 manufactureDate: null,
             },
         }
@@ -131,7 +133,7 @@ export default {
             this.formdata.name = null,
                 this.formdata.description = null,
                 this.formdata.price = null,
-                this.formdata.brandId = null,
+                this.formdata.brand = null,
                 this.formdata.manufactureDate = null
         },
         async submitForm() {
@@ -150,7 +152,7 @@ export default {
                         description: this.formdata.description,
                         // colorList: this.formdata.colorList,
                         price: this.formdata.price,
-                        brandId: this.formdata.brandId,
+                        brand: this.formdata.brand,
                         manufactureDate: this.formdata.manufactureDate,
                     })
                 })
@@ -176,7 +178,7 @@ export default {
                     description: this.formdata.description,
                     // colorList: this.formdata.colorList,
                     price: this.formdata.price,
-                    brandId: this.formdata.brandId,
+                    brand: this.formdata.brand,
                     manufactureDate: this.formdata.manufactureDate,
                 })
             })
@@ -199,7 +201,7 @@ export default {
             if (this.formdata.description.length > 70 || this.formdata.description.length < 10) {
                 this.errors.push("noDes");
             }
-            if (this.formdata.brandId == null) {
+            if (this.formdata.brand == null) {
                 this.errors.push("noBrand");
             }
             if (this.formdata.price == null) {

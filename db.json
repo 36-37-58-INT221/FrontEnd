@@ -23,91 +23,14 @@
   "products": [
     {
       "name": "IPHONE1",
-      "description": "IPHONE1IPHONE1IPHONE1IPHONE1",
-      "price": "6000.00",
-      "brandId": 1,
-      "manufactureDate": "2021-04-02",
-      "id": 1001
-    },
-    {
-      "name": "IPHONE2",
-      "description": "IPHONE2IPHONE2IPHONE2IPHONE2",
-      "price": "12000.00",
-      "brandId": 1,
-      "manufactureDate": "2021-04-09",
-      "id": 1002
-    },
-    {
-      "name": "IPHONE3",
-      "description": "IPHONE3IPHONE3IPHONE3IPHONE3",
-      "price": "15000.00",
-      "brandId": 1,
-      "manufactureDate": "2021-04-02",
-      "id": 1003
-    },
-    {
-      "name": "IPHONE4",
-      "description": "IPHONE4IPHONE4IPHONE4",
-      "price": "123213",
-      "brandId": 1,
-      "manufactureDate": "2021-04-16",
-      "id": 1004
-    },
-    {
-      "name": "IPHONE5",
-      "description": "IPHONE4IPHONE4IPHONE4",
-      "price": "123123",
-      "brandId": 1,
-      "manufactureDate": "2021-04-23",
-      "id": 1005
-    },
-    {
-      "name": "IPHONE6",
-      "description": "IPHONE1IPHONE1IPHONE1",
-      "price": "2230",
-      "brandId": 1,
-      "manufactureDate": "2021-04-14",
-      "id": 1006
-    },
-    {
-      "name": "IPHONE7",
-      "description": "IPHONE7IPHONE7IPHONE7",
+      "description": "IPHONE1IPHONE1",
       "price": "5000.00",
-      "brandId": 1,
-      "manufactureDate": "2021-04-22",
-      "id": 1007
-    },
-    {
-      "name": "IPHONE8",
-      "description": "IPHONE7IPHONE7",
-      "price": "500000.10",
-      "brandId": 1,
-      "manufactureDate": "2021-04-15",
-      "id": 1008
-    },
-    {
-      "name": "IPHONE9",
-      "description": "IPHONE9IPHONE9IPHONE9",
-      "price": "500000.10",
-      "brandId": 1,
-      "manufactureDate": "2021-04-23",
-      "id": 1009
-    },
-    {
-      "name": "IPHONE10",
-      "description": "IPHONE10IPHONE10IPHONE10",
-      "price": "12500.10",
-      "brandId": 1,
-      "manufactureDate": "2021-04-21",
-      "id": 1010
-    },
-    {
-      "name": "IPHONE11",
-      "description": "IPHONE11IPHONE11IPHONE11",
-      "price": "12500.00",
-      "brandId": 1,
-      "manufactureDate": "2021-04-16",
-      "id": 1011
+      "brand": {
+        "id": 2,
+        "name": "Samsung"
+      },
+      "manufactureDate": "2021-04-09",
+      "id": 1
     }
   ]
 }

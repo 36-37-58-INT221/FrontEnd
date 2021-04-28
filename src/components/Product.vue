@@ -6,7 +6,7 @@
             <h1 class="text-6xl">Name : {{ viewProduct.name }}</h1>
             <h1 class="text-6xl">Price : {{ viewProduct.price }}</h1>
             <h1 class="text-6xl">Des : {{ viewProduct.description }}</h1>
-            <h1 class="text-6xl">Brand : {{ viewBrand }}</h1>
+            <h1 class="text-6xl">Brand : {{ viewBrandName }}</h1>
             <!-- <h1 class="text-6xl">colorList : {{ viewProduct.colorList }}</h1> -->
             <h1 class="text-6xl">Date : {{ viewProduct.manufactureDate }}</h1>
         </div>
@@ -15,7 +15,6 @@
                 :viewProduct="viewProduct"
                 :colors="colors"
                 :isEdit="isEdit"
-                :viewBrand="viewBrand"
                 :brands="brands"
                 :productsUrl="productsUrl"
                 :products="products"
@@ -40,7 +39,7 @@ export default {
         return {
             viewProduct: [],
             notFoundHook: [],
-            viewBrand: "",
+            viewBrandName : "",
             isEdit: false,
         }
     },
@@ -77,8 +76,8 @@ export default {
             this.notFoundHook = [];
             router.push("/NotFoundPage")
         }
-        var brandIndex = this.brands.findIndex(f => f.id == this.viewProduct.brandId);
-        this.viewBrand = this.brands[brandIndex].name;
+        this.viewBrandName = this.viewProduct.brand.name
+    
     }
 
 
