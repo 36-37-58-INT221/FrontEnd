@@ -15,7 +15,7 @@
   </nav-bar>
 
   <router-view
-    class="max-w-3xl"
+    class="max-w-3xl "
     :products="products"
     :productsUrl="productsUrl"
     :colors="colors"
