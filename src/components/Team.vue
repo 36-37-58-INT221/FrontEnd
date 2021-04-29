@@ -1,5 +1,5 @@
 <template>
-    <div class= "mx-auto bg-gray-300 pb-20 pt-3">    
+    <div class= "mx-auto bg-gray-300 pb-20 pt-3 max-w-3xl">    
         <h1 class= " text-6xl header text-red-400">Our Team</h1>
         <h1 class= " text-l description"><b>INT 221 Integrated Project</b></h1>
         
@@ -19,46 +19,28 @@
 
 export default {
 components: {
-
     MemberTemplate
-
 },  
 data() {
     return {
         
         members: [
-
         {
-            
             name : "Thanasit Eksoragul",
             role : "BackEnd",
             studentId : "62130500036",
-
         },
         {
-          
             name : "Thanapat Suwannaard",
             role : "FrontEnd",
             studentId : "62130500037",
-
         }, 
         {
-            
             name : "Punthanat Ularnwiriyanont",
             role : "BackEnd",
             studentId : "62130500058",
-
         }
-
-
-
         ]
-
-
-
-
-
-
 
     }
 },
