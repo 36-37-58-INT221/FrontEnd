@@ -1,4 +1,5 @@
 <template>
+ 
   <nav-bar>
     <router-link to="/">
       <li class="liNav float-left">Home</li>
@@ -15,13 +16,14 @@
   </nav-bar>
 
   <router-view
-    class="max-w-3xl "
+    class="max-w-3xl"
     :products="products"
     :productsUrl="productsUrl"
     :colors="colors"
     :brands="brands"
     @submit-form="addProducts"
   ></router-view>
+
 </template>
 
 <script>
@@ -67,9 +69,6 @@ export default {
       const data = await res.json();
       return data;
     },
-
-    
-
   },
   async created() {
     this.products = await this.fetchProducts();

@@ -8,13 +8,13 @@
 
             <div class="pt-2">
                 <img :src="image" class="w-auto h-60 mx-auto"/>
-                <label for="imageFile" >Image File :</label>
+                <label for="imageFile" >Image File </label>
                 <input type="file" id="imageFile" @change="uploadImageFile($event)" multiple accept=".jpg, .jpeg, .png" />
             </div>
 
 
             <div class="pt-2">
-                <label for="name">Name :</label>
+                <label for="name">Name : </label>
                 <input type="text" v-model="formdata.name" class="border border-black" />
                 <h1
                     v-if="errors.indexOf('noName') !== -1"
@@ -26,7 +26,7 @@
                 >Already Have this Product</h1>
             </div>
             <div class="pt-2">
-                <label for="name" class>Description :</label>
+                <label for="name" class>Description : </label>
                 <textarea
                     type="text"
                     v-model="formdata.description"
@@ -54,7 +54,7 @@
             </div>
 
             <div class="pt-2">
-                <label for="brand">Brand :</label>
+                <label for="brand">Brand : </label>
                 <select name="brand" v-model="formdata.brand" class="border border-black">
                     <option
                         v-for="brand in brands"
@@ -68,7 +68,7 @@
             </div>
 
             <div class="pt-2">
-                <label for="price">Price :</label>
+                <label for="price">Price : </label>
                 <input type="text" v-model="formdata.price" class="border border-black" />
                 <h1
                     v-if="errors.indexOf('noPrice') !== -1"
@@ -77,7 +77,7 @@
             </div>
 
             <div class="pt-2">
-                <label for="manufactureDate">Manufactor Date :</label>
+                <label for="manufactureDate">Manufactor Date : </label>
                 <input type="date" v-model="formdata.manufactureDate" class="border border-black" />
                 <h1 v-if="errors.indexOf('noDate') !== -1" class="text-red-600">Please Enter Date</h1>
             </div>
