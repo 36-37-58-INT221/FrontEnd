@@ -3,6 +3,7 @@
         <div v-if="!isEdit">
             <button class="border border-black mr-2" @click="isEdit = true">EDIT THIS</button>
             <button class="border border-black" @click="deleteProduct">DELETE THIS</button>
+            <h1 class="text-6xl">imageName : {{ viewProduct.imageName }}</h1>
             <h1 class="text-6xl">Name : {{ viewProduct.name }}</h1>
             <h1 class="text-6xl">Price : {{ viewProduct.price }}</h1>
             <h1 class="text-6xl">Des : {{ viewProduct.description }}</h1>

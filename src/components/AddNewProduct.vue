@@ -9,7 +9,7 @@
             <div class="pt-2">
                 <img :src="image" class="w-auto h-60 mx-auto"/>
                 <label for="imageFile" >Image File :</label>
-                <input type="file" @change="uploadImageFile($event)" multiple accept=".jpg, .jpeg, .png" />
+                <input type="file" id="imageFile" @change="uploadImageFile($event)" multiple accept=".jpg, .jpeg, .png" />
             </div>
 
 
@@ -102,7 +102,7 @@ export default {
             image:"",
             selectedColor : [],
             formdata: {
-              //  imageName : null,
+                imageName : null,
                 name: null,
                 description: null,
                 haveColor: [],
@@ -115,23 +115,23 @@ export default {
     methods: {
         uploadImageFile(event){
             var input = event.target
-            this.formdata.imageName  = input.files[0].name;
+           this.formdata.imageName  = input.files[0].name;
             console.log(this.formdata.imageName)
             if(input.files && input.files[0]){
                 var reader = new FileReader();
                 reader.onload = (e) => { this.image = e.target.result; } 
                 reader.readAsDataURL(input.files[0])
 
-            } 
-
-
-
+            }        
         },
 
 
 
-        refreshForm() {
-            this.formdata.name = null,
+        refreshForm() {    
+                document.getElementById("imageFile").value="";
+                this.image = "",
+                this.formdata.imageName = null,
+                this.formdata.name = null,
                 this.formdata.description = null,
                 this.formdata.price = null,
                 this.formdata.brand = null,
@@ -160,6 +160,7 @@ export default {
                     },
                     body: JSON.stringify(
                         {
+                        imageName : this.formdata.imageName,
                         name: this.formdata.name,
                         description: this.formdata.description,
                         haveColor: this.formdata.haveColor,
@@ -187,6 +188,7 @@ export default {
                     'Content-type': 'application/json'
                 },
                 body: JSON.stringify({
+                    imageName : this.formdata.imageName,
                     name: this.formdata.name,
                     description: this.formdata.description,
                     haveColor: this.formdata.haveColor,
@@ -217,27 +219,25 @@ export default {
             if (this.formdata.brand == null) {
                 this.errors.push("noBrand");
             }
-            if (this.formdata.price == null) {
+            if (this.formdata.price.toString() == null) {
                 this.errors.push("noPrice");
-            } if (/^\s*-?[1-9]\d*(\.\d{1,2})?\s*$/.test(this.formdata.price) == false) {
+            } if (/^\s*-?[1-9]\d*(\.\d{1,2})?\s*$/.test(this.formdata.price.toString()) == false) {
                 this.errors.push("noPrice");
             }
             if (this.formdata.price.length > 9) {
                 this.errors.push("noPrice");
-            }if(this.formdata.price.indexOf(".") !== -1 && this.formdata.price.length <= 8 && 
+            }if(this.formdata.price.toString().indexOf(".") !== -1 && this.formdata.price.length <= 8 && 
             this.formdata.price[this.formdata.price.length-1]+this.formdata.price[this.formdata.price.length-2] !== "00" ){
-               
-                this.formdata.price = this.formdata.price + "0"
-                
+                this.formdata.price = this.formdata.price.toString() + "0"
             }
             if(this.formdata.haveColor == null){
                 this.errors.push("noColor")
 
             }
 
-            if(this.formdata.price.indexOf(".") == -1 && this.formdata.price.length <=6){
+            if(this.formdata.price.toString().indexOf(".") == -1 && this.formdata.price.toString().length <=6){
                
-                this.formdata.price = this.formdata.price + ".00"
+                this.formdata.price = this.formdata.price.toString() + ".00"
               
             }
             if(this.formdata.price.indexOf(".") >7 ){
@@ -253,7 +253,6 @@ export default {
                 if(this.products[i].name.replace(" ","").toLowerCase() == this.formdata.name.replace(" ","").toLowerCase()){
                     index2.push( this.products[i].name)
                     index3.push(this.products[i].id);
-                   
                 }
             }
              if (index2.length >= 2 &&this.isEdit) {
