@@ -1,5 +1,5 @@
 <template>
-    <ul class="ulNavBar" :class="[bgColor,position]">
+    <ul class="ulNavBar " :class="[bgColor,position]">
         <slot></slot>
     </ul>
 </template>
@@ -11,14 +11,11 @@ export default {
         bgColor:{
             type: String , 
             default : 'bg-black'
-
-
         },
 
         position:{
             type :String,
             default : 'top-0'
-
         }
 
 

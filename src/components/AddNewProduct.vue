@@ -1,4 +1,6 @@
 <template>
+    <div class="bg-gray-500  pt-20 pb-48 -mt-4">
+    <container>
     <div class="mx-auto grid grid-cols-1">
         <form @submit.prevent>
             <button v-if="isEdit" @click="setView" class="border border-black mr-2">CANCEL EDIT</button>
@@ -6,14 +8,14 @@
             <h1 v-if="isEdit" class="text-6xl">Editing Product</h1>
 
 
-            <div class="pt-2">
-                <img :src="image" class="w-auto h-60 mx-auto"/>
+            <div class="pt-2 text-left">
+                <img :src="image || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'" class="w-auto h-60 mx-auto rounded-full mb-4"/>
                 <label for="imageFile" >Image File </label>
                 <input type="file" id="imageFile" @change="uploadImageFile($event)" multiple accept=".jpg, .jpeg, .png" />
             </div>
 
 
-            <div class="pt-2">
+            <div class="pt-2 text-left">
                 <label for="name">Name : </label>
                 <input type="text" v-model="formdata.name" class="border border-black" />
                 <h1
@@ -25,7 +27,7 @@
                     class="text-red-600"
                 >Already Have this Product</h1>
             </div>
-            <div class="pt-2">
+            <div class="pt-2 text-left">
                 <label for="name" class>Description : </label>
                 <textarea
                     type="text"
@@ -39,7 +41,7 @@
                     class="text-red-600"
                 >Please Enter Description 10 up to 70 character</h1>
             </div>
-            <div class="pt-2">
+            <div class="pt-2 text-left">
                 <label>Colors :</label>
                 <span v-for="color in colors " :key="color.id">
                     <label for="color" class="ml-2">{{ color.colorCode }}</label>
@@ -53,7 +55,7 @@
                 <h1 v-if="errors.indexOf('noColor') !== -1" class="text-red-600">Please Select Color</h1>
             </div>
 
-            <div class="pt-2">
+            <div class="pt-2 text-left">
                 <label for="brand">Brand : </label>
                 <select name="brand" v-model="formdata.brand" class="border border-black">
                     <option
@@ -67,7 +69,7 @@
                 <h1 v-if="errors.indexOf('noBrand') !== -1" class="text-red-600">Please Select Brand</h1>
             </div>
 
-            <div class="pt-2">
+            <div class="pt-2 text-left">
                 <label for="price">Price : </label>
                 <input type="text" v-model="formdata.price" class="border border-black" />
                 <h1
@@ -76,7 +78,7 @@
                 >Please Enter Price No more than 999999.99 and cant have more than 2 decimal</h1>
             </div>
 
-            <div class="pt-2">
+            <div class="pt-2 text-left">
                 <label for="manufactureDate">Manufactor Date : </label>
                 <input type="date" v-model="formdata.manufactureDate" class="border border-black" />
                 <h1 v-if="errors.indexOf('noDate') !== -1" class="text-red-600">Please Enter Date</h1>
@@ -90,6 +92,10 @@
             <button v-if="isEdit" class="border border-black mt-2" @click="editForm">Submit Edit</button>
         </form>
     </div>
+
+</container>
+
+</div>
 </template>
 
 
