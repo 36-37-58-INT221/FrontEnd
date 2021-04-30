@@ -3,10 +3,10 @@
     <div class= "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-6">
     <div class="max-w-7xl mx-auto" v-for="product in products" :key="product.id">
 
-        <div class="ml-24">
+        <div class="ml-20">
            <router-link  :to="{ name: 'Product', params: { productId: product.id } }">
-            <div class="text-5xl border  border-black cursor-pointer">
-                 {{ product.name }} 
+            <div class="border  border-black cursor-pointer">
+                <h1 class=" text-5xl">{{ product.name }} </h1> 
                  {{ product.price}}
             </div>
           </router-link></div>
