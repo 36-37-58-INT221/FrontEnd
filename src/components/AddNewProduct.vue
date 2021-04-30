@@ -4,14 +4,18 @@
    
         <form @submit.prevent>
            <div class="grid grid-cols-2">
-            <h1 v-if="!isEdit" class="text-6xl text-left ml-12 mt-12 mb-12  col-span-2" style="text-shadow : 3px 3px gray ">New Product</h1>
-            <h1 v-if="isEdit" class="text-6xl text-left ml-12 mt-12 mb-12  col-span-2" style="text-shadow : 3px 3px gray ">Editing Product</h1>
+            <h1 v-if="!isEdit" class="text-6xl text-left ml-12 mt-12 mb-12  col-span-2 head" style="text-shadow : 3px 3px gray ">New Product</h1>
+            <h1 v-if="isEdit" class="text-6xl text-left ml-12 mt-12 mb-12  col-span-2 head" style="text-shadow : 3px 3px gray ">Editing Product</h1>
 
 
             <div class="pt-2 text-left  col-span-2">
                 <img :src="image || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'" class="w-auto h-60 mx-auto rounded mb-4"/>
                 <h1 class="ml-12">Image File <b class="text-red-600 text-xl" >*</b></h1>
                 <input type="file" id="imageFile" class= "ml-12 mb-2 " @change="uploadImageFile($event)" multiple accept=".jpg, .jpeg, .png" />
+                <h1
+                    v-if="errors.indexOf('noPic') !== -1"
+                    class="text-red-600 ml-12"
+                >Please Select Photo</h1>
             </div>
 
 
@@ -71,7 +75,7 @@
 
             <div class="pt-2 text-left ml-12 mb-2  col-span-1">
                 <label for="price">Price <b class="text-red-600 text-xl" >*</b> </label><br />
-                <input type="text" v-model="formdata.price" style="width : 85% " class="shadow-md py-1" />
+                <input type="text" v-model="formdata.price" style="width : 85%" class="shadow-md py-1" />
                 <h1
                     v-if="errors.indexOf('noPrice') !== -1"
                     class="text-red-600"
@@ -79,7 +83,7 @@
             </div>
 
             <div class="pt-2 text-left ml-12  col-span-1">
-                <label for="manufactureDate">Manufactor Date <b class="text-red-600 text-xl" >*</b> </label><br />
+                <label for="manufactureDate" >Manufactor Date <b class="text-red-600 text-xl" >*</b> </label><br />
                 <input type="date" v-model="formdata.manufactureDate" class="shadow-2xl py-1" />
                 <h1 v-if="errors.indexOf('noDate') !== -1" class="text-red-600">Please Enter Date</h1>
             </div>
@@ -89,8 +93,8 @@
                 class="border border-gray-600 mt-8 col-span-2 mx-auto"
                 @click="submitForm"
             >Submit</button>
-            <button v-if="isEdit" @click="setView" class="border border-gray-600 mr-2 col-span-2">CANCEL EDIT</button>
-            <button v-if="isEdit" class="border border-gray-600 mt-2 col-span-2 mx-auto" @click="editForm">Submit Edit</button>  
+            <button v-if="isEdit" @click="setView" class="border border-gray-600 col-span-1 mx-auto">CANCEL EDIT</button>
+            <button v-if="isEdit" class="border border-gray-600 mt-2 col-span-1 mx-auto" @click="editForm">Submit Edit</button>  
         
         </div>
         </form>
@@ -109,7 +113,6 @@ export default {
         return {
             errors: [],
             image:"",
-            selectedColor : [],
             formdata: {
                 imageName : null,
                 name: null,
@@ -153,7 +156,6 @@ export default {
                 if (this.errors.length > 0) {
                     return;
                 }
-
 
                 // const blob = new Blob([JSON.stringify(this.formdata)], {
                 //     type: 'application/json'
@@ -213,52 +215,42 @@ export default {
         validate() {
            
             this.errors = [];
-            if (this.formdata.name == null) {
+
+            if(this.formdata.imageName == null){
+                this.errors.push("noPic")
+
+            }
+
+            if (this.formdata.name == null || this.formdata.name.length <= 2 || this.formdata.name.length > 30) {
                 this.errors.push("noName");
             }
-            if (this.formdata.name.length < 2 || this.formdata.name.length > 30) {
-                this.errors.push("noName");
-            }
-            if (this.formdata.description == null) {
-                this.errors.push("noDes");
-            }
-            if (this.formdata.description.length > 70 || this.formdata.description.length < 10) {
+            if (this.formdata.description == null || this.formdata.description.length > 70 || this.formdata.description.length < 10) {
                 this.errors.push("noDes");
             }
             if (this.formdata.brand == null) {
                 this.errors.push("noBrand");
-            }
-            if (this.formdata.price.toString() == null) {
-                this.errors.push("noPrice");
-            } if (/^\s*-?[1-9]\d*(\.\d{1,2})?\s*$/.test(this.formdata.price.toString()) == false) {
-                this.errors.push("noPrice");
-            }
-            if (this.formdata.price.length > 9) {
-                this.errors.push("noPrice");
-            }if(this.formdata.price.toString().indexOf(".") !== -1 && this.formdata.price.length <= 8 && 
-            this.formdata.price[this.formdata.price.length-1]+this.formdata.price[this.formdata.price.length-2] !== "00" ){
-                this.formdata.price = this.formdata.price.toString() + "0"
-            }
-            if(this.formdata.haveColor == null){
+            } 
+            if(this.formdata.haveColor.length == 0){
                 this.errors.push("noColor")
-
             }
-
-            if(this.formdata.price.toString().indexOf(".") == -1 && this.formdata.price.toString().length <=6){
-               
-                this.formdata.price = this.formdata.price.toString() + ".00"
-              
+            if (this.formdata.manufactureDate == null) { this.errors.push("noDate"); }
+            if (this.formdata.price == null) {
+                this.errors.push("noPrice");
+            } if (/^\s*-?[1-9]\d*(\.\d{1,2})?\s*$/.test(this.formdata.price.toString()) == false || this.formdata.price.length > 9) {
+                this.errors.push("noPrice");
             }
-            if(this.formdata.price.indexOf(".") >7 ){
+            if(this.formdata.price.toString().indexOf(".") >= 7 ){
+                this.errors.push("noPrice")
+            }
+            if(this.formdata.price.toString().length >= 7 && this.formdata.price.toString().indexOf(".") == -1){
                 this.errors.push("noPrice")
             }
             this.formdata.price = parseFloat(this.formdata.price)
-            if (this.formdata.manufactureDate == null) { this.errors.push("noDate"); }
-
+            
             var index2 = []
             var index3 = []
             for (let  i= 0 ;i < this.products.length ; i++){ 
-                if(index3.length == 2){break ;}
+                if(index3.length >= 2){break ;}
                 if(this.products[i].name.replace(" ","").toLowerCase() == this.formdata.name.replace(" ","").toLowerCase()){
                     index2.push( this.products[i].name)
                     index3.push(this.products[i].id);
@@ -298,3 +290,15 @@ export default {
 
 }
 </script>
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+
+.head{
+    font-family: 'Roboto', sans-serif;
+}
+
+</style>

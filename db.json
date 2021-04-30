@@ -86,6 +86,26 @@
       },
       "manufactureDate": "2021-04-15",
       "id": 3
+    },
+    {
+      "imageName": null,
+      "name": "IPHONE5",
+      "description": "IPHONE5IPHONE5IPHONE5IPHONE5IPHONE5",
+      "haveColor": [
+        {
+          "color": {
+            "id": 1,
+            "colorCode": "#E94F37"
+          }
+        }
+      ],
+      "price": 1200000.1,
+      "brand": {
+        "id": 1,
+        "name": "Apple"
+      },
+      "manufactureDate": "2021-04-15",
+      "id": 4
     }
   ]
 }
