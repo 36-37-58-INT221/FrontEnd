@@ -60,6 +60,32 @@
       },
       "manufactureDate": "2021-04-16",
       "id": 2
+    },
+    {
+      "imageName": "จารแดง.png",
+      "name": "IPHONE3",
+      "description": "IPHONE3IPHONE3",
+      "haveColor": [
+        {
+          "color": {
+            "id": 1,
+            "colorCode": "#E94F37"
+          }
+        },
+        {
+          "color": {
+            "id": 2,
+            "colorCode": "#393E41"
+          }
+        }
+      ],
+      "price": 5000,
+      "brand": {
+        "id": 1,
+        "name": "Apple"
+      },
+      "manufactureDate": "2021-04-15",
+      "id": 3
     }
   ]
 }

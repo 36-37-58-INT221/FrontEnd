@@ -1,23 +1,22 @@
 <template>
-    <div class="bg-gray-500  pt-20 pb-48 -mt-4">
+    <div class="bg-gray-300  pt-5  pb-48 -mt-4">
     <container>
-    <div class="mx-auto grid grid-cols-1">
+    <div class="mx-auto grid grid-cols-1 ml-3">
         <form @submit.prevent>
             <button v-if="isEdit" @click="setView" class="border border-black mr-2">CANCEL EDIT</button>
-            <h1 v-if="!isEdit" class="text-6xl">Add new Product</h1>
-            <h1 v-if="isEdit" class="text-6xl">Editing Product</h1>
+            <h1 v-if="!isEdit" class="text-6xl mr-3">Add new Product</h1>
+            <h1 v-if="isEdit" class="text-6xl mr-3">Editing Product</h1>
 
 
             <div class="pt-2 text-left">
                 <img :src="image || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'" class="w-auto h-60 mx-auto rounded-full mb-4"/>
-                <label for="imageFile" >Image File </label>
+                <h1>Image File <b class="text-red-600 text-xl" >*</b></h1>
                 <input type="file" id="imageFile" @change="uploadImageFile($event)" multiple accept=".jpg, .jpeg, .png" />
             </div>
 
 
-            <div class="pt-2 text-left">
-                <label for="name">Name : </label>
-                <input type="text" v-model="formdata.name" class="border border-black" />
+            <div class="pt-2 text-left ">
+                <label for="name">Name <b class="text-red-600 text-xl" >*</b> </label><br /><input type="text" v-model="formdata.name" class="border border-black" />
                 <h1
                     v-if="errors.indexOf('noName') !== -1"
                     class="text-red-600"
@@ -28,7 +27,7 @@
                 >Already Have this Product</h1>
             </div>
             <div class="pt-2 text-left">
-                <label for="name" class>Description : </label>
+                <label for="name" class>Description <b class="text-red-600 text-xl" >*</b> </label><br />
                 <textarea
                     type="text"
                     v-model="formdata.description"
@@ -42,7 +41,7 @@
                 >Please Enter Description 10 up to 70 character</h1>
             </div>
             <div class="pt-2 text-left">
-                <label>Colors :</label>
+                <label>Colors <b class="text-red-600 text-xl" >*</b></label>
                 <span v-for="color in colors " :key="color.id">
                     <label for="color" class="ml-2">{{ color.colorCode }}</label>
                     <input
@@ -56,7 +55,7 @@
             </div>
 
             <div class="pt-2 text-left">
-                <label for="brand">Brand : </label>
+                <label for="brand">Brand <b class="text-red-600 text-xl" >*</b> </label><br />
                 <select name="brand" v-model="formdata.brand" class="border border-black">
                     <option
                         v-for="brand in brands"
@@ -65,12 +64,11 @@
                     >{{ brand.name }}</option>
                 </select>
 
-                <h1>{{ this.formdata.brand }} </h1>
                 <h1 v-if="errors.indexOf('noBrand') !== -1" class="text-red-600">Please Select Brand</h1>
             </div>
 
             <div class="pt-2 text-left">
-                <label for="price">Price : </label>
+                <label for="price">Price <b class="text-red-600 text-xl" >*</b> </label><br />
                 <input type="text" v-model="formdata.price" class="border border-black" />
                 <h1
                     v-if="errors.indexOf('noPrice') !== -1"
@@ -79,7 +77,7 @@
             </div>
 
             <div class="pt-2 text-left">
-                <label for="manufactureDate">Manufactor Date : </label>
+                <label for="manufactureDate">Manufactor Date <b class="text-red-600 text-xl" >*</b> </label><br />
                 <input type="date" v-model="formdata.manufactureDate" class="border border-black" />
                 <h1 v-if="errors.indexOf('noDate') !== -1" class="text-red-600">Please Enter Date</h1>
             </div>

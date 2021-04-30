@@ -11,18 +11,3 @@
 </template>
 
 
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@1,300&display=swap');
-.header {
-    font-family: 'Bebas Neue', cursive;
-
-}
-
-.description{
-    font-family: 'Roboto Condensed', sans-serif;
-}
-
-
-
-</style>
