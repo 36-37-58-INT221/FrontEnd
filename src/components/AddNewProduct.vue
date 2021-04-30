@@ -1,22 +1,22 @@
 <template>
     <div class="bg-gray-900  pt-5  pb-48 -mt-4">
     <container class="shadow-2xl rounded bg-gray-300">
-    <div class="grid grid-cols-1">
+   
         <form @submit.prevent>
-          
-            <h1 v-if="!isEdit" class="text-6xl text-left ml-12 mt-12 mb-12">Add new Product</h1>
-            <h1 v-if="isEdit" class="text-6xl mr-3">Editing Product</h1>
+           <div class="grid grid-cols-2">
+            <h1 v-if="!isEdit" class="text-6xl text-left ml-12 mt-12 mb-12  col-span-2" style="text-shadow : 3px 3px gray ">New Product</h1>
+            <h1 v-if="isEdit" class="text-6xl text-left ml-12 mt-12 mb-12  col-span-2" style="text-shadow : 3px 3px gray ">Editing Product</h1>
 
 
-            <div class="pt-2 text-left">
-                <img :src="image || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'" class="w-auto h-60 mx-auto rounded-full mb-4 "/>
+            <div class="pt-2 text-left  col-span-2">
+                <img :src="image || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'" class="w-auto h-60 mx-auto rounded mb-4"/>
                 <h1 class="ml-12">Image File <b class="text-red-600 text-xl" >*</b></h1>
                 <input type="file" id="imageFile" class= "ml-12 mb-2 " @change="uploadImageFile($event)" multiple accept=".jpg, .jpeg, .png" />
             </div>
 
 
-            <div class="pt-2 text-left ml-12 mb-2">
-                <label for="name">Name <b class="text-red-600 text-xl" >*</b> </label><br /><input type="text" class= "shadow-md" v-model="formdata.name"/>
+            <div class="pt-2 text-left ml-12 mb-2  col-span-2">
+                <label for="name">Name <b class="text-red-600 text-xl" >*</b> </label><br /><input type="text" class= "shadow-md py-1" style="width : 40% " v-model="formdata.name"/>
                 <h1
                     v-if="errors.indexOf('noName') !== -1"
                     class="text-red-600"
@@ -26,27 +26,28 @@
                     class="text-red-600"
                 >Already Have this Product</h1>
             </div>
-            <div class="pt-2 text-left ml-12 mb-2">
+            <div class="pt-2 text-left ml-12 mb-2  col-span-2">
                 <label for="name">Description <b class="text-red-600 text-xl" >*</b> </label><br />
                 <textarea
                     type="text"
                     v-model="formdata.description"
-                    class=" w-48 align-top shadow-md"
+                    class=" w-48 align-top shadow-md py-1"
                     rows="3"
                     cols="20"
+                    style="width : 40% "
                 />
                 <h1
                     v-if="errors.indexOf('noDes') !== -1"
                     class="text-red-600"
                 >Please Enter Description 10 up to 70 character</h1>
             </div>
-            <div class="pt-2 text-left ml-12 mb-2" >
+            <div class="pt-2 text-left ml-12 mb-2  col-span-2" >
                 <label>Colors <b class="text-red-600 text-xl" >*</b></label>
                 <span v-for="color in colors " :key="color.id">
                     <label for="color" class="ml-2">{{ color.colorCode }}</label>
                     <input
                         type="checkbox"
-                        class="w-12 h-12 ml-2 align-middle shadow-md"
+                        class="w-12 h-12 ml-2 align-middle shadow-md py-1"
                         v-model="formdata.haveColor"
                         :value="{color : color}"
                     />
@@ -54,9 +55,9 @@
                 <h1 v-if="errors.indexOf('noColor') !== -1" class="text-red-600">Please Select Color</h1>
             </div>
 
-            <div class="pt-2 text-left ml-12 mb-2">
+            <div class="pt-2 text-left ml-12 mb-2  col-span-2">
                 <label for="brand">Brand <b class="text-red-600 text-xl" >*</b> </label><br />
-                <select name="brand" v-model="formdata.brand" class="shadow-md">
+                <select name="brand" v-model="formdata.brand" class="shadow-md py-1">
                     <option
                         v-for="brand in brands"
                         :value="brand"
@@ -68,30 +69,32 @@
                 <h1 v-if="errors.indexOf('noBrand') !== -1" class="text-red-600">Please Select Brand</h1>
             </div>
 
-            <div class="pt-2 text-left ml-12 mb-2">
+            <div class="pt-2 text-left ml-12 mb-2  col-span-1">
                 <label for="price">Price <b class="text-red-600 text-xl" >*</b> </label><br />
-                <input type="text" v-model="formdata.price" class="shadow-md" />
+                <input type="text" v-model="formdata.price" style="width : 85% " class="shadow-md py-1" />
                 <h1
                     v-if="errors.indexOf('noPrice') !== -1"
                     class="text-red-600"
                 >Please Enter Price No more than 999999.99 and cant have more than 2 decimal</h1>
             </div>
 
-            <div class="pt-2 text-left ml-12">
+            <div class="pt-2 text-left ml-12  col-span-1">
                 <label for="manufactureDate">Manufactor Date <b class="text-red-600 text-xl" >*</b> </label><br />
-                <input type="date" v-model="formdata.manufactureDate" class="shadow-2xl " />
+                <input type="date" v-model="formdata.manufactureDate" class="shadow-2xl py-1" />
                 <h1 v-if="errors.indexOf('noDate') !== -1" class="text-red-600">Please Enter Date</h1>
             </div>
             <button
                 v-if="!isEdit"
                 value="Submit"
-                class="border border-gray-600 mt-2 ml-12"
+                class="border border-gray-600 mt-8 col-span-2 mx-auto"
                 @click="submitForm"
             >Submit</button>
-            <button v-if="isEdit" @click="setView" class="border border-gray-600 mr-2">CANCEL EDIT</button>
-            <button v-if="isEdit" class="border border-gray-600 mt-2" @click="editForm">Submit Edit</button>
+            <button v-if="isEdit" @click="setView" class="border border-gray-600 mr-2 col-span-2">CANCEL EDIT</button>
+            <button v-if="isEdit" class="border border-gray-600 mt-2 col-span-2 mx-auto" @click="editForm">Submit Edit</button>  
+        
+        </div>
         </form>
-    </div>
+  
 
 </container>
 
