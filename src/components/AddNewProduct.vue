@@ -189,7 +189,6 @@ export default {
         async editForm() {
             this.validate();
             if (this.errors.length > 0) {
-                alert(this.errors);
                 return;
             }
 
@@ -218,9 +217,7 @@ export default {
 
             if(this.formdata.imageName == null){
                 this.errors.push("noPic")
-
             }
-
             if (this.formdata.name == null || this.formdata.name.length <= 2 || this.formdata.name.length > 30) {
                 this.errors.push("noName");
             }
@@ -248,16 +245,14 @@ export default {
             this.formdata.price = parseFloat(this.formdata.price)
             
             var index2 = []
-            var index3 = []
             for (let  i= 0 ;i < this.products.length ; i++){ 
-                if(index3.length >= 2){break ;}
+                if(index2.length >= 2){break ;}
                 if(this.products[i].name.replace(" ","").toLowerCase() == this.formdata.name.replace(" ","").toLowerCase()){
-                    index2.push( this.products[i].name)
-                    index3.push(this.products[i].id);
+                    index2.push( this.products[i].id)
                 }
             }
              if (index2.length >= 2 &&this.isEdit) {
-                if (index3[0] !== index3[1]) {
+                if (index2[0] !== index2[1]) {
                     this.errors.push("have");
                 }
             } 
