@@ -48,10 +48,10 @@
             <div class="pt-2 text-left ml-12 mb-2  col-span-2 text-white" >
                 <label>Colors <b class="text-red-600 text-xl" >*</b></label>
                 <span v-for="color in colors " :key="color.id">
-                    <label for="color" class="ml-2">{{ color.colorCode }}</label>
+                    <label for="color" class="ml-2 pr-8 py-1"  v-bind:style="{ backgroundColor : color.colorCode }"></label>
                     <input
                         type="checkbox"
-                        class="w-12 h-12 ml-2 align-middle shadow-md py-1"
+                        class="w-10 h-10 ml-2 align-middle shadow-md py-1"
                         v-model="formdata.color"
                         :value="{ colorId : color.colorId, colorCode : color.colorCode}"
                     />
@@ -214,6 +214,7 @@ export default {
                     'Content-type': 'application/json'
                 },
                 body: JSON.stringify({
+                    productId : this.formdata.productId,
                     pathPic : this.formdata.pathPic,
                     name: this.formdata.name,
                     description: this.formdata.description,
@@ -311,5 +312,7 @@ export default {
 .head{
     font-family: 'Roboto', sans-serif;
 }
+
+
 
 </style>

@@ -25,45 +25,7 @@
       "productId": 1,
       "pathPic": "จารแดง.png",
       "name": "IPHONE1",
-      "description": "IPHONE1IPHONE1",
-      "color": [
-        {
-          "colorId": 1,
-          "colorCode": "#E94F37"
-        }
-      ],
-      "price": 5000,
-      "brand": {
-        "brandId": 1,
-        "name": "Apple"
-      },
-      "manufactureDate": "2021-04-29",
-      "id": 1
-    },
-    {
-      "productId": 2,
-      "pathPic": "จารแดง.png",
-      "name": "IPHONE2",
-      "description": "IPHONE2IPHONE2",
-      "color": [
-        {
-          "colorId": 1,
-          "colorCode": "#E94F37"
-        }
-      ],
-      "price": 123123,
-      "brand": {
-        "brandId": 1,
-        "name": "Apple"
-      },
-      "manufactureDate": "2021-05-12",
-      "id": 2
-    },
-    {
-      "productId": 19,
-      "pathPic": "pacthPic19",
-      "name": "IPONE19",
-      "description": "GG",
+      "description": "IPHONE1IPHONE1IPHONE1",
       "color": [
         {
           "colorId": 1,
@@ -74,12 +36,13 @@
           "colorCode": "#393E41"
         }
       ],
-      "price": 7000,
+      "price": 123123,
       "brand": {
         "brandId": 1,
         "name": "Apple"
       },
-      "manufactureDate": "2022-09-01"
+      "manufactureDate": "2021-04-28",
+      "id": 1
     }
   ]
 }

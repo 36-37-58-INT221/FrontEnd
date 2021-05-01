@@ -7,10 +7,16 @@
             <button class="border border-black mr-2" @click="isEdit = true">EDIT THIS</button>
             <button class="border border-black" @click="deleteProduct">DELETE THIS</button>
             <div class="text-3xl text-left ml-20 pt-12">
-            <h1 class= "py-1">Name : {{ viewProduct.name }}</h1>
-            <h1 class= "py-1" >Price : {{ viewProduct.price }}</h1>
+            <h1 class= "py-1">{{ viewProduct.name }}</h1>
+            <h1 class= "py-1" >{{ viewProduct.price }} THB</h1>
             <h1 class= "py-1">Description : {{ viewProduct.description }}</h1>
-            <h1 class= "py-1">All Color : {{ allColors }}</h1>
+            <div class= "py-1">All Color : 
+                <span v-for="color in viewProduct.color" :key="color.id" class="flex-1">
+                <span class="pr-10 mx-2" v-bind:style="{ backgroundColor : color.colorCode }"></span>    
+                </span>
+
+
+            </div>
             <h1 class= "py-1">Brand : {{ viewBrandName }}</h1>
             <h1 class= "py-1">Date : {{ viewProduct.manufactureDate }}</h1>
         
@@ -115,3 +121,5 @@ export default {
 
 
 </script>
+
+
