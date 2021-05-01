@@ -35,12 +35,12 @@
           "colorCode": "#393E41"
         }
       ],
-      "price": 4000,
+      "price": 123123,
       "brand": {
         "brandId": 1,
         "name": "Apple"
       },
-      "manufactureDate": "2021-05-12",
+      "manufactureDate": "2021-05-18",
       "id": 1
     }
   ]

@@ -117,7 +117,7 @@ export default {
             errors: [],
             image:"",
             formdata: {
-                imageName : null,
+                pathPic : null,
                 name: null,
                 description: null,
                 color: [],
@@ -130,8 +130,8 @@ export default {
     methods: {
         uploadImageFile(event){
             var input = event.target
-           this.formdata.imageName  = input.files[0].name;
-            console.log(this.formdata.imageName)
+           this.formdata.pathPic  = input.files[0].name;
+            console.log(this.formdata.pathPic)
             if(input.files && input.files[0]){
                 var reader = new FileReader();
                 reader.onload = (e) => { this.image = e.target.result; } 
@@ -145,7 +145,7 @@ export default {
         refreshForm() {    
                 document.getElementById("imageFile").value="";
                 this.image = "",
-                this.formdata.imageName = null,
+                this.formdata.pathPic = null,
                 this.formdata.name = null,
                 this.formdata.description = null,
                 this.formdata.price = null,
@@ -174,7 +174,7 @@ export default {
                     },
                     body: JSON.stringify(
                         {
-                        imageName : this.formdata.imageName,
+                        pathPic : this.formdata.pathPic,
                         name: this.formdata.name,
                         description: this.formdata.description,
                         color: this.formdata.color,
@@ -201,7 +201,7 @@ export default {
                     'Content-type': 'application/json'
                 },
                 body: JSON.stringify({
-                    imageName : this.formdata.imageName,
+                    pathPic : this.formdata.pathPic,
                     name: this.formdata.name,
                     description: this.formdata.description,
                     color: this.formdata.color,
@@ -218,7 +218,7 @@ export default {
            
             this.errors = [];
 
-            if(this.formdata.imageName == null){
+            if(this.formdata.pathPic == null){
                 this.errors.push("noPic")
             }
             if (this.formdata.name == null || this.formdata.name.length <= 2 || this.formdata.name.length > 30) {
