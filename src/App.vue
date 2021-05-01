@@ -15,23 +15,32 @@
     </router-link>
   </nav-bar>
 
+<div class="bg-red-400 pb-72 pt-6 -mt-6">
+
+  <container>
+    <home ></home>
+    
   <router-view
     :products="products"
     :productsUrl="productsUrl"
     :colors="colors"
     :brands="brands"
     @submit-form="addProducts"
-  ></router-view>
-
+  >
+  
+</router-view>
+</container>
+</div>
 </template>
 
 <script>
 import NavBar from './components/NavBar.vue'
+import Home from './components/Home.vue'
 
 export default {
   name: 'App',
   components: {
-    NavBar
+    NavBar,Home
   },
   data() {
     return {
