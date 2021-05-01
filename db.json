@@ -1,157 +1,47 @@
 {
   "colors": [
     {
-      "id": 1,
+      "colorId": 1,
       "colorCode": "#E94F37"
     },
     {
-      "id": 2,
+      "colorId": 2,
       "colorCode": "#393E41"
     }
   ],
   "brands": [
     {
-      "id": 1,
+      "brandId": 1,
       "name": "Apple"
     },
     {
-      "id": 2,
+      "brandId": 2,
       "name": "Samsung"
     }
   ],
   "havecolors": [],
   "products": [
     {
-      "imageName": "maxresdefault.jpg",
-      "name": "IPHONE5",
-      "description": "IPHONE1IPHONE1",
-      "haveColor": [
-        {
-          "color": {
-            "id": 1,
-            "colorCode": "#E94F37"
-          }
-        }
-      ],
-      "price": 5000,
-      "brand": {
-        "id": 1,
-        "name": "Apple"
-      },
-      "manufactureDate": "2021-04-15",
-      "id": 1
-    },
-    {
-      "imageName": "221ER.png",
-      "name": "IPHONE2",
-      "description": "IPHONE2IPHONE2",
-      "haveColor": [
-        {
-          "color": {
-            "id": 1,
-            "colorCode": "#E94F37"
-          }
-        }
-      ],
-      "price": 50000,
-      "brand": {
-        "id": 1,
-        "name": "Apple"
-      },
-      "manufactureDate": "2021-04-16",
-      "id": 2
-    },
-    {
-      "imageName": "จารแดง.png",
-      "name": "IPHONE3",
-      "description": "IPHONE3IPHONE3",
-      "haveColor": [
-        {
-          "color": {
-            "id": 1,
-            "colorCode": "#E94F37"
-          }
-        },
-        {
-          "color": {
-            "id": 2,
-            "colorCode": "#393E41"
-          }
-        }
-      ],
-      "price": 5000,
-      "brand": {
-        "id": 1,
-        "name": "Apple"
-      },
-      "manufactureDate": "2021-04-15",
-      "id": 3
-    },
-    {
-      "imageName": "maxresdefault.jpg",
-      "name": "IPHONE4",
-      "description": "IPHONE5IPHONE5IPHONE5IPHONE5IPHONE5",
-      "haveColor": [
-        {
-          "color": {
-            "id": 1,
-            "colorCode": "#E94F37"
-          }
-        },
-        {
-          "color": {
-            "id": 2,
-            "colorCode": "#393E41"
-          }
-        }
-      ],
-      "price": 120000.1,
-      "brand": {
-        "id": 1,
-        "name": "Apple"
-      },
-      "manufactureDate": "2021-04-15",
-      "id": 4
-    },
-    {
       "imageName": "จารแดง.png",
       "name": "IPHONE1",
-      "description": "IPHONE5IPHONE5",
-      "haveColor": [
+      "description": "IPHONE1IPHONE1",
+      "color": [
         {
-          "color": {
-            "id": 2,
-            "colorCode": "#393E41"
-          }
+          "colorId": 1,
+          "colorCode": "#E94F37"
+        },
+        {
+          "colorId": 2,
+          "colorCode": "#393E41"
         }
       ],
-      "price": 5000,
+      "price": 4000,
       "brand": {
-        "id": 1,
+        "brandId": 1,
         "name": "Apple"
       },
-      "manufactureDate": "2021-04-14",
-      "id": 5
-    },
-    {
-      "imageName": "จารแดง.png",
-      "name": "IPHONE6",
-      "description": "IPHONE1IPHONE1IPHONE1",
-      "haveColor": [
-        {
-          "color": {
-            "id": 1,
-            "colorCode": "#E94F37"
-          }
-        }
-      ],
-      "price": 123,
-      "brand": {
-        "id": 1,
-        "name": "Apple"
-      },
-      "manufactureDate": "2021-04-14",
-      "id": 6
+      "manufactureDate": "2021-05-12",
+      "id": 1
     }
   ]
 }

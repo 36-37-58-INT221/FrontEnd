@@ -81,10 +81,10 @@ export default {
         if(this.viewProduct != null){
             this.allColors = [];
             this.viewBrandName = this.viewProduct.brand.name
-            for(let i = 0 ; i < this.viewProduct.haveColor.length ;i++)
+            for(let i = 0 ; i < this.viewProduct.color.length ;i++)
             
             {
-                this.allColors.push(this.viewProduct.haveColor[i].color.colorCode);
+                this.allColors.push(this.viewProduct.color[i].colorCode);
             }
 
         }

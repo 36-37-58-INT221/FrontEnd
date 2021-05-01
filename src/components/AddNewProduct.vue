@@ -52,8 +52,8 @@
                     <input
                         type="checkbox"
                         class="w-12 h-12 ml-2 align-middle shadow-md py-1"
-                        v-model="formdata.haveColor"
-                        :value="{color : color}"
+                        v-model="formdata.color"
+                        :value="{ colorId : color.colorId, colorCode : color.colorCode}"
                     />
                 </span>
                 <h1 v-if="errors.indexOf('noColor') !== -1" class="text-red-600">Please Select Color</h1>
@@ -65,7 +65,7 @@
                     <option
                         v-for="brand in brands"
                         :value="brand"
-                        :key="brand.id"
+                        :key="brand.brandId"
                         
                     >{{ brand.name }}</option>
                 </select>
@@ -120,7 +120,7 @@ export default {
                 imageName : null,
                 name: null,
                 description: null,
-                haveColor: [],
+                color: [],
                 price: null,
                 brand: {},
                 manufactureDate: null,
@@ -151,7 +151,7 @@ export default {
                 this.formdata.price = null,
                 this.formdata.brand = null,
                 this.formdata.manufactureDate = null,
-               this.formdata.haveColor = []
+               this.formdata.color = []
         },
         async submitForm() {
             if (!this.isEdit) {
@@ -177,7 +177,7 @@ export default {
                         imageName : this.formdata.imageName,
                         name: this.formdata.name,
                         description: this.formdata.description,
-                        haveColor: this.formdata.haveColor,
+                        color: this.formdata.color,
                         price: this.formdata.price,
                         brand: this.formdata.brand,
                         manufactureDate: this.formdata.manufactureDate,
@@ -204,7 +204,7 @@ export default {
                     imageName : this.formdata.imageName,
                     name: this.formdata.name,
                     description: this.formdata.description,
-                    haveColor: this.formdata.haveColor,
+                    color: this.formdata.color,
                     price: this.formdata.price,
                     brand: this.formdata.brand,
                     manufactureDate: this.formdata.manufactureDate,
@@ -230,7 +230,7 @@ export default {
             if (this.formdata.brand == null) {
                 this.errors.push("noBrand");
             } 
-            if(this.formdata.haveColor.length == 0){
+            if(this.formdata.color.length == 0){
                 this.errors.push("noColor")
             }
             if (this.formdata.manufactureDate == null) { this.errors.push("noDate"); }
