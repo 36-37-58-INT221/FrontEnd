@@ -151,7 +151,7 @@ export default {
                 this.formdata.price = null,
                 this.formdata.brand = null,
                 this.formdata.manufactureDate = null,
-               this.formdata.color = []
+                this.formdata.color = []
         },
         async submitForm() {
             if (!this.isEdit) {
@@ -167,6 +167,16 @@ export default {
                 // const formData = new FormData();
                 // formData.append('Product',blob);
 
+                var proId = null
+
+                if(proId == null){
+                    if(this.products.length > 0){
+                    proId = this.products[this.products.length-1].productId +1;
+                    }
+                    else{
+                        proId = 1;
+                    }
+                }
                 const res = await fetch(this.productsUrl, {
                     method: 'POST',
                     headers: {
@@ -174,6 +184,7 @@ export default {
                     },
                     body: JSON.stringify(
                         {
+                        productId : proId,
                         pathPic : this.formdata.pathPic,
                         name: this.formdata.name,
                         description: this.formdata.description,
@@ -195,7 +206,7 @@ export default {
                 return;
             }
 
-            await fetch(this.productsUrl + "/" + this.viewProduct.id, {
+            await fetch(this.productsUrl + "/" + this.viewProduct.productId, {
                 method: 'PUT',
                 headers: {
                     'Content-type': 'application/json'

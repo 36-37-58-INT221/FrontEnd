@@ -15,7 +15,7 @@
     </router-link>
   </nav-bar>
 
-<div class="bg-red-400 pb-72 pt-6 -mt-6">
+<div class="bg-red-400 pt-6 -mt-6" style="padding-bottom : 40% ">
 
   <container>
     <home v-if="this.$route.path.indexOf('/Product/') == -1"></home>

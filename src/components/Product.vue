@@ -63,12 +63,12 @@ export default {
     },
     mounted() {
 
-        var index = this.products.findIndex(f => f.id == this.$route.params.productId)
+        var index = this.products.findIndex(f => f.productId == this.$route.params.productId)
         this.viewProduct = this.products[index];
 
     },
     beforeUpdate() {
-        var index = this.products.findIndex(f => f.id == this.$route.params.productId)
+        var index = this.products.findIndex(f => f.productId == this.$route.params.productId)
         this.viewProduct = this.products[index];
         if (index == -1) {
             this.notFoundHook.push(index);

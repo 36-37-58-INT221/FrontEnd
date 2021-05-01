@@ -4,7 +4,7 @@
     <div class="max-w-7xl mx-auto" v-for="product in products" :key="product.id">
 
         <div >
-           <router-link  :to="{ name: 'Product', params: { productId: product.id } }">
+           <router-link  :to="{ name: 'Product', params: { productId: product.productId } }">
             <div class="border  border-black cursor-pointer bg-white">
                 <h1 class=" text-5xl">{{ product.name }} </h1> 
                  {{ product.price}}

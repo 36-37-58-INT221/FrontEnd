@@ -22,6 +22,7 @@
   "havecolors": [],
   "products": [
     {
+      "productId": 1,
       "pathPic": "จารแดง.png",
       "name": "IPHONE1",
       "description": "IPHONE1IPHONE1",
@@ -31,13 +32,32 @@
           "colorCode": "#E94F37"
         }
       ],
-      "price": 123231,
+      "price": 5000,
       "brand": {
         "brandId": 1,
         "name": "Apple"
       },
-      "manufactureDate": "2021-05-20",
+      "manufactureDate": "2021-04-29",
       "id": 1
+    },
+    {
+      "productId": 2,
+      "pathPic": "จารแดง.png",
+      "name": "IPHONE2",
+      "description": "IPHONE2IPHONE2",
+      "color": [
+        {
+          "colorId": 1,
+          "colorCode": "#E94F37"
+        }
+      ],
+      "price": 123123,
+      "brand": {
+        "brandId": 1,
+        "name": "Apple"
+      },
+      "manufactureDate": "2021-05-12",
+      "id": 2
     }
   ]
 }
