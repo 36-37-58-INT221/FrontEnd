@@ -8,6 +8,7 @@
         <h1 class=" text-left pl-10">ID <b>:</b> <slot name="studentId"></slot></h1>
     </div>
     </div>
+ 
 </template>
 
 

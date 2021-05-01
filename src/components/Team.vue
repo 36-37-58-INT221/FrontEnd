@@ -1,5 +1,5 @@
 <template>
-    <div class= "mx-auto bg-gray-300 pb-20 pt-3 max-w-3xl">    
+    <div class= "mx-auto bg-gray-300 pb-20 pt-3 my-8 max-w-3xl rounded">    
         <h1 class= " text-6xl header text-red-400">Our Team</h1>
         <h1 class= " text-l description"><b>INT 221 Integrated Project</b></h1>
         

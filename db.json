@@ -58,6 +58,28 @@
       },
       "manufactureDate": "2021-05-12",
       "id": 2
+    },
+    {
+      "productId": 19,
+      "pathPic": "pacthPic19",
+      "name": "IPONE19",
+      "description": "GG",
+      "color": [
+        {
+          "colorId": 1,
+          "colorCode": "#E94F37"
+        },
+        {
+          "colorId": 2,
+          "colorCode": "#393E41"
+        }
+      ],
+      "price": 7000,
+      "brand": {
+        "brandId": 1,
+        "name": "Apple"
+      },
+      "manufactureDate": "2022-09-01"
     }
   ]
 }
