@@ -9,13 +9,48 @@
     
     
     
-    <div class="bg-gray-700 text-left text-white py-2 "> 
-    <div class= "ml-8 hover:bg-red-500 hover:my-2   inline"> <router-link to="/">Home</router-link></div>   
-    <div class="ml-4 hover:bg-red-500  inline"> <router-link to="/ProductList">Product</router-link></div>   
-    <div class="ml-4 hover:bg-red-500 inline"> <router-link to="/Team"> Team</router-link></div>   
+    
+    <div class="bg-gray-700 text-left text-white  flex flex-wrap justify-items-center"> 
+
+    <span class= "ml-8 hoverInBar border-gray-700   pt-4 pb-1"><router-link to="/">Home</router-link></span>   
+    <span class="ml-4 hoverInBar border-gray-700  pt-4 pb-1"> <router-link to="/ProductList">Product</router-link></span>   
+    <span class="ml-4 hoverInBar border-gray-700  pt-4 pb-1"> <router-link to="/Team"> Team</router-link></span>   
+    <span class="fakeLine text-gray-700 float-left absolute mt-7 ml-6 pr-44">_</span>
     </div>
 
 </template>
+
+
+<style>
+
+.fakeLine{
+    border-style: solid;
+    border-color : black;
+    z-index : 3;
+    border-width : 0px 0px 3px 0px;
+
+
+}
+
+.hoverInBar{
+    border-width : 0px 0px 10px 0px;
+    z-index : 2;
+    
+}
+
+
+
+.hoverInBar:hover{
+    
+    border-color: black;
+    border-style: solid;
+    z-index : 3;
+    border-width : 0px 0px 7px 0px;
+}
+
+
+    
+</style>
 
 
 
