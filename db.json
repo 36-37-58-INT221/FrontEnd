@@ -22,25 +22,21 @@
   "havecolors": [],
   "products": [
     {
-      "imageName": "จารแดง.png",
+      "pathPic": "จารแดง.png",
       "name": "IPHONE1",
       "description": "IPHONE1IPHONE1",
       "color": [
         {
           "colorId": 1,
           "colorCode": "#E94F37"
-        },
-        {
-          "colorId": 2,
-          "colorCode": "#393E41"
         }
       ],
-      "price": 123123,
+      "price": 123231,
       "brand": {
         "brandId": 1,
         "name": "Apple"
       },
-      "manufactureDate": "2021-05-18",
+      "manufactureDate": "2021-05-20",
       "id": 1
     }
   ]
