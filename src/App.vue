@@ -18,9 +18,10 @@
 <div class="bg-red-400 pb-72 pt-6 -mt-6">
 
   <container>
-    <home ></home>
+    <home v-if="this.$route.path.indexOf('/Product/') == -1"></home>
     
   <router-view
+    v-if="this.$route.path !=='/' "
     :products="products"
     :productsUrl="productsUrl"
     :colors="colors"
