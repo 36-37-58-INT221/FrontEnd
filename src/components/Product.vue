@@ -1,15 +1,21 @@
 <template>
     <div class="mx-auto">
-        <div v-if="!isEdit">
+        <div v-if="!isEdit" class="text-white pb-60 pt-12">
+
+
+            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"  class=" w-96 h-auto mx-auto pb-8"/>
             <button class="border border-black mr-2" @click="isEdit = true">EDIT THIS</button>
             <button class="border border-black" @click="deleteProduct">DELETE THIS</button>
-            <h1 class="text-6xl">imageName : {{ viewProduct.pathPic }}</h1>
-            <h1 class="text-6xl">Name : {{ viewProduct.name }}</h1>
-            <h1 class="text-6xl">Price : {{ viewProduct.price }}</h1>
-            <h1 class="text-6xl">Description : {{ viewProduct.description }}</h1>
-            <h1 class="text-6xl">All Color : {{ allColors }}</h1>
-            <h1 class="text-6xl">Brand : {{ viewBrandName }}</h1>
-            <h1 class="text-6xl">Date : {{ viewProduct.manufactureDate }}</h1>
+            <div class="text-3xl text-left ml-20 pt-12">
+            <h1 class= "py-1">Name : {{ viewProduct.name }}</h1>
+            <h1 class= "py-1" >Price : {{ viewProduct.price }}</h1>
+            <h1 class= "py-1">Description : {{ viewProduct.description }}</h1>
+            <h1 class= "py-1">All Color : {{ allColors }}</h1>
+            <h1 class= "py-1">Brand : {{ viewBrandName }}</h1>
+            <h1 class= "py-1">Date : {{ viewProduct.manufactureDate }}</h1>
+        
+        
+        </div>
         </div>
         <div v-if="isEdit">
             <addNewProduct
