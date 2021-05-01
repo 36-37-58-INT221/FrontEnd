@@ -95,10 +95,12 @@
                 class="border border-gray-600 mt-8 col-span-2 mb-12 mx-auto text-white"
                 @click="submitForm"
             >Submit</button>
-            <button v-if="isEdit" @click="setView" class="border border-gray-600 col-span-1 mb-12 mx-auto text-white">CANCEL EDIT</button>
-            <button v-if="isEdit" class="border border-gray-600 mt-2 col-span-1 mb-12 mx-auto text-white" @click="editForm">Submit Edit</button> 
-        
-        
+
+            <div class= "col-span-2 mt-12">
+            <button v-if="isEdit" @click="setView" class="border border-gray-600  mb-12 mx-auto text-white">CANCEL EDIT</button>
+            <button v-if="isEdit" class="border border-gray-600 mt-2 mb-12 mx-auto  ml-2 text-white" @click="editForm">Submit Edit</button> 
+        </div>
+
         </div>
         </form>
   
