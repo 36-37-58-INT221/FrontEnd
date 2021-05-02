@@ -170,14 +170,11 @@ export default {
                 // formData.append('Product',blob);
 
                 var proId = null
-
-                if(proId == null){
-                    if(this.products.length > 0){
+                if(this.products.length > 0){
                     proId = this.products[this.products.length-1].productId +1;
                     }
                     else{
                         proId = 1;
-                    }
                 }
                 const res = await fetch(this.productsUrl, {
                     method: 'POST',

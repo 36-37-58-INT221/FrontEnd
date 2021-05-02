@@ -24,7 +24,7 @@
     {
       "productId": 1,
       "pathPic": "จารแดง.png",
-      "name": "IPHONE1",
+      "name": "IPHONE20",
       "description": "IPHONE1IPHONE1IPHONE1",
       "color": [
         {
@@ -43,6 +43,25 @@
       },
       "manufactureDate": "2021-04-28",
       "id": 1
+    },
+    {
+      "productId": 4,
+      "pathPic": "จารแดง.png",
+      "name": "IPHONE4",
+      "description": "IPHONE4IPHONE4",
+      "color": [
+        {
+          "colorId": 2,
+          "colorCode": "#393E41"
+        }
+      ],
+      "price": 5000,
+      "brand": {
+        "brandId": 2,
+        "name": "Samsung"
+      },
+      "manufactureDate": "2021-05-13",
+      "id": 4
     }
   ]
 }

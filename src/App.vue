@@ -18,10 +18,9 @@
 <div class="bg-red-400 pt-6 -mt-6" style="padding-bottom : 40% ">
 
   <container>
-    <home v-if="this.$route.path.indexOf('/Product/') == -1"></home>
+    <content-bar ></content-bar>
     
   <router-view
-    v-if="this.$route.path !=='/' "
     :products="products"
     :productsUrl="productsUrl"
     :colors="colors"
@@ -36,12 +35,12 @@
 
 <script>
 import NavBar from './components/NavBar.vue'
-import Home from './components/Home.vue'
+import ContentBar from './components/ContentBar.vue'
 
 export default {
   name: 'App',
   components: {
-    NavBar,Home
+    NavBar,ContentBar
   },
   data() {
     return {
