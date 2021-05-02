@@ -74,16 +74,21 @@ export default {
             document.location.href = `/Product/${this.$route.params.productId}`;
 
         },
-    },
-    computed:{
+        
+    },computed: {
 
-        setImage(){
+    setImage(){
             var index = this.products.findIndex(f => f.productId == this.$route.params.productId)
+            if(index != -1){
              return require(`../assets/${this.products[index].pathPic}`) ;
-           
+            }
+            else{
+            return "";
+            }
         }
 
     },
+    
     mounted() {
         var index = this.products.findIndex(f => f.productId == this.$route.params.productId)
         this.viewProduct = this.products[index];      
@@ -92,15 +97,7 @@ export default {
         var index = this.products.findIndex(f => f.productId == this.$route.params.productId)
         if(index != -1){
         this.viewProduct = this.products[index];
-       
-    }
-        if (index == -1) {
-            this.notFoundHook.push(index);
-
-        }
-        if (this.notFoundHook.length == 2) {
-            this.notFoundHook = [];
-            router.push("/NotFoundPage")
+        return ;
         }
         if(this.viewProduct != null){
             this.allColors = [];
@@ -110,7 +107,15 @@ export default {
             {
                 this.allColors.push(this.viewProduct.color[i].colorCode);
             }
+            return ;
+        }
+        if (index == -1) {
+            this.notFoundHook.push(index);
 
+        }
+        if (this.notFoundHook.length == 2) {
+            this.notFoundHook = [];
+            router.push("/NotFoundPage")
         }
 
        
