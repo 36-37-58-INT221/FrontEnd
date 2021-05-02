@@ -3,7 +3,9 @@
         <div v-if="!isEdit" class="text-white pb-60 pt-12">
 
             <h1 class = "text-6xl text-left ml-20 mb-12" style="text-shadow : 3px 3px black"> Product</h1>
-            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"  class=" w-96 h-auto mx-auto pb-8"/>
+
+            <img :src="setImage"  class=" w-96 h-auto mx-auto pb-8"/> 
+            
             <button class="border border-black mr-2" @click="isEdit = true">EDIT THIS</button>
             <button class="border border-black" @click="deleteProduct">DELETE THIS</button>
             <div class="text-3xl text-left ml-20 pt-12">
@@ -52,6 +54,7 @@ export default {
         return {
             viewProduct: [],
             notFoundHook: [],
+            imageName :"",
             viewBrandName : "",
             allColors: [],
             isEdit: false,
@@ -70,18 +73,27 @@ export default {
             this.isEdit = false;
             document.location.href = `/Product/${this.$route.params.productId}`;
 
+        },
+    },
+    computed:{
+
+        setImage(){
+            var index = this.products.findIndex(f => f.productId == this.$route.params.productId)
+             return require(`../assets/${this.products[index].pathPic}`) ;
+           
         }
 
     },
     mounted() {
-
         var index = this.products.findIndex(f => f.productId == this.$route.params.productId)
-        this.viewProduct = this.products[index];
-
+        this.viewProduct = this.products[index];      
     },
     beforeUpdate() {
         var index = this.products.findIndex(f => f.productId == this.$route.params.productId)
+        if(index != -1){
         this.viewProduct = this.products[index];
+       
+    }
         if (index == -1) {
             this.notFoundHook.push(index);
 
@@ -101,8 +113,7 @@ export default {
 
         }
 
-
-
+       
     }
 
 

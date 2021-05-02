@@ -4,7 +4,7 @@
     <router-link to="/">
       <li class="liNav float-left">Home</li>
     </router-link>
-    <router-link to="/Addproduct">
+    <router-link to="/AddProduct">
       <li class="liNav float-left">AddProduct</li>
     </router-link>
     <router-link to="/ProductList">
