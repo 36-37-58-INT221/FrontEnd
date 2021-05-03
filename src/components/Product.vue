@@ -3,14 +3,14 @@
         <div v-if="!isEdit" class="text-white pb-60 pt-12">
            
 
-            <div class="grid grid-cols-4 ml-8">
+            <div class="grid grid-cols-4 ml-8 ">
                 
 
                 <div class="col-span-2 ">
                     
                     <div class=" text-left ml-8  pt-12">
-                        <h1 class="text-6xl py-1"><b>{{ viewProduct.name }}</b></h1>
-                        <h1 class="text-2xl pb-1">{{ viewProduct.price }} THB</h1>
+                        <h1 class="text-6xl py-1 "><b>{{ viewProduct.name }}</b></h1>
+                        <h1 class="text-xl pb-8">{{ viewProduct.price }} THB</h1>
                     <button class="border border-black mr-2" @click="isEdit = true">EDIT</button>
                     <button class="border border-black" @click="deleteProduct">DELETE</button>
                        
@@ -35,12 +35,18 @@
                     </div>
                 </div>
 
-                <div class="col-span-2 pr-12 pt-12">
+                <div class="col-span-2 pr-12 pt-8">
                     <img :src="setImage" class="w-96 h-auto mx-auto pb-8 " />
                 </div>
 
                 <div class= "col-span-4 text-left mr-10" style="border-color:white; border-width : 2px 0px 0px 0px;">
-                    <h1 class="text-2xl pt-5 pb-3">DESCRIPTION </h1><h1 class="text-l">{{ viewProduct.description }}</h1>
+                    <h1 class="text-3xl pt-5">Product Information</h1>
+                    <div class="grid grid-cols-3 pt-5 pb-3">
+                    <h1 class="text-xl col-span-1">DESCRIPTION </h1>
+                    <h1 class="text-l col-span-2">{{ viewProduct.description }}</h1>
+                    <h1 class="text-xl col-span-1 mt-2">MANUFACTURE DATE </h1>
+                    <h1 class="text-l col-span-2 mt-2"> {{ viewProduct.manufactureDate }}</h1>
+                     </div>
                 </div>
             </div>
         </div>
