@@ -47,9 +47,9 @@ export default {
       products: [],
       brands: [],
       colors: [],
-      productsUrl: 'http://localhost:5000/products',
-      colorUrl: 'http://localhost:5000/colors',
-      brandUrl: 'http://localhost:5000/brands',
+      productsUrl: 'http://localhost/products',
+      colorUrl: 'http://localhost/colors',
+      brandUrl: 'http://localhost/brands',
 
     }
   },

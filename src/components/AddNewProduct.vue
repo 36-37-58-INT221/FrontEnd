@@ -121,6 +121,7 @@ export default {
             uploadFile : null,
             image:"",
             formdata: {
+                productId : null,
                 pathPic : null,
                 name: null,
                 description: null,
@@ -139,8 +140,6 @@ export default {
             if(input.files && input.files[0]){
                 this.uploadFile = input.files[0]
                 console.log(this.uploadFile);
-                console.log(this.uploadFile.size);
-                console.log(typeof this.uploadFile );
                 var reader = new FileReader();
                 reader.onload = (e) => { this.image = e.target.result; } 
                 reader.readAsDataURL(input.files[0])
@@ -168,54 +167,31 @@ export default {
                 if (this.errors.length > 0) {
                     return;
                 }
-
-
-                var proId = null
                 if(this.products.length > 0){
-                    proId = this.products[this.products.length-1].productId +1;
+                    this.formdata.productId = this.products[this.products.length-1].productId +1;
                     }
                     else{
-                        proId = 1;
+                        this.formdata.productId = 1;
                 }
-                // const blob = new Blob([JSON.stringify( {
-                    //     productId : proId,
-                    //     pathPic : this.formdata.pathPic,
-                    //     name: this.formdata.name,
-                    //     description: this.formdata.description,
-                    //     color: this.formdata.color,
-                    //     price: this.formdata.price,
-                    //     brand: this.formdata.brand,
-                    //     manufactureDate: this.formdata.manufactureDate,
-                    // })], {
-                //     type: 'application/json'
-                // })
 
-                // const formData = new FormData();
-                // formData.append('Product',blob);
-                // formData.append('Image',this.uploadImage);
 
-                
-                const res = await fetch(this.productsUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-type': 'application/json'
-                    },
-                    body: JSON.stringify(
-                        {
-                        productId : proId,
-                        pathPic : this.formdata.pathPic,
-                        name: this.formdata.name,
-                        description: this.formdata.description,
-                        color: this.formdata.color,
-                        price: this.formdata.price,
-                        brand: this.formdata.brand,
-                        manufactureDate: this.formdata.manufactureDate,
-                    }
-                    )
+                var input = document.querySelector('input[type="file"]')
+                const blob = new Blob([JSON.stringify(this.formdata)], {
+                    type: 'application/json'
                 })
-                this.refreshForm();
-                const data = await res.json();
-                this.$emit('submit-form', data);
+
+                const formData = new FormData(); 
+                formData.append('imageFile',input.files[0]);
+                formData.append('product',blob);
+               
+                const res =  await fetch(`${this.productsUrl}/add`, { 
+                    method: 'POST',
+                    body: formData 
+                })
+                this.refreshForm(); 
+                if(res.status == 200){
+                const data =  res.json();
+                this.$emit('submit-form', data);}
             }
         },
         async editForm() {
@@ -224,7 +200,7 @@ export default {
                 return;
             }
 
-            await fetch(this.productsUrl + "/" + this.viewProduct.productId, {
+            await fetch(`${this.productsUrl}/put/${this.viewProduct.productId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-type': 'application/json'
@@ -278,7 +254,8 @@ export default {
             this.formdata.price = parseFloat(this.formdata.price)
             
             var index2 = []
-            for (let  i= 0 ;i < this.products.length ; i++){ 
+            if(this.products.length > 0){
+            for (let  i = 0 ;i < this.products.length ; i++){ 
                 if(index2.length >= 2){break ;}
                 if(this.products[i].name.replace(" ","").toLowerCase() == this.formdata.name.replace(" ","").toLowerCase()){
                     index2.push( this.products[i].id)
@@ -292,6 +269,7 @@ export default {
             if (!this.isEdit &&index2.length >= 1) {
                     this.errors.push("have");
                 }
+            }
 
              
 

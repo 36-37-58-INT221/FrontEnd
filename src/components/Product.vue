@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="col-span-2 pr-12 pt-8">
-                    <img :src="setImage" class="w-96 h-auto mx-auto pb-8 " />
+                    <img :src="setImage" class="w-96 h-auto mx-auto pb-8 rounded" />
                 </div>
 
                 <div class= "col-span-4 text-left mr-10" style="border-color:white; border-width : 2px 0px 0px 0px;">
