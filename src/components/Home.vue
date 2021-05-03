@@ -1,12 +1,12 @@
 <template>
-    <div class="grid grid-cols-3">
+    <div class="grid grid-cols-3 pb-20">
         <div class="col-span-2 text-white">
             <div class="text-left ml-12 mt-12 text-5xl">New Release Products</div>
 
             <div v-for="(product,index) in NewProduct.slice().reverse()" :key="index">
                 <router-link  :to="{ name: 'Product', params: { productId: product.productId } }">
-                <product-card >
-                    <template v-slot:image><img class="w-24 h-auto ml-8 mt-8" :src="require(`../assets/${product.pathPic}`)"></template>
+                <product-card class="mt-6 rounded mr-3 ml-6 bg-gray-500">
+                    <template v-slot:image><img class="w-36 h-auto ml-2 mt-2 rounded" :src="require(`../assets/${product.pathPic}`)"></template>
                     <template v-slot:productName>{{ product.name }}</template>
                     <template v-slot:price>{{ product.price }} THB</template>
                 </product-card>

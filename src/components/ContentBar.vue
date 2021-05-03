@@ -15,7 +15,7 @@
     <span class="ml-8 hoverInBar pt-4 pb-1"><router-link to="/">Home</router-link></span>   
     <span class="ml-4 hoverInBar pt-4 pb-1"> <router-link to="/ProductList">Product</router-link></span>   
     <span class="ml-4 hoverInBar pt-4 pb-1"> <router-link to="/Team"> Team</router-link></span>   
-    <span class="fakeLine text-gray-700 float-left absolute mt-7 ml-6 pr-48">_</span>
+    <span class="fakeLine text-gray-700 float-left absolute mt-7 ml-7 pr-48">_</span>
         <span class="text-right flex-1 pt-4 pr-3"><router-link to="/AddProduct">Add Product</router-link></span>
 </div>
 

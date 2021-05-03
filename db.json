@@ -21,52 +21,6 @@
   ],
   "products": [
     {
-      "productId": 1,
-      "pathPic": "logo.png",
-      "name": "IPHONE1",
-      "description": "first product of Apple brand in my website",
-      "color": [
-        {
-          "colorId": 1,
-          "colorCode": "#E94F37"
-        },
-        {
-          "colorId": 2,
-          "colorCode": "#393E41"
-        }
-      ],
-      "price": 5000,
-      "brand": {
-        "brandId": 1,
-        "name": "Apple"
-      },
-      "manufactureDate": "2021-05-19",
-      "id": 1
-    },
-    {
-      "productId": 2,
-      "pathPic": "logo.png",
-      "name": "IPHONE2",
-      "description": "IPHONE2IPHONE2IPHONE2",
-      "color": [
-        {
-          "colorId": 1,
-          "colorCode": "#E94F37"
-        },
-        {
-          "colorId": 2,
-          "colorCode": "#393E41"
-        }
-      ],
-      "price": 50000,
-      "brand": {
-        "brandId": 1,
-        "name": "Apple"
-      },
-      "manufactureDate": "2021-05-06",
-      "id": 2
-    },
-    {
       "productId": 3,
       "pathPic": "1f93fd36e903edb83837c3f774de8dc1.jpg",
       "name": "Sonic Doll",
@@ -81,7 +35,7 @@
           "colorCode": "#393E41"
         }
       ],
-      "price": 500,
+      "price": 500.75,
       "brand": {
         "brandId": 1,
         "name": "AnimalDoll"

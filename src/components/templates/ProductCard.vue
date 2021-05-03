@@ -1,6 +1,6 @@
 <template>
-    <div class="bg-gray-500 mt-2 mr-3 ml-6 mb-2">
-        <div class="grid grid-cols-3 pb-8">
+    <div class="mt-2 mb-2">
+        <div class="grid grid-cols-3 pb-2">
             <div class="col-span-1">
                <slot name="image"></slot>
             </div>
