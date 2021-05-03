@@ -200,25 +200,47 @@ export default {
                 return;
             }
 
-            await fetch(`${this.productsUrl}/put/${this.viewProduct.productId}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-type': 'application/json'
-                },
-                body: JSON.stringify({
+            
+
+            var input = document.querySelector('input[type="file"]')
+            console.log(this.formdata.pathPic.replace(`${this.viewProduct.name}`,''))
+            console.log(input.files[0]);
+            const blob = new Blob([JSON.stringify({
                     productId : this.formdata.productId,
-                    pathPic : this.formdata.pathPic,
+                    pathPic :this.formdata.pathPic.replace(`${this.viewProduct.name}`,''),
                     name: this.formdata.name,
                     description: this.formdata.description,
                     color: this.formdata.color,
                     price: this.formdata.price,
                     brand: this.formdata.brand,
                     manufactureDate: this.formdata.manufactureDate,
+                })], {
+                    type: 'application/json'
                 })
-            })
 
+                const formData = new FormData(); 
+                formData.append('imageFile',input.files[0]);
+                formData.append('product',blob);
+
+            const res = await fetch(`${this.productsUrl}/put/${this.viewProduct.productId}`, {
+                method: 'PUT',
+                
+                body: formData 
+                //  JSON.stringify({
+                //     productId : this.formdata.productId,
+                //     pathPic :this.formdata.pathPic.replace(`${this.viewProduct.name}`,''),
+                //     name: this.formdata.name,
+                //     description: this.formdata.description,
+                //     color: this.formdata.color,
+                //     price: this.formdata.price,
+                //     brand: this.formdata.brand,
+                //     manufactureDate: this.formdata.manufactureDate,
+                // })
+             })
+            if(res.status == 200){
 
             this.$emit("edited")
+        }
         },
         validate() {
            
