@@ -105,7 +105,10 @@ export default {
         setImage() {
             var index = this.products.findIndex(f => f.productId == this.$route.params.productId)
             if (index != -1) {
-                return require(`../assets/${this.products[index].pathPic.replace(`${this.products[index].name}`,'')}`);
+                return `http://localhost/getImage/${this.products[index].pathPic}`;
+                
+                
+                
             }
             else {
                 return "";

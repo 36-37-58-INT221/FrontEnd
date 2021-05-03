@@ -6,7 +6,7 @@
             <div v-for="(product,index) in NewProduct.slice().reverse()" :key="index">
                 <router-link  :to="{ name: 'Product', params: { productId: product.productId } }">
                 <product-card class="mt-6 rounded mr-3 ml-6 bg-gray-500">
-                    <template v-slot:image><img class="w-36 h-auto ml-2 mt-2 rounded"  :src="require(`../assets/${product.pathPic.replace(`${product.name}`,'')}`)"></template>
+                    <template v-slot:image><img class="w-36 h-auto ml-2 mt-2 rounded"  :src="`http://localhost/getImage/${product.pathPic}`"></template>
                     <template v-slot:productName>{{ product.name }}</template>
                     <template v-slot:price>{{ product.price }} THB</template>
                 </product-card>
@@ -28,14 +28,7 @@ export default {
         }
     }, methods: {
         setNewProduct() {
-            if (this.products.length == 1) {
-                this.NewProduct = this.products[this.products.length - 1]
-                return ;
-            }
-            if (this.products.length < 1) {
-                this.NewProduct.name = "We Have no Product"
-                return ;
-            }
+
             if (this.products.length == 2) {
                 this.NewProduct = this.products.slice(this.products.length - 2, this.products.length)
                 return ;
@@ -50,10 +43,15 @@ export default {
 
     },
     mounted() {
-        this.setNewProduct();
+        console.log(this.products.length);
+        if(this.products.length > 2){
+        this.setNewProduct();}
+      
     },
     beforeUpdate() {
-        this.setNewProduct();
+        this.$root.refreshProduct();
+        if(this.products.length > 2){
+        this.setNewProduct();}
     }
 
 }
