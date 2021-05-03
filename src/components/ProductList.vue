@@ -7,10 +7,14 @@
            <router-link  :to="{ name: 'Product', params: { productId: product.productId } }">
             <div class="border  grid grid-cols-3 border-black cursor-pointer bg-white rounded py-12">
 
-                <img :src="require(`../assets/${product.pathPic}`)" class=" w-24 h-auto mx-auto pb-8"> 
-                
+                <div class= "col-span-1">
+                <img :src="require(`../assets/${product.pathPic}`)" class=" w-24 h-auto mx-auto pb-8"> </div>
+
+                <div class="col-span-2">
                 <h1 class=" text-5xl">{{ product.name }} </h1> 
-                 {{ product.price}}</div>
+                 {{ product.price}} THB</div>
+                
+                </div>
             
           </router-link></div>
        

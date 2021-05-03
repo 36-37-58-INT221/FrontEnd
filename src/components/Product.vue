@@ -1,30 +1,50 @@
 <template>
     <div class="mx-auto">
         <div v-if="!isEdit" class="text-white pb-60 pt-12">
+           
 
-            <h1 class = "text-6xl text-left ml-20 mb-12" style="text-shadow : 3px 3px black"> Product</h1>
+            <div class="grid grid-cols-4 ml-8">
+                
 
-            <img :src="setImage"  class=" w-96 h-auto mx-auto pb-8"/> 
-            
-            <button class="border border-black mr-2" @click="isEdit = true">EDIT THIS</button>
-            <button class="border border-black" @click="deleteProduct">DELETE THIS</button>
-            <div class="text-3xl text-left ml-20 pt-12">
-            <h1 class= "py-1">{{ viewProduct.name }}</h1>
-            <h1 class= "py-1" >{{ viewProduct.price }} THB</h1>
-            <h1 class= "py-1">Description : {{ viewProduct.description }}</h1>
-            <div class= "py-1">All Color : 
-                <span v-for="color in viewProduct.color" :key="color.id" class="flex-1">
-                <span class="pr-10 mx-2" v-bind:style="{ backgroundColor : color.colorCode }"></span>    
-                </span>
+                <div class="col-span-2 ">
+                    
+                    <div class=" text-left ml-8  pt-12">
+                        <h1 class="text-6xl py-1"><b>{{ viewProduct.name }}</b></h1>
+                        <h1 class="text-2xl pb-1">{{ viewProduct.price }} THB</h1>
+                    <button class="border border-black mr-2" @click="isEdit = true">EDIT</button>
+                    <button class="border border-black" @click="deleteProduct">DELETE</button>
+                       
+                        <h1 class="py-1 my-3">
+                            Color   
+                            <span
+                                v-for="color in viewProduct.color"
+                                :key="color.id"
+                                class="flex-1"
+                            >
+                                <span
+                                    class="pr-10 py-2 mx-2 rounded"
+                                    v-bind:style="{ backgroundColor: color.colorCode }"
+                                ></span>
+                            </span>
+                        </h1>
 
+                        <h1 class="py-1">brand : {{ viewBrandName }}</h1>
+                        <h1 class="py-1">manufacture date : {{ viewProduct.manufactureDate }}</h1> 
+                        
 
+                    </div>
+                </div>
+
+                <div class="col-span-2 pr-12 pt-12">
+                    <img :src="setImage" class="w-96 h-auto mx-auto pb-8 " />
+                </div>
+
+                <div class= "col-span-4 text-left mr-10" style="border-color:white; border-width : 2px 0px 0px 0px;">
+                    <h1 class="text-2xl pt-5 pb-3">DESCRIPTION </h1><h1 class="text-l">{{ viewProduct.description }}</h1>
+                </div>
             </div>
-            <h1 class= "py-1">Brand : {{ viewBrandName }}</h1>
-            <h1 class= "py-1">Date : {{ viewProduct.manufactureDate }}</h1>
-        
-        
         </div>
-        </div>
+
         <div v-if="isEdit">
             <addNewProduct
                 :viewProduct="viewProduct"
@@ -54,9 +74,8 @@ export default {
         return {
             viewProduct: [],
             notFoundHook: [],
-            imageName :"",
-            viewBrandName : "",
-            allColors: [],
+            imageName: "",
+            viewBrandName: "",
             isEdit: false,
         }
     },
@@ -74,51 +93,41 @@ export default {
             document.location.href = `/Product/${this.$route.params.productId}`;
 
         },
-        
-    },computed: {
 
-    setImage(){
+    }, computed: {
+
+        setImage() {
             var index = this.products.findIndex(f => f.productId == this.$route.params.productId)
-            if(index != -1){
-             return require(`../assets/${this.products[index].pathPic}`) ;
+            if (index != -1) {
+                return require(`../assets/${this.products[index].pathPic}`);
             }
-            else{
-            return "";
+            else {
+                return "";
             }
         }
 
     },
-    
+
     mounted() {
         var index = this.products.findIndex(f => f.productId == this.$route.params.productId)
-        this.viewProduct = this.products[index];      
+        this.viewProduct = this.products[index];
     },
     beforeUpdate() {
         var index = this.products.findIndex(f => f.productId == this.$route.params.productId)
-        if(index != -1){
-        this.viewProduct = this.products[index];
-        return ;
-        }
-        if(this.viewProduct != null){
-            this.allColors = [];
+        if (index != -1) {
+            this.viewProduct = this.products[index];
             this.viewBrandName = this.viewProduct.brand.name
-            for(let i = 0 ; i < this.viewProduct.color.length ;i++)
-            
-            {
-                this.allColors.push(this.viewProduct.color[i].colorCode);
-            }
-            return ;
+            return;
         }
         if (index == -1) {
             this.notFoundHook.push(index);
-
         }
-        if (this.notFoundHook.length == 2) {
+        if (this.notFoundHook.length >= 2) {
             this.notFoundHook = [];
             router.push("/NotFoundPage")
         }
 
-       
+
     }
 
 

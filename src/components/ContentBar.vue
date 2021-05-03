@@ -40,7 +40,6 @@
     transition: width 2s;
     transition: 0.3s;
 }
-
 .hoverInBar:hover{ 
     border-color: black;
     z-index : 3;

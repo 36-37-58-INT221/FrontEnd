@@ -1,5 +1,5 @@
 <template>
-    <ul class="ulNavBar " :class="[bgColor,position]">
+    <ul class="ulNavBar z-10" :class="[bgColor,position]">
         <slot></slot>
     </ul>
 </template>

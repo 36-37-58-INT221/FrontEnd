@@ -52,7 +52,7 @@
                     <label for="color" class="ml-2 pr-8 py-1"  v-bind:style="{ backgroundColor : color.colorCode }"></label>
                     <input
                         type="checkbox"
-                        class="w-10 h-10 ml-2 align-middle shadow-md py-1"
+                        class="w-10 h-10 ml-2 align-middle shadow-md py-1 rounded"
                         v-model="formdata.color"
                         :value="{ colorId : color.colorId, colorCode : color.colorCode}"
                     />
@@ -118,6 +118,7 @@ export default {
     data() {
         return {
             errors: [],
+            uploadFile : null,
             image:"",
             formdata: {
                 pathPic : null,
@@ -133,9 +134,13 @@ export default {
     methods: {
         uploadImageFile(event){
             var input = event.target
+            
            this.formdata.pathPic  = input.files[0].name;
-            console.log(this.formdata.pathPic)
             if(input.files && input.files[0]){
+                this.uploadFile = input.files[0]
+                console.log(this.uploadFile);
+                console.log(this.uploadFile.size);
+                console.log(typeof this.uploadFile );
                 var reader = new FileReader();
                 reader.onload = (e) => { this.image = e.target.result; } 
                 reader.readAsDataURL(input.files[0])
@@ -157,18 +162,13 @@ export default {
                 this.formdata.color = []
         },
         async submitForm() {
+            
             if (!this.isEdit) {
                 this.validate();
                 if (this.errors.length > 0) {
                     return;
                 }
 
-                // const blob = new Blob([JSON.stringify(this.formdata)], {
-                //     type: 'application/json'
-                // })
-
-                // const formData = new FormData();
-                // formData.append('Product',blob);
 
                 var proId = null
                 if(this.products.length > 0){
@@ -177,6 +177,24 @@ export default {
                     else{
                         proId = 1;
                 }
+                // const blob = new Blob([JSON.stringify( {
+                    //     productId : proId,
+                    //     pathPic : this.formdata.pathPic,
+                    //     name: this.formdata.name,
+                    //     description: this.formdata.description,
+                    //     color: this.formdata.color,
+                    //     price: this.formdata.price,
+                    //     brand: this.formdata.brand,
+                    //     manufactureDate: this.formdata.manufactureDate,
+                    // })], {
+                //     type: 'application/json'
+                // })
+
+                // const formData = new FormData();
+                // formData.append('Product',blob);
+                // formData.append('Image',this.uploadImage);
+
+                
                 const res = await fetch(this.productsUrl, {
                     method: 'POST',
                     headers: {

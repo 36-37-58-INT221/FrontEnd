@@ -25,11 +25,15 @@
       "productId": 1,
       "pathPic": "logo.png",
       "name": "IPHONE1",
-      "description": "IPHONE1IPHONE1",
+      "description": "first product of Apple brand in my website",
       "color": [
         {
           "colorId": 1,
           "colorCode": "#E94F37"
+        },
+        {
+          "colorId": 2,
+          "colorCode": "#393E41"
         }
       ],
       "price": 5000,
@@ -62,6 +66,67 @@
       },
       "manufactureDate": "2021-05-06",
       "id": 2
+    },
+    {
+      "productId": 3,
+      "pathPic": "logo.png",
+      "name": "IPHONE3",
+      "description": "IPHONE3IPHONE3",
+      "color": [
+        {
+          "colorId": 1,
+          "colorCode": "#E94F37"
+        }
+      ],
+      "price": 5000,
+      "brand": {
+        "brandId": 1,
+        "name": "Apple"
+      },
+      "manufactureDate": "2021-05-28",
+      "id": 3
+    },
+    {
+      "productId": 4,
+      "pathPic": "logo.png",
+      "name": "IPHONE4",
+      "description": "IPHONE4IPHONE4",
+      "color": [
+        {
+          "colorId": 1,
+          "colorCode": "#E94F37"
+        }
+      ],
+      "price": 5000,
+      "brand": {
+        "brandId": 1,
+        "name": "Apple"
+      },
+      "manufactureDate": "2021-05-13",
+      "id": 4
+    },
+    {
+      "productId": 5,
+      "pathPic": "logo.png",
+      "name": "IPHONE7",
+      "description": "IPHONE7IPHONE7IPHONE7",
+      "color": [
+        {
+          "colorId": 1,
+          "colorCode": "#E94F37"
+        },
+        {
+          "colorId": 2,
+          "colorCode": "#393E41"
+        }
+      ],
+      "price": 54222,
+      "brand": {
+        "brandId": 1,
+        "name": "Apple"
+      },
+      "manufactureDate": "2021-05-27",
+      "id": 5
     }
   ]
 }

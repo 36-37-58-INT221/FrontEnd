@@ -6,7 +6,7 @@
             <div v-for="(product,index) in NewProduct.slice().reverse()" :key="index">
                 <router-link  :to="{ name: 'Product', params: { productId: product.productId } }">
                 <product-card >
-                    <template v-slot:image><img class="w-24 h-auto" :src="require(`../assets/${product.pathPic}`)"></template>
+                    <template v-slot:image><img class="w-24 h-auto ml-8 mt-8" :src="require(`../assets/${product.pathPic}`)"></template>
                     <template v-slot:productName>{{ product.name }}</template>
                     <template v-slot:price>{{ product.price }} THB</template>
                 </product-card>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import ProductCard from './ProductCard.vue'
+import ProductCard from './templates/ProductCard.vue'
 
 export default {
     props: ['products'],

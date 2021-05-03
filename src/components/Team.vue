@@ -16,7 +16,7 @@
 
 
 <script>
-    import MemberTemplate from './MemberTemplate.vue';
+    import MemberTemplate from './templates/MemberTemplate.vue';
 
 export default {
 components: {
