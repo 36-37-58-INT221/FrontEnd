@@ -219,23 +219,15 @@ export default {
                 })
 
                 const formData = new FormData(); 
+                if( input.files[0] !== undefined){
                 formData.append('imageFile',input.files[0]);
+            }
                 formData.append('product',blob);
 
             const res = await fetch(`${this.productsUrl}/put/${this.viewProduct.productId}`, {
                 method: 'PUT',
                 
                 body: formData 
-                //  JSON.stringify({
-                //     productId : this.formdata.productId,
-                //     pathPic :this.formdata.pathPic.replace(`${this.viewProduct.name}`,''),
-                //     name: this.formdata.name,
-                //     description: this.formdata.description,
-                //     color: this.formdata.color,
-                //     price: this.formdata.price,
-                //     brand: this.formdata.brand,
-                //     manufactureDate: this.formdata.manufactureDate,
-                // })
              })
             if(res.status == 200){
 
