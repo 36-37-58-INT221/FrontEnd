@@ -139,7 +139,6 @@ export default {
            this.formdata.pathPic  = input.files[0].name;
             if(input.files && input.files[0]){
                 this.uploadFile = input.files[0]
-                console.log(this.uploadFile);
                 var reader = new FileReader();
                 reader.onload = (e) => { this.image = e.target.result; } 
                 reader.readAsDataURL(input.files[0])
@@ -153,7 +152,7 @@ export default {
                 document.getElementById("imageFile").value="";
                 this.image = "",
                 this.formdata.pathPic = null,
-                this.formdata.name = null,
+                this.formdata.name = "",
                 this.formdata.description = null,
                 this.formdata.price = null,
                 this.formdata.brand = null,
@@ -161,8 +160,8 @@ export default {
                 this.formdata.color = []
         },
         async submitForm() {
-            
             if (!this.isEdit) {
+                
                 this.validate();
                 if (this.errors.length > 0) {
                     return;
@@ -188,10 +187,12 @@ export default {
                     method: 'POST',
                     body: formData 
                 })
-                this.refreshForm(); 
+                
                 if(res.status == 200){
                 const data =  res.json();
-                this.$emit('submit-form', data);}
+                this.$emit('submit-form', data);
+                this.refreshForm();
+            } 
             }
         },
         async editForm() {
@@ -267,7 +268,8 @@ export default {
             
             var index2 = []
             if(this.products.length > 0){
-            for (let  i = 0 ;i < this.products.length ; i++){ 
+                
+            for (let  i = 0 ;i < this.products.length-1 ; i++){ 
                 if(index2.length >= 2){break ;}
                 if(this.products[i].name.replace(" ","").toLowerCase() == this.formdata.name.replace(" ","").toLowerCase()){
                     index2.push( this.products[i].id)
