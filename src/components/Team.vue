@@ -28,17 +28,17 @@ data() {
         members: [
         {
             name : "Thanasit Eksoragul",
-            role : "BackEnd",
+            role : "BackEnd,DevOps,Database",
             studentId : "62130500036",
         },
         {
             name : "Thanapat Suwannaard",
-            role : "FrontEnd",
+            role : "FrontEnd,Database",
             studentId : "62130500037",
         }, 
         {
             name : "Punthanat Ularnwiriyanont",
-            role : "BackEnd",
+            role : "BackEnd,DevOps,Network",
             studentId : "62130500058",
         }
         ]

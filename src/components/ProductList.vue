@@ -9,8 +9,30 @@
     <router-link  :to="{ name: 'Product', params: { productId: product.productId } }">
         <product-card class="mt-6 rounded pr-24 bg-gray-300">
             <template v-slot:image><img class="w-36 h-auto ml-2 mt-2 rounded" :src="`http://localhost/getImage/${product.pathPic}`"></template>
-            <template v-slot:productName>{{ product.name }}</template>
-            <template v-slot:price>{{ product.price }} THB</template>
+            <template v-slot:productName><h1 class="ml-8" style="border-style: solid;
+                border-color : #2c3e50;
+                z-index : 3;
+                border-width : 0px 0px 2px 0px; width:100%;">{{ product.name }}</h1></template>
+            <template v-slot:price><h1 class="ml-8">{{ product.price }} THB</h1></template>
+            <template v-slot:brand><h1 class="ml-8 text-sm">by : {{ product.brand.name }}</h1></template>
+            <template v-slot:color>
+                
+                <div  class="ml-8 mt-8">
+                <span
+                v-for="color in product.color"
+                :key="color.id"
+                class="mt-12 "
+            >
+                <span
+                    class="py-1 pr-2  rounded-full"
+                    v-bind:style="{ backgroundColor: color.colorCode }"
+                ></span>
+            </span>
+        </div>
+        </template>
+
+
+
         </product-card>
         </router-link></div>
 
@@ -31,7 +53,7 @@ export default {
     data() {
         return {
             currentPage: 0 ,
-            pageSize : 1,
+            pageSize : 2,
             totalPage : 0,
             sortBy : "productId",
             productUrl: `http://localhost/products/page?pageNo=`,

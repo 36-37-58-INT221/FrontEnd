@@ -7,7 +7,7 @@
                 <router-link  :to="{ name: 'Product', params: { productId: product.productId } }">
                 <product-card class="mt-6 rounded mr-3 ml-6 bg-gray-500">
                     <template v-slot:image><img class="w-36 h-auto ml-2 mt-2 rounded"  :src="`http://localhost/getImage/${product.pathPic}`"></template>
-                    <template v-slot:productName>{{ product.name }}</template>
+                    <template v-slot:productName >{{ product.name }}</template>
                     <template v-slot:price>{{ product.price }} THB</template>
                 </product-card>
                 </router-link>
