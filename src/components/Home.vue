@@ -30,7 +30,7 @@ export default {
         setNewProduct() {
 
             if (this.products.length == 2) {
-                this.NewProduct = this.products.slice(this.products.length - 2, this.products.length)
+                this.NewProduct = this.products.slice(this.products.length - 1, this.products.length)
                 return ;
             }
             else {
@@ -44,13 +44,13 @@ export default {
     },
     mounted() {
         console.log(this.products.length);
-        if(this.products.length > 2){
+        if(this.products.length >= 2){
         this.setNewProduct();}
       
     },
     beforeUpdate() {
         this.$root.refreshProduct();
-        if(this.products.length > 2){
+        if(this.products.length >= 2){
         this.setNewProduct();}
     }
 

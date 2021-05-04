@@ -10,7 +10,7 @@
 
             <div class="pt-2 text-left text-white col-span-2">
                 <img v-if="!isEdit" :src="image || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'" class="w-auto h-60 mx-auto rounded mb-4"/>
-                <img v-if="isEdit" :src="require(`../assets/${viewProduct.pathPic.replace(`${viewProduct.name}`,'')}`)" class="w-auto h-60 mx-auto rounded mb-4"/>
+                <img v-if="isEdit" :src="image || `http://localhost/getImage/${viewProduct.pathPic}`  " class="w-auto h-60 mx-auto rounded mb-4"/>
                 <h1 class="ml-12">Image File <b class="text-red-600 text-xl" >*</b></h1>
                 <input type="file" id="imageFile" class= "ml-12 mb-2 " @change="uploadImageFile($event)" multiple accept=".jpg, .jpeg, .png" />
                 <h1
@@ -203,8 +203,6 @@ export default {
             
 
             var input = document.querySelector('input[type="file"]')
-            console.log(this.formdata.pathPic.replace(`${this.viewProduct.name}`,''))
-            console.log(input.files[0]);
             const blob = new Blob([JSON.stringify({
                     productId : this.formdata.productId,
                     pathPic :this.formdata.pathPic.replace(`${this.viewProduct.name}`,''),

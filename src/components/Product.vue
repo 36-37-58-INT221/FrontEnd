@@ -59,7 +59,7 @@
                 :brands="brands"
                 :productsUrl="productsUrl"
                 :products="products"
-                @edited="isEdit = false"
+                @edited="edit()"
                 @cancel-edit="setView"
             />
         </div>
@@ -99,6 +99,15 @@ export default {
             document.location.href = `/Product/${this.$route.params.productId}`;
 
         },
+        edit(){
+
+            this.isEdit = false; 
+            this.$root.refreshProduct();
+
+        }
+
+
+
 
     }, computed: {
 
