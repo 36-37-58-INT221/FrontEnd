@@ -1,31 +1,97 @@
 <template>
     <h1 class="text-6xl text-red-400 mb-20 mt-12" style="text-shadow : 3px 3px black"><b>All Products We have</b></h1>
     <div class= "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
-    <div class=" mx-2 " v-for="product in products.slice().reverse()" :key="product.id">
 
-       
-        <router-link  :to="{ name: 'Product', params: { productId: product.productId } }">
-            <product-card class="mt-6 rounded pr-24 bg-gray-300">
-                <template v-slot:image><img class="w-36 h-auto ml-2 mt-2 rounded" :src="`http://localhost/getImage/${product.pathPic}`"></template>
-                <template v-slot:productName>{{ product.name }}</template>
-                <template v-slot:price>{{ product.price }} THB</template>
-            </product-card>
-            </router-link>
-  
-    </div>
+
+   
+    <page-control class= "col-span-2" :currentPage="currentPage" :totalPage="totalPage" @change-page="clickPage"></page-control>
+    <div class=" mx-2 " v-for="product in productPage.slice().reverse()" :key="product.id">
+    <router-link  :to="{ name: 'Product', params: { productId: product.productId } }">
+        <product-card class="mt-6 rounded pr-24 bg-gray-300">
+            <template v-slot:image><img class="w-36 h-auto ml-2 mt-2 rounded" :src="`http://localhost/getImage/${product.pathPic}`"></template>
+            <template v-slot:productName>{{ product.name }}</template>
+            <template v-slot:price>{{ product.price }} THB</template>
+        </product-card>
+        </router-link></div>
+
     </div>
 </template>
 
 
 
 <script>
-    
+    import PageControl from './PageControl.vue'
 export default {
+    components:{
+        PageControl
 
+    },
     props: ["products"],
-    mounted() {
+
+    data() {
+        return {
+            currentPage: 0 ,
+            pageSize : 2,
+            totalPage : 0 ,
+            productUrl: `http://localhost/products/page?pageNo=`,
+            productPage:[],
+        }
+    },methods: {
+
+        async nextBut(){
+            
+            if(this.productPage.length <=1){
+                return ;
+
+
+            }else{
+            this.currentPage =this.currentPage+1;  
+            
+            this.productPage = await this.fetchPage();}
+
+        },
+        async backBut(){
+            this.currentPage =this.currentPage-1; 
+            if(this.currentPage < 0 ){this.currentPage = 0} 
+            this.productPage = await this.fetchPage();
+        },
+       async clickPage(pageSelect){
+            this.currentPage = pageSelect ;
+            console.log(this.currentPage)
+            this.productPage = await this.fetchPage();
+        },
+
+        
+      async fetchPage(){
+     const res = await fetch(this.productUrl+this.currentPage+"&&pageSize="+this.pageSize);
+      const data = await res.json();
+      return data;
+            
+
+
+        }
+
+
+    },
+
+
+
+    async mounted() {
+
+        this.productPage = await this.fetchPage();
+
+        if (this.products.length%this.pageSize !== 0){
+            this.totalPage = parseInt(this.products.length/this.pageSize+1);
+        }else{
+            this.totalPage = this.products.length/this.pageSize;
+        }
+        if(this.products.length < this.pageSize ){
+            this.totalPage = 1;    
+        }
+
         this.$root.refreshProduct();
-        console.log(this.products);
+        console.log( this.products.length);
+        console.log( this.totalPage);
     },
 }
 </script>
