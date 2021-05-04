@@ -31,7 +31,7 @@ export default {
     data() {
         return {
             currentPage: 0 ,
-            pageSize : 2,
+            pageSize : 1,
             totalPage : 0 ,
             sortBy : "productId",
             productUrl: `http://localhost/products/page?pageNo=`,
@@ -39,37 +39,16 @@ export default {
         }
     },methods: {
 
-        async nextBut(){
-            
-            if(this.productPage.length <=1){
-                return ;
-
-
-            }else{
-            this.currentPage =this.currentPage+1;  
-            
-            this.productPage = await this.fetchPage();}
-
-        },
-        async backBut(){
-            this.currentPage =this.currentPage-1; 
-            if(this.currentPage < 0 ){this.currentPage = 0} 
-            this.productPage = await this.fetchPage();
-        },
        async clickPage(pageSelect){
             this.currentPage = pageSelect ;
             console.log(this.currentPage)
             this.productPage = await this.fetchPage();
         },
 
-        
       async fetchPage(){
      const res = await fetch(this.productUrl+this.currentPage+"&&pageSize="+this.pageSize+ "&&sortBy="+this.sortBy);
       const data = await res.json();
       return data;
-            
-
-
         }
 
 
@@ -78,21 +57,40 @@ export default {
 
 
     async mounted() {
-
+        this.$root.refreshProduct();
         this.productPage = await this.fetchPage();
-
+        this.totalPage = 0 ;
+        if(this.totalPage  == 0 ){
         if (this.products.length%this.pageSize !== 0){
             this.totalPage = parseInt(this.products.length/this.pageSize+1);
-        }else{
+        }else if(this.products.length%this.pageSize == 0){
             this.totalPage = this.products.length/this.pageSize;
         }
         if(this.products.length < this.pageSize ){
             this.totalPage = 1;    
         }
+        console.log(this.totalPage);
+        this.currentPage = this.totalPage-1;
+        console.log(this.currentPage);
+        this.productPage = await this.fetchPage();
+    }
 
-        this.$root.refreshProduct();
-        console.log( this.products.length);
-        console.log( this.totalPage);
-    },
+    }, 
+    
+    
+
+
+
+
+     
+
+
+
+
+    
+
+
+
+
 }
 </script>
