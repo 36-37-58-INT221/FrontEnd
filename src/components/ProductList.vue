@@ -20,7 +20,7 @@
 
 
 <script>
-    import PageControl from './PageControl.vue'
+    import PageControl from './templates/PageControl.vue'
 export default {
     components:{
         PageControl
@@ -32,7 +32,7 @@ export default {
         return {
             currentPage: 0 ,
             pageSize : 1,
-            totalPage : 0 ,
+            totalPage : 0,
             sortBy : "productId",
             productUrl: `http://localhost/products/page?pageNo=`,
             productPage:[],
@@ -59,7 +59,6 @@ export default {
     async mounted() {
         this.$root.refreshProduct();
         this.productPage = await this.fetchPage();
-        this.totalPage = 0 ;
         if(this.totalPage  == 0 ){
         if (this.products.length%this.pageSize !== 0){
             this.totalPage = parseInt(this.products.length/this.pageSize+1);
@@ -68,10 +67,8 @@ export default {
         }
         if(this.products.length < this.pageSize ){
             this.totalPage = 1;    
-        }
-        console.log(this.totalPage);
+        }   
         this.currentPage = this.totalPage-1;
-        console.log(this.currentPage);
         this.productPage = await this.fetchPage();
     }
 
