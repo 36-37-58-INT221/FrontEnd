@@ -33,6 +33,7 @@ export default {
             currentPage: 0 ,
             pageSize : 2,
             totalPage : 0 ,
+            sortBy : "productId",
             productUrl: `http://localhost/products/page?pageNo=`,
             productPage:[],
         }
@@ -63,7 +64,7 @@ export default {
 
         
       async fetchPage(){
-     const res = await fetch(this.productUrl+this.currentPage+"&&pageSize="+this.pageSize);
+     const res = await fetch(this.productUrl+this.currentPage+"&&pageSize="+this.pageSize+ "&&sortBy="+this.sortBy);
       const data = await res.json();
       return data;
             
