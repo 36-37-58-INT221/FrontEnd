@@ -23,6 +23,7 @@
   <router-view
     :products="products"
     :productsUrl="productsUrl"
+    :imageUrl="imageUrl"
     :colors="colors"
     :brands="brands"
     @submit-form="addProducts"
@@ -50,7 +51,7 @@ export default {
       productsUrl: 'http://localhost/products',
       colorUrl: 'http://localhost/colors',
       brandUrl: 'http://localhost/brands',
-
+      imageUrl : 'http://localhost/getImage/',
     }
   },
 

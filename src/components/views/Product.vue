@@ -75,7 +75,7 @@ export default {
     components: {
         AddNewProduct
     },
-    props: ["products", "productsUrl", "brands", "colors"],
+    props: ["products", "productsUrl", "brands", "colors","imageUrl"],
     data() {
         return {
             viewProduct: [],
@@ -108,7 +108,7 @@ export default {
         setImage() {
             var index = this.products.findIndex(f => f.productId == this.$route.params.productId)
             if (index != -1) {
-                return `http://localhost/getImage/${this.products[index].pathPic}`;
+                return `${this.imageUrl}${this.products[index].pathPic}`;
                 
                 
                 

@@ -5,6 +5,7 @@
         
 
         <member-template v-for="member in members" :key="member.name">
+            <template v-slot:image><img class="w-36 h-36 ml-2 mt-2 rounded-full" :src="require(`../../assets/member-images/${member.image}`)"></template>
             <template v-slot:memberName>{{ member.name }}</template>
             <template v-slot:role>{{ member.role }}</template>
             <template v-slot:studentId>{{ member.studentId }}</template>
@@ -27,16 +28,19 @@ data() {
         
         members: [
         {
+            image: "member36.jpg",
             name : "Thanasit Eksoragul",
             role : "BackEnd,DevOps,Database",
             studentId : "62130500036",
         },
         {
+            image: "member37.jpg",
             name : "Thanapat Suwannaard",
             role : "FrontEnd,Database",
             studentId : "62130500037",
         }, 
         {
+            image: "member58.jpg",
             name : "Punthanat Ularnwiriyanont",
             role : "BackEnd,DevOps,Network",
             studentId : "62130500058",
