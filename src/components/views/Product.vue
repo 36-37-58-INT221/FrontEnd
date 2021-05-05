@@ -14,7 +14,7 @@
                     <button class="border border-black mr-2" @click="isEdit = true">EDIT</button>
                     <button class="border border-black" @click="deleteProduct">DELETE</button>
                        
-                        <h1 class="py-1 my-3">
+                        <h1 class="py-3 lg:py-1 my-3">
                             Color   
                             <span
                                 v-for="color in viewProduct.color"
@@ -39,13 +39,13 @@
                     <img :src="setImage" class="w-96 h-auto mx-auto pb-8 rounded" />
                 </div>
 
-                <div class= "col-span-4 text-left mr-10" style="border-color:white; border-width : 2px 0px 0px 0px;">
+                <div class= "col-span-5 lg:col-span-4 text-left mr-10" style="border-color:white; border-width : 2px 0px 0px 0px;">
                     <h1 class="text-3xl pt-5">Product Information</h1>
-                    <div class="grid grid-cols-3 pt-5 pb-3">
-                    <h1 class="text-xl col-span-1">DESCRIPTION </h1>
-                    <h1 class="text-l col-span-2">{{ viewProduct.description }}</h1>
-                    <h1 class="text-xl col-span-1 mt-2">MANUFACTURE DATE </h1>
-                    <h1 class="text-l col-span-2 mt-2"> {{ viewProduct.manufactureDate }}</h1>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 pt-5 pb-3">
+                    <h1 class="my-2 underline lg:no-underline text-xl col-span-1">DESCRIPTION </h1>
+                    <h1 class="my-2 text-l col-span-2">{{ viewProduct.description }}</h1>
+                    <h1 class="my-2 underline lg:no-underline text-xl col-span-1 mt-2">MANUFACTURE DATE </h1>
+                    <h1 class="my-2 text-l col-span-2 mt-2"> {{ viewProduct.manufactureDate }}</h1>
                      </div>
                 </div>
             </div>

@@ -57,7 +57,7 @@ export default {
             pageSize : 2,
             totalPage : 0,
             sortBy : "productId",
-            productUrl: `http://localhost/products/page?pageNo=`,
+            productPageUrl: `http://localhost/products/page?pageNo=`,
             productPage:[],
         }
     },methods: {
@@ -68,11 +68,11 @@ export default {
             this.productPage = await this.fetchPage();
         },
 
-      async fetchPage(){
-     const res = await fetch(this.productUrl+this.currentPage+"&&pageSize="+this.pageSize+ "&&sortBy="+this.sortBy);
-      const data = await res.json();
-      return data;
-        }
+     async fetchPage(){
+     const res = await fetch(this.productPageUrl+this.currentPage+"&&pageSize="+this.pageSize+ "&&sortBy="+this.sortBy);
+     const data = await res.json();
+     return data;
+    }
 
 
     },
