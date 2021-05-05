@@ -193,7 +193,11 @@ export default {
                 this.$emit('submit-form', data);
                 router.push('/ProductList')
                 this.refreshForm();
-            } 
+                } if(res.status == 500){
+                    this.errors.push('have');
+
+                }
+                 
             }
         },
         async editForm() {
@@ -201,9 +205,6 @@ export default {
             if (this.errors.length > 0) {
                 return;
             }
-
-            
-
             var input = document.querySelector('input[type="file"]')
             const blob = new Blob([JSON.stringify({
                     productId : this.formdata.productId,
@@ -232,7 +233,11 @@ export default {
             if(res.status == 200){
 
             this.$emit("edited")
-        }
+            }   if(res.status == 500){
+                    this.errors.push('have');
+
+                }
+            
         },
         validate() {
            
@@ -266,30 +271,28 @@ export default {
                 this.errors.push("noPrice")
             }
             this.formdata.price = parseFloat(this.formdata.price)
-            
-            var index2 = []
+
+            var index = []
             if(this.products.length > 0){
                 
             for (let  i = 0 ;i < this.products.length-1 ; i++){ 
-                if(index2.length >= 2){break ;}
+                if(index.length >= 2){break ;}
                 if(this.products[i].name.replace(" ","").toLowerCase() == this.formdata.name.replace(" ","").toLowerCase()){
-                    index2.push( this.products[i].productId)
+                    index.push( this.products[i].productId)
                 }
-                console.log(index2);
             }
-             if (this.isEdit && index2[0] != this.formdata.productId ) {
-
-                if (index2[0] !== index2[1]) {
+             if (this.isEdit) {
+                 if(index.length == 1 & index[0] !== this.formdata.productId){
+                    this.errors.push("have");
+                 }
+                if (index.length >=2 && index[0] !== index[1]) {
                     this.errors.push("have");
                 }
             } 
-            if (!this.isEdit &&index2.length >= 1) {
+            if (!this.isEdit &&index.length >= 1) {
                     this.errors.push("have");
                 }
             }
-
-             
-
         },
         setView() {
             this.$emit('cancel-edit');
