@@ -59,6 +59,7 @@
                 :brands="brands"
                 :productsUrl="productsUrl"
                 :products="products"
+                :imageUrl="imageUrl"
                 @edited="setView"
                 @cancel-edit="setView"
             />

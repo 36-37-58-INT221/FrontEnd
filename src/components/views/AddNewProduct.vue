@@ -113,7 +113,7 @@
 
 <script>
 export default {
-    props: ["products", "productsUrl", "brands", "colors", "viewProduct", "isEdit", "viewBrand"],
+    props: ["products", "productsUrl", "brands", "colors", "viewProduct", "isEdit", "viewBrand","imageUrl"],
     data() {
         return {
             errors: [],
