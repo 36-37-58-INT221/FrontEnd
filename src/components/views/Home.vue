@@ -1,5 +1,5 @@
 <template>
-    <div class="grid grid-cols-3 pb-20">
+    <div class="grid grid-cols-1 lg:grid-cols-3 pb-20">
         <div class="col-span-2 text-white">
             <div class="text-left ml-12 mt-12 text-5xl blackShadow">New Release Products</div>
 
@@ -7,12 +7,12 @@
                 <router-link  :to="{ name: 'Product', params: { productId: product.productId } }">
                 <product-card class="mt-6 rounded mr-3 ml-6 text-black bg-gray-400">
                     <template v-slot:image><img class="w-36 h-auto ml-2 mt-2 rounded"  :src="`http://localhost/getImage/${product.pathPic}`"></template>
-                    <template v-slot:productName ><h1 class="text-3xl -ml-12">{{ product.name }}</h1></template>
-                    <template v-slot:price><h1 class="-ml-12">{{ product.price }} THB</h1></template>
+                    <template v-slot:productName ><h1 class="text-3xl lg:-ml-12">{{ product.name }}</h1></template>
+                    <template v-slot:price><h1 class=" lg:-ml-12">{{ product.price }} THB</h1></template>
                     <template v-slot:brand><h1 class="float-right -mt-14 mr-4 text-base">by : {{ product.brand.name }}</h1></template>
                     <template v-slot:color>
                 
-                        <div  class="-ml-12 mt-14">
+                        <div  class="lg:-ml-12 mt-14">
                         <span
                         v-for="color in product.color"
                         :key="color.id"

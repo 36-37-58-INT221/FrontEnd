@@ -1,11 +1,12 @@
 <template>
     <h1 class="text-6xl text-red-400 mb-8 mt-12" style="text-shadow : 3px 3px black"><b>All Products We have</b></h1>
-    <div class= "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
+    <div class= "grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2">
 
 
    
-    <page-control class= "col-span-2" :currentPage="currentPage" :totalPage="totalPage" @change-page="clickPage"></page-control>
-    <div class=" mx-2 " v-for="product in productPage.slice().reverse()" :key="product.id">
+    <page-control class= "col-span-1 lg:col-span-2" :currentPage="currentPage" :totalPage="totalPage" @change-page="clickPage"></page-control>
+
+    <div class=" mx-2 col-span-1" v-for="product in productPage.slice().reverse()" :key="product.id">
     <router-link  :to="{ name: 'Product', params: { productId: product.productId } }">
         <product-card class="mt-6 rounded pr-24 bg-gray-400">
             <template v-slot:image><img class="w-36 h-auto ml-2 mt-2 rounded" :src="`http://localhost/getImage/${product.pathPic}`"></template>
