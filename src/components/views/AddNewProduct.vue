@@ -52,7 +52,7 @@
                     <label for="color" class="ml-2 pr-8 py-1"  v-bind:style="{ backgroundColor : color.colorCode }"></label>
                     <input
                         type="checkbox"
-                        class="w-10 h-10 ml-2 align-middle shadow-md py-1 rounded"
+                        class="w-5 h-7 ml-2 align-middle shadow-md py-1 rounded"
                         v-model="formdata.color"
                         :value="{ colorId : color.colorId, colorCode : color.colorCode}"
                     />
@@ -95,8 +95,7 @@
                 value="Submit"
                 class="border border-gray-600 mt-8 col-span-2 mb-12 mx-auto text-white" 
                 @btn-click="submitForm" labels="SUBMIT" bgcolor="bg-greenpastel" bordercolor="border-greenpastel" hover="hover:bg-green-600 hover:border-greenpastel-dark"
-            ></base-button>
-
+            />
             <div class= "col-span-2 mt-12">
             <base-button v-if="isEdit" @btn-click="setView" class="border border-gray-600  mb-12 mx-auto text-white" bordercolor="border-redpastel" bgcolor="bg-redpastel" hover="hover:bg-redpastel-dark hover:border-redpastel-dark" labels="CANCEL EDIT"/>
             <base-button v-if="isEdit" class="border border-gray-600 mt-2 mb-12 mx-auto  ml-2 text-white" @btn-click="editForm" labels="SUBMIT EDIT" bgcolor="bg-greenpastel" bordercolor="border-greenpastel" hover="hover:bg-green-600 hover:border-greenpastel-dark"/>

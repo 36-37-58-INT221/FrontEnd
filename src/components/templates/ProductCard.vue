@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-2 mb-2">
+    <div class="mt-2 mb-2 hover:bg-gray-900 hover:text-white">
         <div class="grid grid-cols-3 pb-2">
             <div class="col-span-1" >
                <slot name="image"></slot>
