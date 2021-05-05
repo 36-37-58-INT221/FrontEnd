@@ -273,10 +273,12 @@ export default {
             for (let  i = 0 ;i < this.products.length-1 ; i++){ 
                 if(index2.length >= 2){break ;}
                 if(this.products[i].name.replace(" ","").toLowerCase() == this.formdata.name.replace(" ","").toLowerCase()){
-                    index2.push( this.products[i].id)
+                    index2.push( this.products[i].productId)
                 }
+                console.log(index2);
             }
-             if (index2.length >= 2 &&this.isEdit) {
+             if (this.isEdit && index2[0] != this.formdata.productId ) {
+
                 if (index2[0] !== index2[1]) {
                     this.errors.push("have");
                 }
