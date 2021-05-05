@@ -35,8 +35,8 @@
 </template>
 
 <script>
-import NavBar from './components/templates/NavBar.vue'
-import ContentBar from './components/templates/ContentBar.vue'
+import NavBar from './components/UI/NavBar.vue'
+import ContentBar from './components/UI/ContentBar.vue'
 
 export default {
   name: 'App',
