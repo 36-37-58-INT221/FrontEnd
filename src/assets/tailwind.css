@@ -14,7 +14,7 @@
   
   .liNav{
   
-   @apply  block text-center text-white px-3 py-3 hover:bg-red-600 ;
+   @apply  block text-center text-white px-3 py-3 hover:bg-gray-700 ;
   
   }
 

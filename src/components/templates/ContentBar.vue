@@ -11,12 +11,16 @@
     
     <div>
     
-    <div class="bg-gray-700  text-white  flex flex-wrap justify-items-center"> 
+    <div class="bg-gray-700  text-white  flex  justify-items-center"> 
     <span class="ml-8 hoverInBar pt-4 pb-1"><router-link to="/">Home</router-link></span>   
     <span class="ml-4 hoverInBar pt-4 pb-1"> <router-link to="/ProductList">Product</router-link></span>   
     <span class="ml-4 hoverInBar pt-4 pb-1"> <router-link to="/Team"> Team</router-link></span>   
     <span class="fakeLine text-gray-700 float-left absolute mt-7 ml-7 pr-48">_</span>
-        <span class="text-right flex-1 pt-4 pr-3"><router-link to="/AddProduct">Add Product</router-link></span>
+        <span class="flex-1 pt-4 pr-3">
+        <h1 class="block hover:underline text-right"><router-link to="/AddProduct">Add Product</router-link></h1>
+        </span>
+
+
 </div>
 
 </div>
