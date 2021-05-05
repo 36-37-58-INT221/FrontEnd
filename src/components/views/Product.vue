@@ -69,7 +69,7 @@
 
 
 <script>
-import router from '../router';
+import router from '../../router';
 import AddNewProduct from './AddNewProduct.vue';
 export default {
     components: {
