@@ -112,6 +112,7 @@
 
 
 <script>
+    import router from '../../router';
 export default {
     props: ["products", "productsUrl", "brands", "colors", "viewProduct", "isEdit", "viewBrand","imageUrl"],
     data() {
@@ -190,6 +191,7 @@ export default {
                 if(res.status == 200){
                 const data =  res.json();
                 this.$emit('submit-form', data);
+                router.push('/ProductList')
                 this.refreshForm();
             } 
             }
