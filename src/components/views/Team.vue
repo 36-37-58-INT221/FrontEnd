@@ -5,7 +5,7 @@
         
 
         <member-template v-for="member in members" :key="member.name">
-            <template v-slot:image><img class="w-36 h-36 ml-2 mt-2 rounded-full" :src="require(`../../assets/member-images/${member.image}`)"></template>
+            <template v-slot:image><img class="w-36 h-36  mt-2 mx-auto rounded-full" :src="require(`../../assets/member-images/${member.image}`)"></template>
             <template v-slot:memberName>{{ member.name }}</template>
             <template v-slot:role>{{ member.role }}</template>
             <template v-slot:studentId>{{ member.studentId }}</template>
