@@ -90,16 +90,16 @@
             </div>
 
             
-            <button
+            <base-button
                 v-if="!isEdit"
                 value="Submit"
-                class="border border-gray-600 mt-8 col-span-2 mb-12 mx-auto text-white"
-                @click="submitForm"
-            >Submit</button>
+                class="border border-gray-600 mt-8 col-span-2 mb-12 mx-auto text-white" 
+                @btn-click="submitForm" labels="SUBMIT" bgcolor="bg-greenpastel" bordercolor="border-greenpastel" hover="hover:bg-green-600 hover:border-greenpastel-dark"
+            ></base-button>
 
             <div class= "col-span-2 mt-12">
-            <button v-if="isEdit" @click="setView" class="border border-gray-600  mb-12 mx-auto text-white">CANCEL EDIT</button>
-            <button v-if="isEdit" class="border border-gray-600 mt-2 mb-12 mx-auto  ml-2 text-white" @click="editForm">Submit Edit</button> 
+            <base-button v-if="isEdit" @btn-click="setView" class="border border-gray-600  mb-12 mx-auto text-white" bordercolor="border-redpastel" bgcolor="bg-redpastel" hover="hover:bg-redpastel-dark hover:border-redpastel-dark" labels="CANCEL EDIT"/>
+            <base-button v-if="isEdit" class="border border-gray-600 mt-2 mb-12 mx-auto  ml-2 text-white" @btn-click="editForm" labels="SUBMIT EDIT" bgcolor="bg-greenpastel" bordercolor="border-greenpastel" hover="hover:bg-green-600 hover:border-greenpastel-dark"/>
         </div>
 
         </div>

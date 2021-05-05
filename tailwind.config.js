@@ -5,9 +5,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        redst: '#d62828',
-        redpastel : '#f94144',
-        greenpastel : '#43aa8b',
+        redpastel :{ 
+       dark :   '#d62828',
+       DEFAULT :'#f94144',
+      },
+
+        greenpastel : {
+          dark : '#4d908e',
+          DEFAULT : '#43aa8b'
+      
+      
+      },
       }
     }
   },

@@ -11,8 +11,8 @@
                     <div class=" text-left ml-8  pt-12">
                         <h1 class="text-6xl py-1 "><b>{{ viewProduct.name }}</b></h1>
                         <h1 class="text-xl pb-8">{{ viewProduct.price }} THB</h1>
-                    <button class="border border-black mr-2" @click="isEdit = true">EDIT</button>
-                    <button class="border border-black" @click="deleteProduct">DELETE</button>
+                    <base-button class="border border-black mr-2" labels="EDIT" @btn-click="isEdit = true"></base-button>
+                    <base-button class="border border-black " @btn-click="deleteProduct" bordercolor="border-redpastel" bgcolor="bg-redpastel" hover="hover:bg-redpastel-dark hover:border-redpastel-dark" labels="DELETE"/>
                        
                         <h1 class="py-3 lg:py-1 my-3">
                             Color   
