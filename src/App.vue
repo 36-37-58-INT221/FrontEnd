@@ -48,10 +48,10 @@ export default {
       products: [],
       brands: [],
       colors: [],
-      productsUrl: 'http://localhost/products',
-      colorUrl: 'http://localhost/colors',
-      brandUrl: 'http://localhost/brands',
-      imageUrl : 'http://localhost/getImage/',
+      productsUrl: `${process.env.VUE_APP_API_URL}/products`,
+      colorUrl: `${process.env.VUE_APP_API_URL}/colors`,
+      brandUrl: `${process.env.VUE_APP_API_URL}/brands`,
+      imageUrl : `${process.env.VUE_APP_API_URL}/getImage/`,
     }
   },
 
@@ -80,6 +80,12 @@ export default {
     },
   },
   async created() {
+    console.log(process.env.VUE_APP_API_URL)
+    alert(process.env.VUE_APP_TEST)
+      // this.productsUrl= process.env.BASE_URL +'products',
+      // this.colorUrl= process.env.BASE_URL + 'colors',
+      // this.brandUrl= process.env.BASE_URL +'brands',
+      // this.imageUrl = process.env.BASE_URL + 'getImage/',
     this.products = await this.fetchProducts();
     this.brands = await this.fetchBrand();
     this.colors = await this.fetchColors();

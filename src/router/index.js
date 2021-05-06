@@ -7,6 +7,9 @@ import Product from '../components/Product/Product.vue'
 import PageNotFound from '../components/views/PageNotFound.vue'
 import Home from '../components/views/Home.vue'
 
+require("dotenv").config();
+
+
 const routes = [
     {
         path: '/',
