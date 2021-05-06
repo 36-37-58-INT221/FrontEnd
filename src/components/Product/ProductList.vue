@@ -1,5 +1,5 @@
 <template>
-    <h1 class="text-6xl text-redpastel-dark mb-8 mt-12" style="text-shadow : 3px 3px black"><b>All Products We have</b></h1>
+    <h1 class="text-4xl md:text-6xl text-redpastel-dark mb-8 mt-12" style="text-shadow : 3px 3px black"><b>All Products We have</b></h1>
     <div class= "grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2">
 
 
