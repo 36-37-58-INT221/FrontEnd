@@ -3,18 +3,18 @@
         <div v-if="!isEdit" class="text-white pb-60 pt-12">
            
 
-            <div class="grid grid-cols-4 ml-8 ">
+            <div class="grid grid-cols-1 lg:grid-cols-4 ml-8 ">
                 
 
-                <div class="col-span-2 ">
+                <div class="col-span-1 lg:col-span-2 ">
                     
                     <div class=" text-left ml-8  pt-12">
-                        <h1 class="text-6xl py-1 "><b>{{ viewProduct.name }}</b></h1>
+                        <h1 class="text-3xl md:text-6xl py-1 "><b>{{ viewProduct.name }}</b></h1>
                         <h1 class="text-xl pb-8">{{ viewProduct.price }} THB</h1>
                     <base-button class="border border-black mr-2" labels="EDIT" @btn-click="isEdit = true"/>
                     <base-button class="border border-black " @btn-click="deleteProduct" bordercolor="border-redpastel" bgcolor="bg-redpastel" hover="hover:bg-redpastel-dark hover:border-redpastel-dark" labels="DELETE"/>
                        
-                        <h1 class="py-3 lg:py-1 my-3">
+                        <h1 class="pt-32 md:py-1 my-3">
                             Color   
                             <span
                                 v-for="color in viewProduct.color"
@@ -35,8 +35,8 @@
                     </div>
                 </div>
 
-                <div class="col-span-2 pr-12 pt-8">
-                    <img :src="setImage" class="w-96 h-auto mx-auto pb-8 rounded" />
+                <div class="col-span-1 pt-40 pl-16 lg:col-span-2 pr-12 lg:pt-8">
+                    <img :src="setImage" class="w-36 h-40 md:w-60 md:h-auto lg:w-96   mx-auto pb-8 rounded" />
                 </div>
 
                 <div class= "col-span-5 lg:col-span-4 text-left mr-10" style="border-color:white; border-width : 2px 0px 0px 0px;">
