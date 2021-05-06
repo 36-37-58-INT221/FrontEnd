@@ -35,7 +35,7 @@
                     </div>
                 </div>
 
-                <div class="col-span-1 pt-40 pl-16 lg:col-span-2 pr-12 lg:pt-8">
+                <div class="col-span-1 pt-40 pl-16 lg:col-span-2 pr-12 lg:pt-8 lg:mt-24">
                     <img :src="setImage" class="w-36 h-40 md:w-60 md:h-auto lg:w-96   mx-auto pb-8 rounded" />
                 </div>
 

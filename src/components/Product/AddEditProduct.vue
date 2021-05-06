@@ -25,7 +25,7 @@
                 <h1
                     v-if="errors.indexOf('noName') !== -1"
                     class="text-red-600"
-                >Please Enter Name 2-30 Character</h1>
+                >Please Enter Name 2-20 Character</h1>
                 <h1
                     v-if="errors.indexOf('have') !== -1"
                     class="text-red-600"
@@ -246,7 +246,7 @@ export default {
             if(this.formdata.pathPic == null){
                 this.errors.push("noPic")
             }
-            if (this.formdata.name == null || this.formdata.name.length <= 2 || this.formdata.name.length > 30) {
+            if (this.formdata.name == null || this.formdata.name.length <= 2 || this.formdata.name.length > 20) {
                 this.errors.push("noName");
             }
             if (this.formdata.description == null || this.formdata.description.length > 70 || this.formdata.description.length < 5) {

@@ -6,7 +6,7 @@
             </div>
 
             <div class="col-span-2 text-left mt-1" >
-                <div class="text-2xl ">
+                <div class="text-2xl">
                     <slot name="productName" />
                 </div>
                 <div>
