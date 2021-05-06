@@ -54,7 +54,7 @@ export default {
     data() {
         return {
             currentPage: 0 ,
-            pageSize : 2,
+            pageSize : 4,
             totalPage : 0,
             sortBy : "productId",
             productPageUrl: `${this.productsUrl}/page?pageNo=`,

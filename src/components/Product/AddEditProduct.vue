@@ -249,7 +249,7 @@ export default {
             if (this.formdata.name == null || this.formdata.name.length <= 2 || this.formdata.name.length > 30) {
                 this.errors.push("noName");
             }
-            if (this.formdata.description == null || this.formdata.description.length > 70 || this.formdata.description.length < 10) {
+            if (this.formdata.description == null || this.formdata.description.length > 70 || this.formdata.description.length < 5) {
                 this.errors.push("noDes");
             }
             if (this.formdata.brand == null) {
