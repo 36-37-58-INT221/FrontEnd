@@ -52,7 +52,7 @@
         </div>
 
         <div v-if="isEdit">
-            <addNewProduct
+            <addEditProduct
                 :viewProduct="viewProduct"
                 :colors="colors"
                 :isEdit="isEdit"
@@ -71,10 +71,10 @@
 
 <script>
 import router from '../../router';
-import AddNewProduct from './AddNewProduct.vue';
+import AddEditProduct from './AddEditProduct.vue';
 export default {
     components: {
-        AddNewProduct
+        AddEditProduct
     },
     props: ["products", "productsUrl", "brands", "colors","imageUrl"],
     data() {

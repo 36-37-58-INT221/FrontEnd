@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import Team from '../components/views/Team.vue'
 import ProductList from '../components/Product/ProductList.vue'
-import AddNewProduct from '../components/Product/AddNewProduct.vue'
+import AddEditProduct from '../components/Product/AddEditProduct.vue'
 import Product from '../components/Product/Product.vue'
 import PageNotFound from '../components/views/PageNotFound.vue'
 import Home from '../components/views/Home.vue'
@@ -25,8 +25,8 @@ const routes = [
     },
     {
         path: '/AddProduct',
-        name: 'AddProduct',
-        component: AddNewProduct
+        name: 'AddEditProduct',
+        component: AddEditProduct
     },
     {
         path: '/Product/:productId',
