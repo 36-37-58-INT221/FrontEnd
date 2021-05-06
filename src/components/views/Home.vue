@@ -7,16 +7,16 @@
                 <router-link  :to="{ name: 'Product', params: { productId: product.productId } }">
                 <product-card class="mt-6 rounded mr-3 ml-6 text-black bg-gray-400">
                     <template v-slot:image><img class="w-36 h-36 ml-2 mt-2 rounded"  :src="`${imageUrl}${product.pathPic}`"></template>
-                    <template v-slot:productName ><h1 class="text-3xl ml-4 lg:-ml-12">{{ product.name }}</h1></template>
-                    <template v-slot:price><h1 class="ml-4 lg:-ml-12">{{ product.price }} THB</h1></template>
-                    <template v-slot:brand><h1 class="float-right -mt-14 mr-4 text-base">by : {{ product.brand.name }}</h1></template>
+                    <template v-slot:productName ><h1 class="text-xl sm:text-2xl font-bold md:text-3xl ml-4 md:-ml-12">{{ product.name }}</h1></template>
+                    <template v-slot:price><h1 class="ml-4 md:-ml-12">{{ product.price }} THB</h1></template>
+                    <template v-slot:brand><h1 class="md:float-right md:-mt-14 ml-4 md:mr-4 text-base">by : {{ product.brand.name }}</h1></template>
                     <template v-slot:color>
                 
-                        <div  class="ml-4 lg:-ml-12 mt-14">
+                        <div  class="ml-4 md:-ml-12 mt-10 md:mt-14">
                         <span
                         v-for="color in product.color"
                         :key="color.id"
-                        class="mt-12"
+                        class=" md:mt-12"
                     >
                         <span
                             class="py-1 pr-3  rounded-full"

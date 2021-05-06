@@ -1,10 +1,10 @@
 <template>
     <h1 class="text-4xl md:text-6xl text-redpastel-dark mb-8 mt-12" style="text-shadow : 3px 3px black"><b>All Products We have</b></h1>
-    <div class= "grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2">
+    <div class= "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
 
 
    
-    <page-control class= "col-span-1 lg:col-span-2" :currentPage="currentPage" :totalPage="totalPage" @change-page="clickPage"></page-control>
+    <page-control class= "col-span-1 md:col-span-2" :currentPage="currentPage" :totalPage="totalPage" @change-page="clickPage"></page-control>
 
     <div class=" mx-2 col-span-1" v-for="product in productPage.slice().reverse()" :key="product.id">
     <router-link  :to="{ name: 'Product', params: { productId: product.productId } }">
