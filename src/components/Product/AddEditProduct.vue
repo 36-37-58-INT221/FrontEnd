@@ -3,7 +3,7 @@
     <container class="shadow-2xl rounded bg-gray-300">
    
         <form @submit.prevent>
-           <div class="grid grid-cols-2">
+           <div class="grid grid-cols-1 md:grid-cols-2">
             <h1 v-if="!isEdit" class="text-6xl text-left ml-12 mt-12 mb-12 text-gray-200 col-span-2 head" style="text-shadow : 3px 3px gray ">New Product</h1>
             <h1 v-if="isEdit" class="text-6xl text-left ml-12 mt-12 mb-12 text-gray-200 col-span-2 head" style="text-shadow : 3px 3px gray ">Editing Product</h1>
 
@@ -60,7 +60,7 @@
                 <h1 v-if="errors.indexOf('noColor') !== -1" class="text-red-600">Please Select Color</h1>
             </div>
 
-            <div class="pt-2 text-left ml-12 mb-2  col-span-2 ">
+            <div class="pt-2 text-left ml-12 mb-2 col-span-1 md:col-span-2 ">
                 <label for="brand" class="text-white">Brand <b class="text-red-600 text-xl" >*</b> </label><br />
                 <select name="brand" v-model="formdata.brand" class="shadow-md py-1">
                     <option
@@ -74,7 +74,7 @@
                 <h1 v-if="errors.indexOf('noBrand') !== -1" class="text-red-600">Please Select Brand</h1>
             </div>
 
-            <div class="pt-2 text-left ml-12 mb-2  col-span-1 ">
+            <div class="pt-2 text-left ml-12 mb-2  col-span-2 md:col-span-1  ">
                 <label for="price" class="text-white">Price <b class="text-red-600 text-xl" >*</b> </label><br />
                 <input type="text" v-model="formdata.price" style="width : 85%" class="shadow-md py-1" />
                 <h1
@@ -83,7 +83,7 @@
                 >Please Enter Price No more than 999999.99 and cant have more than 2 decimal</h1>
             </div>
 
-            <div class="pt-2 text-left ml-12  col-span-1 ">
+            <div class="pt-2 text-left ml-12  col-span-2 ">
                 <label for="manufactureDate" class="text-white">Manufactor Date <b class="text-red-600 text-xl" >*</b> </label><br />
                 <input type="date" v-model="formdata.manufactureDate" class="shadow-2xl py-1" />
                 <h1 v-if="errors.indexOf('noDate') !== -1" class="text-red-600">Please Enter Date</h1>
