@@ -11,7 +11,7 @@
             <div class="pt-2 text-left text-white col-span-2">
                 <img v-if="!isEdit" :src="image || require('../../assets/noimage.png') " class="w-auto h-60 mx-auto rounded mb-4"/>
                 <img v-if="isEdit" :src="image || `${imageUrl}${viewProduct.pathPic}`  " class="w-auto h-60 mx-auto rounded mb-4"/>
-                <h1 class="ml-12">Image File <b v-if="!isEdit" class="text-red-600 text-xl" >*</b></h1>
+                <h1 class="ml-12 mt-10">Image File <b v-if="!isEdit" class="text-red-600 text-xl" >*</b></h1>
                 <input type="file" id="imageFile" class= "ml-12 mb-2 " @change="uploadImageFile($event)" multiple accept=".jpg, .jpeg, .png" />
                 <h1
                     v-if="errors.indexOf('noPic') !== -1"
@@ -149,13 +149,14 @@ export default {
 
 
         refreshForm() {    
-                this.image = "",
-                this.formdata.pathPic = null,
-                this.formdata.name = "",
-                this.formdata.description = null,
-                this.formdata.price = null,
-                this.formdata.brand = null,
-                this.formdata.manufactureDate = null,
+                this.image = ""
+                this.uploadFile= null
+                this.formdata.pathPic = null
+                this.formdata.name = ""
+                this.formdata.description = null
+                this.formdata.price = null
+                this.formdata.brand = null
+                this.formdata.manufactureDate = null
                 this.formdata.color = []
         },
         async submitForm() {
@@ -204,7 +205,7 @@ export default {
             }
             const blob = new Blob([JSON.stringify({
                     productId : this.formdata.productId,
-                    pathPic :this.formdata.pathPic.replace(`${this.viewProduct.name}`,''),
+                    pathPic :this.formdata.pathPic,
                     name: this.formdata.name,
                     description: this.formdata.description,
                     color: this.formdata.color,
