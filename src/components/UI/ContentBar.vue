@@ -11,7 +11,7 @@
     
     <div>
     
-    <div class="bg-gray-700  text-white  flex  justify-items-center"> 
+    <div class="bg-gray-700  text-white text-sm md:text-base flex  justify-items-center"> 
     <span class="ml-8 hoverInBar pt-4 pb-1"><router-link to="/">Home</router-link></span>   
     <span class="ml-4 hoverInBar pt-4 pb-1"> <router-link to="/ProductList">Products</router-link></span>   
     <span class="ml-4 hoverInBar pt-4 pb-1"> <router-link to="/Team"> Team</router-link></span>   
