@@ -37,7 +37,7 @@
         </product-card>
 
         </router-link></div>
-<div v-if="this.productPage.length <= 2" class="pb-96"></div>
+<div v-if="this.productPage.length <= 2" class="pb-48"></div>
     </div>
 </template>
 
