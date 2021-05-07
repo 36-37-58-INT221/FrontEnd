@@ -71,7 +71,6 @@ export default {
 
     },
     mounted() {
-        console.log(this.products.length);
         if(this.products.length >= 1){
         this.setNewProduct();}
       

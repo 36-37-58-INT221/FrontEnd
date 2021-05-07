@@ -64,7 +64,6 @@ export default {
 
        async clickPage(pageSelect){
             this.currentPage = pageSelect ;
-            console.log(this.currentPage)
             this.productPage = await this.fetchPage();
         },
 
