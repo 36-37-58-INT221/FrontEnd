@@ -81,7 +81,7 @@ export default {
         return {
             viewProduct: [],
             notFoundHook: [],
-            imageName: "",
+            pathPic: "",
             viewBrandName: "",
             isEdit: false,
         }

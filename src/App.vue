@@ -15,7 +15,7 @@
     </router-link>
   </nav-bar>
 
-<div class="bg-gray-900 pt-6 -mt-6" style="padding-bottom : 40% ">
+<div class="bg-gray-900 pt-6 -mt-6 pb-64" >
 
   <container>
     <content-bar ></content-bar>
