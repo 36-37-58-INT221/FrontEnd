@@ -11,10 +11,10 @@
                     <div class=" text-left ml-8  pt-12">
                         <h1 class="text-3xl md:text-6xl py-1 "><b>{{ viewProduct.name }}</b></h1>
                         <h1 class="text-xl pb-8">{{ viewProduct.price }} THB</h1>
-                    <base-button class="border border-black mt-32 mb-2 md:-mt-32 mr-2" labels="EDIT" @btn-click="isEdit = true"/>
+                    <base-button class="border border-black  mb-2 mr-2" labels="EDIT" @btn-click="isEdit = true"/>
                     <base-button class="border border-black " @btn-click="deleteProduct" bordercolor="border-redpastel" bgcolor="bg-redpastel" hover="hover:bg-redpastel-dark hover:border-redpastel-dark" labels="DELETE"/>
                        
-                        <h1 class="pt-2  md:py-1 my-3">
+                        <h1 class="pt-12  md:py-1 my-3">
                             Color   
                             <span
                                 v-for="color in viewProduct.color"
