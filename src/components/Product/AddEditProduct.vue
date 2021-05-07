@@ -11,7 +11,7 @@
             <div class="pt-2 text-left text-white col-span-2">
                 <img v-if="!isEdit" :src="image || require('../../assets/noimage.png') " class="w-auto h-60 mx-auto rounded mb-4"/>
                 <img v-if="isEdit" :src="image || `${imageUrl}${viewProduct.pathPic}`  " class="w-auto h-60 mx-auto rounded mb-4"/>
-                <h1 class="ml-12">Image File <b class="text-red-600 text-xl" >*</b></h1>
+                <h1 class="ml-12">Image File <b v-if="!isEdit" class="text-red-600 text-xl" >*</b></h1>
                 <input type="file" id="imageFile" class= "ml-12 mb-2 " @change="uploadImageFile($event)" multiple accept=".jpg, .jpeg, .png" />
                 <h1
                     v-if="errors.indexOf('noPic') !== -1"
@@ -149,7 +149,6 @@ export default {
 
 
         refreshForm() {    
-                document.getElementById("imageFile").value="";
                 this.image = "",
                 this.formdata.pathPic = null,
                 this.formdata.name = "",
@@ -173,14 +172,12 @@ export default {
                         this.formdata.productId = 1;
                 }
 
-
-                var input = document.querySelector('input[type="file"]')
                 const blob = new Blob([JSON.stringify(this.formdata)], {
                     type: 'application/json'
                 })
 
                 const formData = new FormData(); 
-                formData.append('imageFile',input.files[0]);
+                formData.append('imageFile',this.uploadFile);
                 formData.append('product',blob);
                
                 const res =  await fetch(`${this.productsUrl}/add`, { 
@@ -205,7 +202,6 @@ export default {
             if (this.errors.length > 0) {
                 return;
             }
-            var input = document.querySelector('input[type="file"]')
             const blob = new Blob([JSON.stringify({
                     productId : this.formdata.productId,
                     pathPic :this.formdata.pathPic.replace(`${this.viewProduct.name}`,''),
@@ -220,8 +216,8 @@ export default {
                 })
 
                 const formData = new FormData(); 
-                if( input.files[0] !== undefined){
-                formData.append('imageFile',input.files[0]);
+                if( this.uploadFile !== undefined){
+                formData.append('imageFile',this.uploadFile);
             }
                 formData.append('product',blob);
 
