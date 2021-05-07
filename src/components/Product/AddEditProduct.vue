@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-gray-900  " >
+    <div class="max-h-screen">
     <container class="shadow-2xl rounded bg-gray-300">
    
         <form @submit.prevent>
@@ -60,7 +60,7 @@
                 <h1 v-if="errors.indexOf('noColor') !== -1" class="text-red-600">Please Select Color</h1>
             </div>
 
-            <div class="pt-2 text-left ml-12 mb-2 col-span-1 md:col-span-2 ">
+            <div class="pt-2 text-left ml-12 mb-2 col-span-2 md:col-span-1 ">
                 <label for="brand" class="text-white">Brand <b class="text-red-600 text-xl" >*</b> </label><br />
                 <select name="brand" v-model="formdata.brand" class="shadow-md py-1">
                     <option
@@ -74,7 +74,7 @@
                 <h1 v-if="errors.indexOf('noBrand') !== -1" class="text-red-600">Please Select Brand</h1>
             </div>
 
-            <div class="pt-2 text-left ml-12 mb-2  col-span-2 md:col-span-1  ">
+            <div class="pt-2 text-left ml-12 mb-2  col-span-1   ">
                 <label for="price" class="text-white">Price <b class="text-red-600 text-xl" >*</b> </label><br />
                 <input type="text" v-model="formdata.price" style="width : 85%" class="shadow-md py-1" />
                 <h1

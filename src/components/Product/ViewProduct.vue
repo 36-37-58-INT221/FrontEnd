@@ -1,6 +1,6 @@
 <template>
     <div class="mx-auto">
-        <div v-if="!isEdit" class="text-white pb-60 pt-12">
+        <div v-if="!isEdit" class="text-white pb-20">
            
 
             <div class="grid grid-cols-1 lg:grid-cols-4 ml-8 ">
