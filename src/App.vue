@@ -1,6 +1,6 @@
 <template>
  
-  <nav-bar>
+  <nav-bar >
     <router-link to="/">
       <li class="liNav float-left">Home</li>
     </router-link>
@@ -11,11 +11,11 @@
       <li class="liNav float-left">Products</li>
     </router-link>
     <router-link to="/Team">
-      <li class="liNav float-left">Teams</li>
+      <li class="liNav float-left">Team</li>
     </router-link>
   </nav-bar>
 
-<div class="bg-gray-900 pt-6 -mt-6 pb-64" >
+<div class="bg-gray-900 pt-6 -mt-6 pb-64 "  >
 
   <container>
     <content-bar ></content-bar>

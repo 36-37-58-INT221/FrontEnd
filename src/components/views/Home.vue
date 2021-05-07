@@ -1,6 +1,6 @@
 <template>
     <div class="grid grid-cols-1 lg:grid-cols-3 pb-20">
-        <div class="col-span-2 text-white">
+        <div class="grid-cols-1 md:col-span-2 text-white">
             <div class="text-left ml-12 mt-12 text-5xl blackShadow text-greenpastel">New Release Products</div>
 
             <div v-for="(product,index) in NewProduct.slice().reverse()" :key="index">

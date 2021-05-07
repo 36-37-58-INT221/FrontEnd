@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-gray-900  ">
+    <div class="bg-gray-900  " >
     <container class="shadow-2xl rounded bg-gray-300">
    
         <form @submit.prevent>
