@@ -15,7 +15,7 @@
     </router-link>
   </nav-bar>
 
-<div class="bg-gray-900 pt-5 -mt-6 w-screen h-screen overflow-auto"  >
+<div class="bg-gray-900 pt-5 -mt-6 w-full h-screen overflow-auto">
 
   <container>
     <content-bar ></content-bar>
