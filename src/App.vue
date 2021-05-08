@@ -27,6 +27,7 @@
     :colors="colors"
     :brands="brands"
     @submit-form="addProducts"
+    @delete="deleteProduct"
   >
   
 </router-view>
@@ -35,6 +36,7 @@
 </template>
 
 <script>
+  import router from './router';
 import NavBar from './components/UI/NavBar.vue'
 import ContentBar from './components/UI/ContentBar.vue'
 
@@ -60,6 +62,15 @@ export default {
     addProducts(Product) {
       this.products.push(Product);
     },
+
+    async deleteProduct(id) {
+            this.viewProduct = [];
+            await fetch(`${this.productsUrl}/${id}`, {
+                method: 'DELETE'
+            })
+            router.push("/ProductList")
+        },
+
     async refreshProduct() {
       this.products = await this.fetchProducts();
     },

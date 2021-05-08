@@ -87,12 +87,11 @@ export default {
         }
     },
     methods: {
-        async deleteProduct() {
+
+        deleteProduct() {
             this.viewProduct = [];
-            await fetch(`${this.productsUrl}/${this.$route.params.productId}`, {
-                method: 'DELETE'
-            })
-            router.push("/ProductList")
+            this.$emit('delete',this.$route.params.productId)
+            
         },
 
         setView() {
