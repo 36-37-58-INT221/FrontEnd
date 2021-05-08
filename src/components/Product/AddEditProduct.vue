@@ -80,7 +80,7 @@
                 <h1
                     v-if="errors.indexOf('noPrice') !== -1"
                     class="text-red-600"
-                >Please Enter Price No more than 999999.99 and cant have more than 2 decimal</h1>
+                >Please Enter Price less than 999999.99,cant have more than 2 decimal</h1>
             </div>
 
             <div class="pt-2 text-left ml-12  col-span-2 ">
@@ -189,7 +189,7 @@ export default {
             if(this.formdata.pathPic == null){
                 this.errors.push("noPic")
             }
-            if (this.formdata.name == null || this.formdata.name.length <= 2 || this.formdata.name.length > 20) {
+            if (this.formdata.name == null || this.formdata.name.length < 2 || this.formdata.name.length > 20) {
                 this.errors.push("noName");
             }
             if (this.formdata.description == null || this.formdata.description.length > 70 || this.formdata.description.length < 5) {
