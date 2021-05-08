@@ -52,7 +52,7 @@
                     <label for="color" class="ml-2 pr-8 py-1"  v-bind:style="{ backgroundColor : color.colorCode }"></label>
                     <input
                         type="checkbox"
-                        class="w-5 h-7 ml-2 align-middle shadow-md py-1 rounded"
+                        class="w-6 h-7 ml-2 mr-3  align-middle shadow-md  rounded"
                         v-model="formdata.color"
                         :value="{ colorId : color.colorId, colorCode : color.colorCode}"
                     />

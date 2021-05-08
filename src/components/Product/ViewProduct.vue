@@ -1,13 +1,13 @@
 <template>
     <div class="mx-auto">
         <div v-if="!isEdit" class="text-white pb-20">
-            <div class="grid grid-cols-1 lg:grid-cols-4 ml-8">
+            <div class="grid grid-cols-1 lg:grid-cols-4 ml-2 md:ml-8">
                 <div class="col-span-1 lg:col-span-2">
                     <div class="text-left ml-8 pt-12">
                         <h1 class="text-3xl md:text-6xl py-1">
                             <b>{{ viewProduct.name }}</b>
                         </h1>
-                        <h1 class="text-xl pb-8">{{ viewProduct.price }} THB</h1>
+                        <h1 class="sm:text-xl pb-8">{{ viewProduct.price }} THB</h1>
                         <base-button
                             class="border border-black mb-2 mr-2"
                             labels="EDIT"
@@ -27,24 +27,25 @@
                             <span
                                 v-for="color in viewProduct.color"
                                 :key="color.id"
-                                class="flex-1"
+                              
                             >
                                 <span
-                                    class="pr-10 py-2 mx-2 rounded"
+                                    class="pr-5 md:pr-10 py-1 md:py-2 mr-2 ml-2 rounded  mt-1"
                                     v-bind:style="{ backgroundColor: color.colorCode }"
                                 ></span>
-                            </span>
+                               
+                        </span>
                         </h1>
 
-                        <h1 class="py-1">brand : {{ viewBrandName }}</h1>
-                        <h1 class="py-1">manufacture date : {{ viewProduct.manufactureDate }}</h1>
+                        <h1 class="text-sm sm:text-base py-1">brand : {{ viewBrandName }}</h1>
+                        <h1 class="text-sm sm:text-base py-1">manufacture date : {{ viewProduct.manufactureDate }}</h1>
                     </div>
                 </div>
 
                 <div class="col-span-1 pt-40 pl-16 lg:col-span-2 pr-12 lg:pt-8 lg:mt-24">
                     <img
                         :src="setImage"
-                        class="w-36 h-40 md:w-60 md:h-auto lg:w-96 mx-auto pb-8 rounded"
+                        class="ml-16 w-36 h-40 md:w-72 md:h-auto lg:w-96 md:mx-auto pb-8 rounded"
                     />
                 </div>
 
