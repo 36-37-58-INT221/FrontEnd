@@ -112,9 +112,9 @@
 
 
 <script>
-    import router from '../../router';
+   
 export default {
-    props: ["products", "productsUrl", "brands", "colors", "viewProduct", "isEdit", "viewBrand","imageUrl"],
+    props: ["products", "productsUrl", "brands", "colors", "viewProduct", "isEdit", "viewBrand","imageUrl","resStatus"],
     data() {
         return {
             errors: [],
@@ -172,30 +172,7 @@ export default {
                     else{
                         this.formdata.productId = 1;
                 }
-
-                const blob = new Blob([JSON.stringify(this.formdata)], {
-                    type: 'application/json'
-                })
-
-                const formData = new FormData(); 
-                formData.append('imageFile',this.uploadFile);
-                formData.append('product',blob);
-               
-                const res =  await fetch(`${this.productsUrl}/add`, { 
-                    method: 'POST',
-                    body: formData 
-                })
-                
-                if(res.status == 200){
-                const data =  res.json();
-                this.$emit('submit-form', data);
-                router.push('/ProductList')
-                this.refreshForm();
-                } if(res.status == 500){
-                    this.errors.push('have');
-
-                }
-                 
+                this.$emit('submit-form',this.formdata,this.uploadFile)
             }
         },
         async editForm() {
@@ -271,7 +248,12 @@ export default {
 
             var index = []
             if(this.products.length > 0){
-                
+                if(this.products.length > 1){
+                if(this.products[this.products.length-1].name.replace(" ","").toLowerCase() == this.formdata.name.replace(" ","").toLowerCase()){
+                    this.errors.push('have');
+                    return ;
+                }
+            }
             for (let  i = 0 ;i < this.products.length-1 ; i++){ 
                 if(index.length >= 2){break ;}
                 if(this.products[i].name.replace(" ","").toLowerCase() == this.formdata.name.replace(" ","").toLowerCase()){
@@ -296,12 +278,13 @@ export default {
         }
 
     },
-    mounted() {
-    
+   async mounted() {
+        this.$root.refreshProduct();
         if (this.isEdit) {
             this.formdata = this.viewProduct;
            
-        }else{this.refreshForm();}
+        }else{
+            this.refreshForm();}
        
     }
 

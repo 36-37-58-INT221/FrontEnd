@@ -26,7 +26,7 @@
     :imageUrl="imageUrl"
     :colors="colors"
     :brands="brands"
-    @submit-form="addProducts"
+    @submit-form="submitForm"
     @delete="deleteProduct"
   >
   
@@ -59,16 +59,38 @@ export default {
 
 
   methods: {
-    addProducts(Product) {
-      this.products.push(Product);
-    },
-
+ 
     async deleteProduct(id) {
             this.viewProduct = [];
             await fetch(`${this.productsUrl}/${id}`, {
                 method: 'DELETE'
             })
             router.push("/ProductList")
+        },
+
+       
+        async submitForm(formdata,uploadFile) {
+            if (!this.isEdit) {
+                const blob = new Blob([JSON.stringify(formdata)], {
+                    type: 'application/json'
+                })
+
+                const formData = new FormData(); 
+                formData.append('imageFile',uploadFile);
+                formData.append('product',blob);
+               
+                const res =  await fetch(`${this.productsUrl}/add`, { 
+                    method: 'POST',
+                    body: formData 
+                })
+                this.refreshProduct();
+                if(res.status == 200){
+                const data =  res.json();
+                this.products.push(data);
+                router.push('/ProductList')
+                }
+                 
+            }
         },
 
     async refreshProduct() {

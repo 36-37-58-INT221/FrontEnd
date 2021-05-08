@@ -30,19 +30,19 @@ data() {
         {
             image: "member36.jpg",
             name : "Thanasit Eksoragul",
-            role : "BackEnd,DevOps,Database",
+            role : "BackEnd ,DevOps ,Database",
             studentId : "62130500036",
         },
         {
             image: "member37.jpg",
             name : "Thanapat Suwannaard",
-            role : "FrontEnd,Database",
+            role : "FrontEnd ,Database",
             studentId : "62130500037",
         }, 
         {
             image: "member58.jpg",
             name : "Punthanat Ularnwiriyanont",
-            role : "BackEnd,DevOps,Network",
+            role : "BackEnd ,DevOps ,Network",
             studentId : "62130500058",
         }
         ]
