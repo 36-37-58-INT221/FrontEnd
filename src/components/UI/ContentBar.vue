@@ -28,13 +28,6 @@
 
 <style>
 
-.fakeLine{
-    border-style: solid;
-    border-color : black;
-    z-index : 3;
-    border-width : 0px 0px 3px 0px;
-}
-
 .hoverInBar{
     --tw-border-opacity: 1;
     border-color: rgba(55, 65, 81, var(--tw-border-opacity));
@@ -49,8 +42,6 @@
     border-width : 0px 0px 7px 0px;
 }
 
-
-    
 </style>
 
 
