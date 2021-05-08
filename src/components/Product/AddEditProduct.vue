@@ -80,7 +80,11 @@
                 <h1
                     v-if="errors.indexOf('noPrice') !== -1"
                     class="text-red-600"
-                >Please Enter Price less than 999999.99,cant have more than 2 decimal</h1>
+                >Please Enter Price between 1 to 999999.99</h1>
+                <h1
+                    v-if="errors.indexOf('noPrice') !== -1"
+                    class="text-red-600"
+                >and cant have more than 2 decimal</h1>
             </div>
 
             <div class="pt-2 text-left ml-12  col-span-2 ">
@@ -214,7 +218,6 @@ export default {
                 this.errors.push("noPrice")
             }
             this.formdata.price = parseFloat(this.formdata.price)
-
             var index = []
             if(this.products.length > 0){
                 if(this.products.length > 1 && !this.isEdit){
