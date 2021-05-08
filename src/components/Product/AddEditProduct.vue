@@ -10,7 +10,7 @@
 
             <div class="pt-2 text-left text-white col-span-2">
                 <img v-if="!isEdit" :src="image || require('../../assets/noimage.png') " class="w-auto h-60 mx-auto rounded mb-4"/>
-                <img v-if="isEdit" :src="image || `${imageUrl}${viewProduct.pathPic}`  " class="w-auto h-60 mx-auto rounded mb-4"/>
+                <img v-if="isEdit" :src="image || `${imageUrl}${viewProduct.imageName}`  " class="w-auto h-60 mx-auto rounded mb-4"/>
                 <h1 class="ml-12 mt-10">Image File <b v-if="!isEdit" class="text-red-600 text-xl" >*</b></h1>
                 <input type="file" id="imageFile" class= "ml-12 mb-2 " @change="uploadImageFile($event)" multiple accept=".jpg, .jpeg, .png" />
                 <h1
@@ -122,7 +122,7 @@ export default {
             image:"",
             formdata: {
                 productId : null,
-                pathPic : null,
+                imageName : null,
                 name: null,
                 description: null,
                 color: [],
@@ -136,7 +136,7 @@ export default {
         uploadImageFile(event){
             var input = event.target
             
-           this.formdata.pathPic  = input.files[0].name;
+           this.formdata.imageName  = input.files[0].name;
             if(input.files && input.files[0]){
                 this.uploadFile = input.files[0]
                 var reader = new FileReader();
@@ -151,7 +151,7 @@ export default {
         refreshForm() {    
                 this.image = ""
                 this.uploadFile= null
-                this.formdata.pathPic = null
+                this.formdata.imageName = null
                 this.formdata.name = ""
                 this.formdata.description = null
                 this.formdata.price = null
@@ -186,7 +186,7 @@ export default {
            
             this.errors = [];
 
-            if(this.formdata.pathPic == null){
+            if(this.formdata.imageName == null){
                 this.errors.push("noPic")
             }
             if (this.formdata.name == null || this.formdata.name.length < 2 || this.formdata.name.length > 20) {

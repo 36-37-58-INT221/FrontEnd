@@ -9,7 +9,7 @@
     <div class=" mx-2 col-span-1" v-for="product in productPage.slice().reverse()" :key="product.id">
     <router-link  :to="{ name: 'Product', params: { productId: product.productId } }">
         <product-card class="mt-6 rounded pr-24 bg-gray-400 text-black">
-            <template v-slot:image><img class="w-36 h-36 ml-2 mt-2 rounded" :src="`${imageUrl}${product.pathPic}`"></template>
+            <template v-slot:image><img class="w-36 h-36 ml-2 mt-2 rounded" :src="`${imageUrl}${product.imageName}`"></template>
             <template v-slot:productName><h1 class="ml-8" style="border-style: solid;
                 border-color : #2c3e50;
                 z-index : 3;

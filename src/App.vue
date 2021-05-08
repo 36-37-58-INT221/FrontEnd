@@ -97,7 +97,7 @@ export default {
            
             const blob = new Blob([JSON.stringify({
                     productId : formdata.productId,
-                    pathPic :formdata.pathPic,
+                    imageName :formdata.imageName,
                     name: formdata.name,
                     description: formdata.description,
                     color: formdata.color,
@@ -109,7 +109,7 @@ export default {
                 })
 
                 const formData = new FormData(); 
-                if( this.uploadFile !== undefined){
+                if( uploadFile !== undefined){
                 formData.append('imageFile',uploadFile);
             }
                 formData.append('product',blob);
