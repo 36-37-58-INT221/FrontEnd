@@ -27,6 +27,7 @@
     :colors="colors"
     :brands="brands"
     @submit-form="submitForm"
+    @edit-form="editForm"
     @delete="deleteProduct"
   >
   
@@ -91,6 +92,36 @@ export default {
                 }
                  
             }
+        },
+        async editForm(formdata,uploadFile) {
+           
+            const blob = new Blob([JSON.stringify({
+                    productId : formdata.productId,
+                    pathPic :formdata.pathPic,
+                    name: formdata.name,
+                    description: formdata.description,
+                    color: formdata.color,
+                    price: formdata.price,
+                    brand: formdata.brand,
+                    manufactureDate: formdata.manufactureDate,
+                })], {
+                    type: 'application/json'
+                })
+
+                const formData = new FormData(); 
+                if( this.uploadFile !== undefined){
+                formData.append('imageFile',uploadFile);
+            }
+                formData.append('product',blob);
+
+           const res = await fetch(`${this.productsUrl}/put/${formdata.productId}`, {
+                method: 'PUT',
+                
+                body: formData 
+             })
+             if(res.status == 200){
+              this.refreshProduct();
+             }
         },
 
     async refreshProduct() {

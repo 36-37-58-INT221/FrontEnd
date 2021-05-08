@@ -97,7 +97,7 @@
                 @btn-click="submitForm" labels="SUBMIT" bgcolor="bg-greenpastel" bordercolor="border-greenpastel" hover="hover:bg-green-600 hover:border-greenpastel-dark"
             />
             <div class= "col-span-2 mt-12">
-            <base-button v-if="isEdit" @btn-click="setView" class="border border-gray-600  mb-12 mx-auto text-white" bordercolor="border-redpastel" bgcolor="bg-redpastel" hover="hover:bg-redpastel-dark hover:border-redpastel-dark" labels="CANCEL EDIT"/>
+            <base-button v-if="isEdit" @btn-click="this.$emit('cancel-edit')" class="border border-gray-600  mb-12 mx-auto text-white" bordercolor="border-redpastel" bgcolor="bg-redpastel" hover="hover:bg-redpastel-dark hover:border-redpastel-dark" labels="CANCEL EDIT"/>
             <base-button v-if="isEdit" class="border border-gray-600 mt-2 mb-12 mx-auto  ml-2 text-white" @btn-click="editForm" labels="SUBMIT EDIT" bgcolor="bg-greenpastel" bordercolor="border-greenpastel" hover="hover:bg-green-600 hover:border-greenpastel-dark"/>
         </div>
 
@@ -114,7 +114,7 @@
 <script>
    
 export default {
-    props: ["products", "productsUrl", "brands", "colors", "viewProduct", "isEdit", "viewBrand","imageUrl","resStatus"],
+    props: ["products", "brands", "colors", "viewProduct", "isEdit","imageUrl"],
     data() {
         return {
             errors: [],
@@ -159,7 +159,7 @@ export default {
                 this.formdata.manufactureDate = null
                 this.formdata.color = []
         },
-        async submitForm() {
+        submitForm() {
             if (!this.isEdit) {
                 
                 this.validate();
@@ -180,38 +180,7 @@ export default {
             if (this.errors.length > 0) {
                 return;
             }
-            const blob = new Blob([JSON.stringify({
-                    productId : this.formdata.productId,
-                    pathPic :this.formdata.pathPic,
-                    name: this.formdata.name,
-                    description: this.formdata.description,
-                    color: this.formdata.color,
-                    price: this.formdata.price,
-                    brand: this.formdata.brand,
-                    manufactureDate: this.formdata.manufactureDate,
-                })], {
-                    type: 'application/json'
-                })
-
-                const formData = new FormData(); 
-                if( this.uploadFile !== undefined){
-                formData.append('imageFile',this.uploadFile);
-            }
-                formData.append('product',blob);
-
-            const res = await fetch(`${this.productsUrl}/put/${this.viewProduct.productId}`, {
-                method: 'PUT',
-                
-                body: formData 
-             })
-            if(res.status == 200){
-
-            this.$emit("edited")
-            }   if(res.status == 500){
-                    this.errors.push('have');
-
-                }
-            
+            this.$emit('edit-form',this.formdata,this.uploadFile)
         },
         validate() {
            
@@ -248,7 +217,7 @@ export default {
 
             var index = []
             if(this.products.length > 0){
-                if(this.products.length > 1){
+                if(this.products.length > 1 && !this.isEdit){
                 if(this.products[this.products.length-1].name.replace(" ","").toLowerCase() == this.formdata.name.replace(" ","").toLowerCase()){
                     this.errors.push('have');
                     return ;
@@ -273,9 +242,6 @@ export default {
                 }
             }
         },
-        setView() {
-            this.$emit('cancel-edit');
-        }
 
     },
    async mounted() {

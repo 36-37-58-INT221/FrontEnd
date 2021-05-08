@@ -1,21 +1,29 @@
 <template>
     <div class="mx-auto">
         <div v-if="!isEdit" class="text-white pb-20">
-           
-
-            <div class="grid grid-cols-1 lg:grid-cols-4 ml-8 ">
-                
-
-                <div class="col-span-1 lg:col-span-2 ">
-                    
-                    <div class=" text-left ml-8  pt-12">
-                        <h1 class="text-3xl md:text-6xl py-1 "><b>{{ viewProduct.name }}</b></h1>
+            <div class="grid grid-cols-1 lg:grid-cols-4 ml-8">
+                <div class="col-span-1 lg:col-span-2">
+                    <div class="text-left ml-8 pt-12">
+                        <h1 class="text-3xl md:text-6xl py-1">
+                            <b>{{ viewProduct.name }}</b>
+                        </h1>
                         <h1 class="text-xl pb-8">{{ viewProduct.price }} THB</h1>
-                    <base-button class="border border-black  mb-2 mr-2" labels="EDIT" @btn-click="isEdit = true"/>
-                    <base-button class="border border-black " @btn-click="deleteProduct" bordercolor="border-redpastel" bgcolor="bg-redpastel" hover="hover:bg-redpastel-dark hover:border-redpastel-dark" labels="DELETE"/>
-                       
-                        <h1 class="pt-12  md:py-1 my-3">
-                            Color   
+                        <base-button
+                            class="border border-black mb-2 mr-2"
+                            labels="EDIT"
+                            @btn-click="isEdit = true"
+                        />
+                        <base-button
+                            class="border border-black"
+                            @btn-click="deleteProduct"
+                            bordercolor="border-redpastel"
+                            bgcolor="bg-redpastel"
+                            hover="hover:bg-redpastel-dark hover:border-redpastel-dark"
+                            labels="DELETE"
+                        />
+
+                        <h1 class="pt-12 md:py-1 my-3">
+                            Color
                             <span
                                 v-for="color in viewProduct.color"
                                 :key="color.id"
@@ -29,24 +37,30 @@
                         </h1>
 
                         <h1 class="py-1">brand : {{ viewBrandName }}</h1>
-                        <h1 class="py-1">manufacture date : {{ viewProduct.manufactureDate }}</h1> 
-                        
-
+                        <h1 class="py-1">manufacture date : {{ viewProduct.manufactureDate }}</h1>
                     </div>
                 </div>
 
                 <div class="col-span-1 pt-40 pl-16 lg:col-span-2 pr-12 lg:pt-8 lg:mt-24">
-                    <img :src="setImage" class="w-36 h-40 md:w-60 md:h-auto lg:w-96   mx-auto pb-8 rounded" />
+                    <img
+                        :src="setImage"
+                        class="w-36 h-40 md:w-60 md:h-auto lg:w-96 mx-auto pb-8 rounded"
+                    />
                 </div>
 
-                <div class= "col-span-5 lg:col-span-4 text-left mr-10" style="border-color:white; border-width : 2px 0px 0px 0px;">
+                <div
+                    class="col-span-5 lg:col-span-4 text-left mr-10"
+                    style="border-color:white; border-width : 2px 0px 0px 0px;"
+                >
                     <h1 class="text-3xl pt-5">Product Information</h1>
                     <div class="grid grid-cols-1 lg:grid-cols-3 pt-5 pb-3">
-                    <h1 class="my-2 underline lg:no-underline text-xl col-span-1">DESCRIPTION </h1>
-                    <h1 class="my-2 text-l col-span-2">{{ viewProduct.description }}</h1>
-                    <h1 class="my-2 underline lg:no-underline text-xl col-span-1 mt-2">MANUFACTURE DATE </h1>
-                    <h1 class="my-2 text-l col-span-2 mt-2"> {{ viewProduct.manufactureDate }}</h1>
-                     </div>
+                        <h1 class="my-2 underline lg:no-underline text-xl col-span-1">DESCRIPTION</h1>
+                        <h1 class="my-2 text-l col-span-2">{{ viewProduct.description }}</h1>
+                        <h1
+                            class="my-2 underline lg:no-underline text-xl col-span-1 mt-2"
+                        >MANUFACTURE DATE</h1>
+                        <h1 class="my-2 text-l col-span-2 mt-2">{{ viewProduct.manufactureDate }}</h1>
+                    </div>
                 </div>
             </div>
         </div>
@@ -57,11 +71,10 @@
                 :colors="colors"
                 :isEdit="isEdit"
                 :brands="brands"
-                :productsUrl="productsUrl"
                 :products="products"
                 :imageUrl="imageUrl"
-                @edited="setView"
-                @cancel-edit="setView"
+                @edit-form="editing"
+                @cancel-edit="isEdit = false"
             />
         </div>
     </div>
@@ -76,7 +89,7 @@ export default {
     components: {
         AddEditProduct
     },
-    props: ["products", "productsUrl", "brands", "colors","imageUrl"],
+    props: ["products", "brands", "colors", "imageUrl"],
     data() {
         return {
             viewProduct: [],
@@ -90,28 +103,27 @@ export default {
 
         deleteProduct() {
             this.viewProduct = [];
-            this.$emit('delete',this.$route.params.productId)
-            
+            this.$emit('delete', this.$route.params.productId)
+
         },
 
-        setView() {
+        editing(formdata, uploadFile) {
+            var form = formdata
+            var upload = uploadFile
+            this.$emit('edit-form', form, upload)
             this.isEdit = false;
-            this.$root.refreshProduct();
-
         }
 
-
-
-
-    }, computed: {
+    },
+    computed: {
 
         setImage() {
             var index = this.products.findIndex(f => f.productId == this.$route.params.productId)
             if (index != -1) {
                 return `${this.imageUrl}${this.products[index].pathPic}`;
-                
-                
-                
+
+
+
             }
             else {
                 return "";
