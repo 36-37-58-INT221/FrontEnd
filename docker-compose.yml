@@ -3,6 +3,8 @@ services:
   frontend:
     build: .
     image: frontend
+    build: 
+       context: .
     container_name: frontend
 networks:
   default:
