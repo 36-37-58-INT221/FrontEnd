@@ -159,6 +159,7 @@ export default {
         refreshForm() {    
                 this.image = ""
                 this.uploadFile= null
+                this.formdata.productId = null
                 this.formdata.imageName = null
                 this.formdata.name = ""
                 this.formdata.description = null
