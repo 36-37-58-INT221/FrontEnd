@@ -17,6 +17,10 @@
                     v-if="errors.indexOf('noPic') !== -1"
                     class="text-red-600 ml-12"
                 >Please Select Photo</h1>
+                <h1
+                v-if="errors.indexOf('invalidFile') !== -1"
+                class="text-red-600 ml-12"
+            >Please use jpg or png file</h1>
             </div>
 
 
@@ -192,6 +196,12 @@ export default {
 
             if(this.formdata.imageName == null){
                 this.errors.push("noPic")
+            }
+            var checkFile = this.formdata.imageName.slice(this.formdata.imageName.length-4,this.formdata.imageName.length);
+            if( checkFile!== '.jpg'&& checkFile !=='.png' && 
+            this.formdata.imageName.slice(this.formdata.imageName.length-5,this.formdata.imageName.length) !== '.jpeg'
+            ){
+                this.errors.push("invalidFile");
             }
             if (this.formdata.name == null || this.formdata.name.length < 2 || this.formdata.name.length > 20) {
                 this.errors.push("noName");
