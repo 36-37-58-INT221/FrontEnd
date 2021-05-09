@@ -84,7 +84,7 @@
 
 
 <script>
-import router from '../../router';
+import router from '../router';
 import AddEditProduct from './AddEditProduct.vue';
 export default {
     components: {

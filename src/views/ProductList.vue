@@ -44,7 +44,7 @@
 
 
 <script>
-    import PageControl from '../UI/PageControl.vue'
+    import PageControl from '../components/UI/PageControl.vue'
 export default {
     components:{
         PageControl

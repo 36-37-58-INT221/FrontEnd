@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import Team from '../components/views/Team.vue'
-import ProductList from '../components/views/ProductList.vue'
-import AddEditProduct from '../components/views/AddEditProduct.vue'
-import ViewProduct from '../components/views/ViewProduct.vue'
-import PageNotFound from '../components/views/PageNotFound.vue'
-import Home from '../components/views/Home.vue'
+import Team from '../views/Team.vue'
+import ProductList from '../views/ProductList.vue'
+import AddEditProduct from '../views/AddEditProduct.vue'
+import ViewProduct from '../views/ViewProduct.vue'
+import PageNotFound from '../views/PageNotFound.vue'
+import Home from '../views/Home.vue'
 
 const routes = [
     {

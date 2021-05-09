@@ -9,7 +9,7 @@
 
 
             <div class="pt-2 text-left text-white col-span-2">
-                <img v-if="!isEdit" :src="image || require('../../assets/noimage.png') " class="w-auto h-60 mx-auto rounded mb-4"/>
+                <img v-if="!isEdit" :src="image || require('../assets/noimage.png') " class="w-auto h-60 mx-auto rounded mb-4"/>
                 <img v-if="isEdit" :src="image || `${imageUrl}${viewProduct.imageName}`  " class="w-auto h-60 mx-auto rounded mb-4"/>
                 <h1 class="ml-12 mt-10">Image File <b v-if="!isEdit" class="text-red-600 text-xl" >*</b></h1>
                 <input type="file" id="imageFile" class= "ml-12 mb-2 " @change="uploadImageFile($event)" multiple accept=".jpg, .jpeg, .png" />
