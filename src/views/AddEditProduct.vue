@@ -48,7 +48,7 @@
                 <h1
                     v-if="errors.indexOf('noDes') !== -1"
                     class="text-red-600"
-                >Please Enter Description 10 up to 70 character</h1>
+                >Please Enter Description 5 up to 70 character</h1>
             </div>
             <div class="pt-2 text-left ml-12 mb-2  col-span-2 text-white" >
                 <label>Colors <b class="text-red-600 text-xl" >*</b></label>
@@ -235,6 +235,7 @@ export default {
             if(res.status == 200){
                 this.$root.refreshProduct();
                 this.$emit('edited')
+
             }
 
         },
