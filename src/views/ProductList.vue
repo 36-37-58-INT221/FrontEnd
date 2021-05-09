@@ -50,7 +50,7 @@ export default {
         PageControl
 
     },
-    props: ["products","imageUrl","productsUrl"],
+    props: ["products","imageUrl"],
 
     data() {
         return {
@@ -58,7 +58,7 @@ export default {
             pageSize : 4,
             totalPage : 0,
             sortBy : "productId",
-            productPageUrl: `${this.productsUrl}/page?pageNo=`,
+            productPageUrl: `${process.env.VUE_APP_API_URL}/products/page?pageNo=`,
             productPage:[],
         }
     },methods: {

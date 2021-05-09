@@ -74,7 +74,7 @@
                 :brands="brands"
                 :products="products"
                 :imageUrl="imageUrl"
-                @edit-form="editing"
+                @edited="isEdit = false"
                 @cancel-edit="isEdit = false"
             />
         </div>
@@ -90,7 +90,7 @@ export default {
     components: {
         AddEditProduct
     },
-    props: ["products", "brands", "colors", "imageUrl"],
+    props: ["products", "brands", "colors","imageUrl"],
     data() {
         return {
             viewProduct: [],
@@ -101,18 +101,16 @@ export default {
     },
     methods: {
 
-        deleteProduct() {
+        async deleteProduct() {
+            const res = await fetch(`${process.env.VUE_APP_API_URL}/products/${this.viewProduct.productId}`, {
+                method: 'DELETE'
+            })
+            if(res.status == 200){
             this.viewProduct = [];
-            this.$emit('delete', this.$route.params.productId)
-
+            router.push("/ProductList")
+        }
         },
 
-        editing(formdata, uploadFile) {
-            var form = formdata
-            var upload = uploadFile
-            this.$emit('edit-form',form,upload)
-            this.isEdit = false;
-        }
 
     },
     computed: {
@@ -121,9 +119,6 @@ export default {
             var index = this.products.findIndex(f => f.productId == this.$route.params.productId)
             if (index != -1) {
                 return `${this.imageUrl}${this.products[index].imageName}`;
-
-
-
             }
             else {
                 return "";

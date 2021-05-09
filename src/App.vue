@@ -22,7 +22,6 @@
     
   <router-view
     :products="products"
-    :productsUrl="productsUrl"
     :imageUrl="imageUrl"
     :colors="colors"
     :brands="brands"
@@ -37,7 +36,6 @@
 </template>
 
 <script>
-  import router from './router';
 import NavBar from './components/UI/NavBar.vue'
 import ContentBar from './components/UI/ContentBar.vue'
 
@@ -60,69 +58,6 @@ export default {
 
 
   methods: {
- 
-    async deleteProduct(id) {
-            this.viewProduct = [];
-            await fetch(`${this.productsUrl}/${id}`, {
-                method: 'DELETE'
-            })
-            router.push("/ProductList")
-        },
-
-       
-        async submitForm(formdata,uploadFile) {
-            if (!this.isEdit) {
-                const blob = new Blob([JSON.stringify(formdata)], {
-                    type: 'application/json'
-                })
-
-                const formData = new FormData(); 
-                formData.append('imageFile',uploadFile);
-                formData.append('product',blob);
-               
-                const res =  await fetch(`${this.productsUrl}/add`, { 
-                    method: 'POST',
-                    body: formData 
-                })
-                this.refreshProduct();
-                if(res.status == 200){
-                const data =  res.json();
-                this.products.push(data);
-                router.push('/ProductList')
-                }
-                 
-            }
-        },
-        async editForm(formdata,uploadFile) {
-           
-            const blob = new Blob([JSON.stringify({
-                    productId : formdata.productId,
-                    imageName :formdata.imageName,
-                    name: formdata.name,
-                    description: formdata.description,
-                    color: formdata.color,
-                    price: formdata.price,
-                    brand: formdata.brand,
-                    manufactureDate: formdata.manufactureDate,
-                })], {
-                    type: 'application/json'
-                })
-
-                const formData = new FormData(); 
-                if( uploadFile !== undefined){
-                formData.append('imageFile',uploadFile);
-            }
-                formData.append('product',blob);
-
-           const res = await fetch(`${this.productsUrl}/put/${formdata.productId}`, {
-                method: 'PUT',
-                
-                body: formData 
-             })
-             if(res.status == 200){
-              this.refreshProduct();
-             }
-        },
 
     async refreshProduct() {
       this.products = await this.fetchProducts();

@@ -120,7 +120,7 @@
 
 
 <script>
-   
+    import router from '../router';
 export default {
     props: ["products", "brands", "colors", "viewProduct", "isEdit","imageUrl"],
     data() {
@@ -168,7 +168,7 @@ export default {
                 this.formdata.manufactureDate = null
                 this.formdata.color = []
         },
-        submitForm() {
+      async submitForm() {
             if (!this.isEdit) {
                 
                 this.validate();
@@ -181,15 +181,62 @@ export default {
                     else{
                         this.formdata.productId = 1;
                 }
-                this.$emit('submit-form',this.formdata,this.uploadFile)
+               
+                const blob = new Blob([JSON.stringify(this.formdata)], {
+                    type: 'application/json'
+                })
+
+                const formData = new FormData(); 
+                formData.append('imageFile',this.uploadFile);
+                formData.append('product',blob);
+               
+                const res =  await fetch(`${process.env.VUE_APP_API_URL}/products/add`, { 
+                    method: 'POST',
+                    body: formData 
+                })
+            
+                if(res.status == 200){
+
+                router.push('/ProductList')
+                }
+                 
             }
         },
+
+
         async editForm() {
             this.validate();
             if (this.errors.length > 0) {
                 return;
             }
-            this.$emit('edit-form',this.formdata,this.uploadFile)
+            const blob = new Blob([JSON.stringify({
+                    productId : this.formdata.productId,
+                    imageName :this.formdata.imageName,
+                    name: this.formdata.name,
+                    description: this.formdata.description,
+                    color: this.formdata.color,
+                    price: this.formdata.price,
+                    brand: this.formdata.brand,
+                    manufactureDate: this.formdata.manufactureDate,
+                })], {
+                    type: 'application/json'
+                })
+
+                const formData = new FormData(); 
+                if( this.uploadFile !== undefined){
+                formData.append('imageFile',this.uploadFile);
+            }
+                formData.append('product',blob);
+
+            const res=  await fetch(`${process.env.VUE_APP_API_URL}/products/put/${this.formdata.productId}`, {
+                method: 'PUT',
+                body: formData 
+             })
+            if(res.status == 200){
+                this.$root.refreshProduct();
+                this.$emit('edited')
+            }
+
         },
         validate() {
            
