@@ -25,12 +25,9 @@
     :imageUrl="imageUrl"
     :colors="colors"
     :brands="brands"
-    @submit-form="submitForm"
-    @edit-form="editForm"
-    @delete="deleteProduct"
-  >
+  />
   
-</router-view>
+
 </container>
 </div>
 </template>
