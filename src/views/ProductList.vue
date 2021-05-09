@@ -50,7 +50,7 @@ export default {
         PageControl
 
     },
-    props: ["products","imageUrl","productsUrl"],
+    props: ["products","imageUrl"],
 
     data() {
         return {
