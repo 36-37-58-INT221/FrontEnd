@@ -114,7 +114,7 @@ export default {
             
       const res = await fetch(`${process.env.VUE_APP_API_URL}/products/${this.$route.params.productId}`);
       const data = await res.json();
-      if(res.status == 404){
+      if(res.status != 200){
         router.push('/NotFoundPage')
 
       }
