@@ -70,13 +70,11 @@ export default {
         }
 
     },
-    mounted() {
-        if(this.products.length >= 1){
-        this.setNewProduct();}
+    mounted() { 
+         this.$root.refreshProduct();
       
     },
     beforeUpdate() {
-        this.$root.refreshProduct();
         if(this.products.length >= 1){
         this.setNewProduct();}
     }
