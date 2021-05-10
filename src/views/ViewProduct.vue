@@ -141,7 +141,12 @@ export default {
 
   async mounted() {
         this.viewProduct = await this.fetchByProduct();
+      
     },
+    beforeUpdate(){
+
+          this.viewBrandName = this.viewProduct.brand.name;
+    }
   
 
 }
