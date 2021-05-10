@@ -56,7 +56,7 @@
                     <h1 class="text-3xl pt-5">Product Information</h1>
                     <div class="grid grid-cols-1 lg:grid-cols-3 pt-5 pb-3">
                         <h1 class="my-2 underline lg:no-underline text-xl col-span-1">DESCRIPTION</h1>
-                        <h1 class="my-2 text-l col-span-2">{{ viewProduct.description }}</h1>
+                        <span class="my-2  text-base  col-span-2 overflow-x-scroll md:overflow-x-visible">{{ viewProduct.description }}</span>
                         <h1
                             class="my-2 underline lg:no-underline text-xl col-span-1 mt-2"
                         >MANUFACTURE DATE</h1>
@@ -75,7 +75,7 @@
                 :products="products"
                 :imageUrl="imageUrl"
                 @edited="isEdit = false"
-                @cancel-edit="isEdit = false"
+                @cancel-edit="refreshViewProduct"
             />
         </div>
     </div>
@@ -100,6 +100,13 @@ export default {
         }
     },
     methods: {
+       async refreshViewProduct(){
+            this.isEdit = false;
+            this.viewProduct = await this.fetchByProduct();
+            this.viewBrandName = this.viewProduct.brand.name;
+        },
+
+
 
         async deleteProduct() {
             const res = await fetch(`${process.env.VUE_APP_API_URL}/products/${this.viewProduct.productId}`, {
