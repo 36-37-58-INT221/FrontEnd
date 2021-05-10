@@ -74,7 +74,7 @@
                 :brands="brands"
                 :products="products"
                 :imageUrl="imageUrl"
-                @edited="isEdit = false"
+                @edited="refreshViewProduct"
                 @cancel-edit="refreshViewProduct"
             />
         </div>
