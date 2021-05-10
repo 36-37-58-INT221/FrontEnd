@@ -197,7 +197,7 @@ export default {
             
                 if(res.status == 200){
 
-                router.push('/ProductList')
+                router.push('/')
                 }
                  
             }
