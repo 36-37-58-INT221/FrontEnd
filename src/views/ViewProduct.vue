@@ -110,6 +110,18 @@ export default {
             router.push("/ProductList")
         }
         },
+        async fetchByProduct(){
+            
+      const res = await fetch(`${process.env.VUE_APP_API_URL}/products/${this.$route.params.productId}`);
+      const data = await res.json();
+      if(res.status == 404){
+        router.push('/NotFoundPage')
+
+      }
+      return data;
+  
+
+        },
 
 
     },
@@ -127,37 +139,10 @@ export default {
 
     },
 
-    mounted() {
-        var index = this.products.findIndex(f => f.productId == this.$route.params.productId)
-        this.viewProduct = this.products[index];
+  async mounted() {
+        this.viewProduct = await this.fetchByProduct();
     },
-    beforeUpdate() {
-        var index = this.products.findIndex(f => f.productId == this.$route.params.productId)
-        if (index != -1) {
-            this.viewProduct = this.products[index];
-            this.viewBrandName = this.viewProduct.brand.name
-            return;
-        }
-        if (index == -1) {
-            this.notFoundHook.push(index);
-        }
-        if (this.notFoundHook.length >= 2) {
-            this.notFoundHook = [];
-            router.push("/NotFoundPage")
-        }
-
-
-    }
-
-
-
-
-
-
-
-
-
-
+  
 
 }
 
